@@ -108,10 +108,10 @@
 .mobileNav{
 	box-shadow: 0 8px 10px -6px black!important;
 }
-.navbar{
+/*.navbar{
 	position: relative;
 	z-index:1;
-}
+}*/
 .transparent-nav{
 	background : rgba(255,255,255, 1);
 	margin-top: .5rem;

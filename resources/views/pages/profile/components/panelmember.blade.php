@@ -47,14 +47,19 @@
 
 
                   
-                  <div class="col-12 mt-3 mb-5">
-                    <center>
-                      <div class="fb-share-button btn-lg" 
-                      :data-href="`https://evoush.com/member/${profile.username}`" 
-                      data-layout="button_count">
-                      </div>
-                    </center>
-                  </div>
+                  <center>
+	                  <div class="col-12 mt-3 mb-5">
+	                  	<div class="fb-share-button btn-lg" 
+	                  		:data-href="`https://evoush.com/member/${profile.username}`" 
+	                  		data-layout="button_count">
+	                  	</div>
+	                  </div>
+
+	                  <div class="col-md-12 col-xs-12 col-sm-12 mt-3 mb-3">
+	                  	<a href="{{route('marketing.plan')}}" class="btn btn-hover color-4">Marketing Plan</a>
+	                  </div>
+
+                  </center>
                   
                   {{-- Tabs Profile --}}
 
@@ -540,47 +545,47 @@
 /*panel*/
 
 .image--profile {
-  width: 155px;
-  height: 160px;
-  margin-top: 5rem!important;
-  display: flex;
-  justify-content: center;
+	width: 155px;
+	height: 160px;
+	margin-top: 5rem!important;
+	display: flex;
+	justify-content: center;
 }
 
 .image--profile-member {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
+	width: 100px;
+	height: 100px;
+	display: flex;
+	justify-content: center;
 }
 
 .quotes{
-  font-size: 16px!important;
-  font-family: 'Walkway';
-  /*color: firebrick;*/
+	font-size: 16px!important;
+	font-family: 'Walkway';
+	/*color: firebrick;*/
 }
 .socials{
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  font-size: 11px!important;
-  margin-left:-2rem!important;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	list-style: none;
+	font-size: 11px!important;
+	margin-left:-2rem!important;
 }
 .fa-instagram-square {
-  color: transparent;
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  background-clip: text;
-  -webkit-background-clip: text;
+	color: transparent;
+	background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+	background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+	background-clip: text;
+	-webkit-background-clip: text;
 }
 .panel-focus{
-  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-  margin-top: -5rem;
-  padding: 12px;
-  background-color: white!important;
+	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+	border-radius: 12px;
+	margin-top: -5rem;
+	padding: 12px;
+	background-color: white!important;
 /*  display: flex;
   flex-wrap: nowrap;
   align-content: justify-content-center;*/
@@ -588,28 +593,69 @@
   margin-left: 1.2rem;
 }
 .panel-body-focus {
-  margin-top: -11rem;
-  width: 100%;
-  /*padding: 5px;*/
+	margin-top: -11rem;
+	width: 100%;
+	/*padding: 5px;*/
 }
 
 .list-member{
-  list-style: none;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 7rem!important;
-  margin-right: 1.5rem!important;
+	list-style: none;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	margin-top: 7rem!important;
+	margin-right: 1.5rem!important;
 }
 /*end panel;*/
 
 label{
-  text-align: left;
+	text-align: left;
 }
 .modal-body-member{
-  text-align: left!important;
+	text-align: left!important;
 }
+
+/*button*/
+.btn-hover {
+	width: 100%;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+	margin: 20px;
+	height: 35px;
+	text-align:center;
+	border: none;
+	background-size: 300% 100%;
+
+	border-radius: 50px;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+	background-position: 100% 0;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+	outline: none;
+}
+.btn-hover.color-1 {
+	background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+	box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+}
+.btn-hover.color-4 {
+	background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
+	box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+}
+/*end button*/
 /* DESKTOP VERSION */
   @media (min-width: 992px) {
     .profile-content{

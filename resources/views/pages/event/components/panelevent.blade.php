@@ -21,6 +21,14 @@
               
               <div class="collapse" id="collapseExample">
                 <div class="ml-1 mb-5" v-html="panel.content"></div>
+                <div v-for="content in contents">
+                  <video controls>
+                          <source :src="content.link" type="video/mp4">
+                          <source src="mov_bbb.ogg" type="video/ogg">
+                           Your browser does not support HTML video.
+                  </video>
+                </div>
+
               </div>
 
             </div>
@@ -39,7 +47,10 @@
 		el: '#panel-focus-home',
 		data(){
 			return {
-				panels: []
+				panels: [],
+        contents: [
+          {id:1, link: 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/videos/event/event1.mp4'}
+        ]
 			}
 		},
     mounted(){
@@ -148,7 +159,7 @@
       width: 550px;
     }
     .collapse video{
-      width:600px!important;
+      width:650px!important;
       margin-left: -.3rem !important;
     }
 

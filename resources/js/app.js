@@ -12,6 +12,7 @@ import VueAxios from 'vue-axios'
 import axios from 'axios'
 import Home from './pages/Home/index'
 import About from './pages/About/index'
+import MarketingPlan from './pages/MarketingPlan/index'
 
 
 Vue.use(VueAxios, axios)
@@ -29,6 +30,13 @@ new Vue({
 	el: '#about',
 	components: {About},
 	render: h=>h(About)
+})
+
+
+new Vue({
+	el: '#marketing-plan',
+	components: {MarketingPlan},
+	render: h => h(MarketingPlan)
 })
 
 
@@ -166,6 +174,7 @@ new Vue({
 			{id:5, name:"Event/Tickets", url: "/event"},
 			{id:6, name:"News", url: "/articles"},
 			{id:7, name:"Life Style", url: "#"},
+			{id:8, name:"Marketing Plan", url: "/marketing-plan"}
 			]
 		}
 	}

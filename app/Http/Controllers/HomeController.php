@@ -492,4 +492,21 @@ class HomeController extends Controller
         return view('pages.leaders.index', $context);
     }
 
+    public function marketing_plan()
+    {
+        $context = [
+            'title' => 'Evoush::Official | MarketingPlan::Page',
+            'canonical' => 'https://evoush.com/marketing-plan',
+            'meta_desc' => 'Evoush::Official | MarketingPlan::Page',
+            'meta_key' => 'Bisnis Network Marketing Dengan Standart Product Terbaik dan berkualitas yang kaya manfaat bagi diri dan bisnis anda',
+            'meta_author' => 'Evoush::Official | MarketingPlan::Page',
+            'og_title' => 'Evoush::Official | MarketingPlan::Page',
+            'og_site_name' => 'Evoush::Official | MarketingPlan::Page',
+            'og_desc' => 'Your Eternal Future',
+            'og_image' => 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/MARKETING%20PLAN/1.jpg',
+            'og_url' => 'https://evoush.com/marketing-plan',
+        ];
+        return view('pages.marketingplan.index', $context);
+    }
+
 }

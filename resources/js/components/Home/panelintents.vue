@@ -20,14 +20,25 @@
 							</div>
 							<div class="col-md-8 col-xs-8 col-sm-8">
 								<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-									<div v-if="panel.iframe" class="embed-responsive embed-responsive-1by1">
-										<iframe class="embed-responsive-item" :src="panel.iframe" allowfullscreen></iframe>
+									<div v-if="panel.iframe">
+										<!-- <iframe class="embed-responsive-item" :src="panel.iframe" allowfullscreen></iframe> -->
+										<video controls>
+											<source :src="panel.iframe" type="video/mp4">
+											<source src="mov_bbb.ogg" type="video/ogg">
+													Your browser does not support HTML video.
+										</video>
 									</div>
 									<div v-else>
 										<img :src="panel.vector" class="img-responsive intents-home-img">
 									</div>
 								</div>
 							</div>
+							<div v-if="panel.carousel">
+								<div class="col-md-12 col-xs-12 col-sm-12 mt-3 mb-5">
+									<carousel/>
+								</div>
+							</div>
+
 						</div>
 					</div>
 					<div v-else>
@@ -53,7 +64,12 @@
 </template>
 
 <script>
+	import carousel from './carousel'
+
 	export default {
+		components: {
+			carousel
+		},
 		data(){
 			return {
 				ip:'',
@@ -61,11 +77,12 @@
 				panels: [
 				{
 					id:1,
-					header: `Bisnis Income <span>  Fantastis </span> `,
+					header: `New Product <span>  Evoush </span> `,
 					welcome: `Halo <b style='font-family: lowercase;'>evousher</b>`,
-					paragraph: `<b>Jadilah Leader</b> di Kota Anda, Bentuk Jati Diri Anda Sebagai Pebisnis dengan <span> Income Fantastis </span> Hanya di <span style='font-family: lowercase!important;'><b>evoush</b></span>.`,
+					paragraph: `<b>Segera realease</b> product terbaru kami  <span> yang pastinya </span> melalui proses produksi dengan kualitas terbaik yang menjadikan product ini kaya akan manfaat bagi kesehatan kita.`,
 					vector: "",
-					iframe: "https://www.youtube.com/embed/0H81i8_dPmM"
+					iframe: "https://github.com/codesyariah122/bahan-evoush/blob/main/videos/teaser/210769414_865265850741933_1297354379708905451_n.mp4?raw=true",
+					carousel: true
 				},
 				{
 					id:2,
@@ -73,6 +90,7 @@
 					welcome: '',
 					paragraph: `<b>Dedikasikan Diri anda</b> dengan seluruh kemampuan anda, dan buat orang lain tertarik untuk mencoba produk kita. Setiap hasil kerja kerasmu akan dihargai dengan nilai kepuasan oleh pengguna.`,
 					vector: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/animated/anim32.gif",
+					carousel: false
 				},
 				{
 					id: 3,
@@ -80,6 +98,7 @@
 					welcome:'',
 					paragraph: `Berbisnis di <b style='font-family: lowercase;'>evoush</b> merupakan sebuah investasi yang menjanjikan. Setelah anda bergabung , anda akan menjadi bagian dalam bisnis  Bersama kami.Bersama kami merupakan  pilihan yang tepat. Karena, anda akan memiliki pengalaman baru yang mengesankan dalam dunia bisnis . <br/><b style='font-family: lowercase;'>evoush</b> dengan rangkaian produk kesehatan dan kecantikan yang merupakan sebuah modal lengkap bagi diri dan bisnis anda.`,
 					vector: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/animated/anim33.gif",
+					carousel: false
 				}
 				]
 			}
@@ -153,6 +172,10 @@
 	#panel-intents-home h1{
 		text-transform: uppercase;
 	}
+	#panel-intents-home video{
+      width:650px!important;
+      margin-top: -1rem!important;
+    }
 	.genap-home {
 		margin-top: 3rem;
 		/*margin-bottom: 3rem;*/

@@ -85,7 +85,7 @@
 		/* clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); */
 		position: absolute;
 		margin-top: 15rem;
-		width: 75%;
+		width: 100%;
 		text-align: center;
 		color: #fff;
 	}

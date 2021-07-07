@@ -6,16 +6,12 @@
 					<div class="row no-gutters justify-content-center">
 						<div class="col-md-6 col-xs-12 col-sm-12">
 							<a href="/">
-								<h1 class="display-4 text-center" style="font-family:'Walkway'; text-transform: lowercase!important; color: #ff3b40;">
-									<!-- <span style="font-size: 4rem;font-weight: 900;" v-html="brand"></span>  -->
-									<Logo/> 
-									<!-- <span style="font-family: 'Reey Regular'; text-transform: capitalize; color: #fff;" v-html="country"></span> -->
+								<h1 class="display-4 text-center" style="font-family:'Walkway'; text-transform: capitalize;!important; color: #fff;font-size: 4rem;font-weight: 900;">
+									{{header}} 
 								</h1>
 							</a>
-							<p class="blockquote-text text-center" style="font-family:Reey Regular;color: firebrick;"> 
-								<!-- <span style="font-family: SpringSakura;color:#ffcccc;">]</span> -->
-								<span style="font-family:'Poiret One'; color: white;"> Official Website </span>
-								<!-- <span style="font-family: SpringSakura;color:#ffcccc;">[</span> -->
+							<p class="blockquote-text text-center" style="font-family:'Poiret One'; color: white;"> 
+								{{paragraph}}
 							</p>
 						</div>
 					</div>
@@ -35,10 +31,10 @@
 		data(){
 			return {
 				image: {
-					backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/banner_home.jpg)`
+					backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/NEW%20PRODUCT/1.jpg)`
 				},
-				brand: "voush",
-				country: "Indonesia"
+				header: "Our New Product",
+				paragraph: "Coming Soon"
 			}
 		}
 	}

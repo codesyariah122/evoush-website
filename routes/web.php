@@ -44,7 +44,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('evoush.contact
 Route::post('/contact/store', [HomeController::class, 'store_contact'])->name('contactpage.store');
 Route::get('/member-search', [HomeController::class, 'search_profile'])->name('member.search');
 Route::get('/member-lists', [HomeController::class, 'member_lists'])->name('member.lists');
-
+Route::get('/marketing-plan', [HomeController::class, 'marketing_plan'])->name('marketing.plan');
 // Application Route
 Route::get('/evoush/application/product/healthy', [EvoushApplicationController::class, 'healthy'])->name('evoush.healthy');
 Route::get('/evoush/application/product/beauty', [EvoushApplicationController::class, 'beauty'])->name('evoush.beauty');

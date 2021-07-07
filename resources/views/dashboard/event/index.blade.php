@@ -49,6 +49,7 @@
                                      <th><b>Cover</b></th>
                                      <th><b>File</b></th>
                                      <th><b>Content</b></th>
+                                     <th><b>Link</b></th>
                                      <th><b>Action</b></th>
                                  </tr>
                              </thead>
@@ -64,6 +65,7 @@
                                      </td>
                                      <td>{{$event->file}}</td>
                                      <td>{{$event->content}}</td>
+                                     <td>{{$event->link}}</td>
                                      <td>
                                        <a
                                        href="{{route('event.edit', [$event->id])}}"

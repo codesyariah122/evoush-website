@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2021 at 07:36 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
+-- Waktu pembuatan: 07 Jul 2021 pada 18.42
+-- Versi server: 10.4.19-MariaDB
+-- Versi PHP: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api_data_test`
+-- Struktur dari tabel `api_data_test`
 --
 
 CREATE TABLE `api_data_test` (
@@ -36,7 +36,7 @@ CREATE TABLE `api_data_test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `api_data_test`
+-- Dumping data untuk tabel `api_data_test`
 --
 
 INSERT INTO `api_data_test` (`id`, `title`, `content`, `created_at`, `updated_at`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `api_data_test` (`id`, `title`, `content`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `articles`
+-- Struktur dari tabel `articles`
 --
 
 CREATE TABLE `articles` (
@@ -67,7 +67,7 @@ CREATE TABLE `articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `articles`
+-- Dumping data untuk tabel `articles`
 --
 
 INSERT INTO `articles` (`id`, `author`, `category_id`, `title`, `slug`, `headline`, `cover`, `content`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -76,7 +76,7 @@ INSERT INTO `articles` (`id`, `author`, `category_id`, `title`, `slug`, `headlin
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Struktur dari tabel `categories`
 --
 
 CREATE TABLE `categories` (
@@ -93,7 +93,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `categories`
+-- Dumping data untuk tabel `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_by`, `updated_by`, `deleted_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
@@ -103,7 +103,7 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_by`, `updated_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_articles`
+-- Struktur dari tabel `category_articles`
 --
 
 CREATE TABLE `category_articles` (
@@ -116,7 +116,7 @@ CREATE TABLE `category_articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `category_articles`
+-- Dumping data untuk tabel `category_articles`
 --
 
 INSERT INTO `category_articles` (`id`, `category_name`, `caption`, `deleted_at`, `created_at`, `updated_at`) VALUES
@@ -127,7 +127,7 @@ INSERT INTO `category_articles` (`id`, `category_name`, `caption`, `deleted_at`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_message`
+-- Struktur dari tabel `category_message`
 --
 
 CREATE TABLE `category_message` (
@@ -140,7 +140,7 @@ CREATE TABLE `category_message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `category_message`
+-- Dumping data untuk tabel `category_message`
 --
 
 INSERT INTO `category_message` (`id`, `category_name`, `caption`, `deleted_at`, `created_at`, `updated_at`) VALUES
@@ -151,7 +151,7 @@ INSERT INTO `category_message` (`id`, `category_name`, `caption`, `deleted_at`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_product`
+-- Struktur dari tabel `category_product`
 --
 
 CREATE TABLE `category_product` (
@@ -163,7 +163,7 @@ CREATE TABLE `category_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `category_product`
+-- Dumping data untuk tabel `category_product`
 --
 
 INSERT INTO `category_product` (`id`, `product_id`, `category_id`, `created_at`, `updated_at`) VALUES
@@ -183,7 +183,7 @@ INSERT INTO `category_product` (`id`, `product_id`, `category_id`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact_message`
+-- Struktur dari tabel `contact_message`
 --
 
 CREATE TABLE `contact_message` (
@@ -204,7 +204,7 @@ CREATE TABLE `contact_message` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Struktur dari tabel `event`
 --
 
 CREATE TABLE `event` (
@@ -215,20 +215,21 @@ CREATE TABLE `event` (
   `file` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `event`
+-- Dumping data untuk tabel `event`
 --
 
-INSERT INTO `event` (`id`, `title`, `quotes`, `cover`, `file`, `content`, `created_at`, `updated_at`) VALUES
-(1, 'Evoush Opportunity Seminar (EOS)', 'Evoush Beauty And Wellness Jember', 'events/pIQteyzbFGdrlr5SIffvdwpvU5pBF3iNuBX3eV79.jpg', '', '<p><strong>Business Seminar</strong> Recognition <strong>DOORPRIZE</strong>.</p>\r\n<p style=\"line-height: 2;\">Bukan hanya seminar biasa yang kali ini evoush adakan di Kota Jember akan ada banyak informasi dan ilmu yang akan anda dapatkan dalam seminar EOS kali ini, ayo kita tajamkan semangat kita dalam membangun bisnis jaringan di Evoush. Your Eternal Future&nbsp;</p>\r\n<p style=\"line-height: 2;\">&lt;video controls&gt;<br />&nbsp; &nbsp; &nbsp; &lt;source src=\"https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/videos/event/event1.mp4\" type=\"video/mp4\"&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp;&lt;source src=\"mov_bbb.ogg\" type=\"video/ogg\"&gt;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Your browser does not support HTML video.</p>\r\n<p style=\"line-height: 2;\">&lt;/video&gt;</p>', '2021-06-27 07:54:05', '2021-06-27 08:19:20');
+INSERT INTO `event` (`id`, `title`, `quotes`, `cover`, `file`, `content`, `created_at`, `updated_at`, `link`) VALUES
+(1, 'Evoush Opportunity Seminar (EOS)', 'Evoush Beauty And Wellness Jember', 'events/pIQteyzbFGdrlr5SIffvdwpvU5pBF3iNuBX3eV79.jpg', '', '<p><strong>Business Seminar</strong> Recognition <strong>DOORPRIZE</strong>.</p>\r\n<p style=\"line-height: 2;\">Bukan hanya seminar biasa yang kali ini evoush adakan di Kota Jember akan ada banyak informasi dan ilmu yang akan anda dapatkan dalam seminar EOS kali ini, ayo kita tajamkan semangat kita dalam membangun bisnis jaringan di Evoush. Dengan berlangsungnya perhelatan event Eos Jember kali ini diharapkan, kita bisa saling kuta satu sama lain, antara sesama team, motivasi semakin bergelora untuk maju bersama-sama meraih setiap mimpi untuk sukses dalam dunia bisnis jaringan di evoush.</p>\r\n<p style=\"line-height: 2;\">&nbsp;</p>\r\n<p style=\"line-height: 2;\"><strong> Your Eternal Future&nbsp;</strong></p>', '2021-06-27 07:54:05', '2021-07-07 09:40:23', 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/videos/event/event1.mp4');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Struktur dari tabel `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -244,7 +245,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `joining`
+-- Struktur dari tabel `joining`
 --
 
 CREATE TABLE `joining` (
@@ -261,7 +262,7 @@ CREATE TABLE `joining` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `member`
+-- Struktur dari tabel `member`
 --
 
 CREATE TABLE `member` (
@@ -276,7 +277,7 @@ CREATE TABLE `member` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -286,7 +287,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -334,12 +335,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (51, '2021_06_28_155630_penambahan_field_table_articles', 19),
 (52, '2021_06_28_164849_category_article', 20),
 (55, '2021_06_28_173925_articles_table', 21),
-(56, '2021_07_03_044511_create_api_data_test_table', 22);
+(56, '2021_07_03_044511_create_api_data_test_table', 22),
+(57, '2021_07_07_162141_penambahan_field_table_event', 23);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Struktur dari tabel `orders`
 --
 
 CREATE TABLE `orders` (
@@ -355,7 +357,7 @@ CREATE TABLE `orders` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_product`
+-- Struktur dari tabel `order_product`
 --
 
 CREATE TABLE `order_product` (
@@ -370,7 +372,7 @@ CREATE TABLE `order_product` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Struktur dari tabel `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -382,7 +384,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Struktur dari tabel `products`
 --
 
 CREATE TABLE `products` (
@@ -405,7 +407,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- Dumping data untuk tabel `products`
 --
 
 INSERT INTO `products` (`id`, `title`, `slug`, `description`, `mini_description`, `cover`, `price`, `views`, `stock`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -425,7 +427,7 @@ INSERT INTO `products` (`id`, `title`, `slug`, `description`, `mini_description`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profile`
+-- Struktur dari tabel `profile`
 --
 
 CREATE TABLE `profile` (
@@ -446,7 +448,7 @@ CREATE TABLE `profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `profile`
+-- Dumping data untuk tabel `profile`
 --
 
 INSERT INTO `profile` (`id`, `user_id`, `quotes`, `cover`, `about`, `deleted_at`, `created_at`, `updated_at`, `instagram`, `facebook`, `youtube`, `city`, `province`, `parallax`) VALUES
@@ -466,7 +468,7 @@ INSERT INTO `profile` (`id`, `user_id`, `quotes`, `cover`, `about`, `deleted_at`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -487,7 +489,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `roles`, `address`, `phone`, `avatar`, `status`) VALUES
@@ -509,39 +511,39 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 
 --
--- Indexes for table `api_data_test`
+-- Indeks untuk tabel `api_data_test`
 --
 ALTER TABLE `api_data_test`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `articles`
+-- Indeks untuk tabel `articles`
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`),
   ADD KEY `articles_category_id_foreign` (`category_id`);
 
 --
--- Indexes for table `categories`
+-- Indeks untuk tabel `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `categories_slug_unique` (`slug`);
 
 --
--- Indexes for table `category_articles`
+-- Indeks untuk tabel `category_articles`
 --
 ALTER TABLE `category_articles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category_message`
+-- Indeks untuk tabel `category_message`
 --
 ALTER TABLE `category_message`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category_product`
+-- Indeks untuk tabel `category_product`
 --
 ALTER TABLE `category_product`
   ADD PRIMARY KEY (`id`),
@@ -549,27 +551,27 @@ ALTER TABLE `category_product`
   ADD KEY `category_product_category_id_foreign` (`category_id`);
 
 --
--- Indexes for table `contact_message`
+-- Indeks untuk tabel `contact_message`
 --
 ALTER TABLE `contact_message`
   ADD PRIMARY KEY (`id`),
   ADD KEY `contact_message_category_id_foreign` (`category_id`);
 
 --
--- Indexes for table `event`
+-- Indeks untuk tabel `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `failed_jobs`
+-- Indeks untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `joining`
+-- Indeks untuk tabel `joining`
 --
 ALTER TABLE `joining`
   ADD PRIMARY KEY (`id`),
@@ -577,7 +579,7 @@ ALTER TABLE `joining`
   ADD KEY `joining_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `member`
+-- Indeks untuk tabel `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`id`),
@@ -585,20 +587,20 @@ ALTER TABLE `member`
   ADD KEY `member_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Indeks untuk tabel `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `orders_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `order_product`
+-- Indeks untuk tabel `order_product`
 --
 ALTER TABLE `order_product`
   ADD PRIMARY KEY (`id`),
@@ -606,26 +608,26 @@ ALTER TABLE `order_product`
   ADD KEY `order_product_product_id_foreign` (`product_id`);
 
 --
--- Indexes for table `password_resets`
+-- Indeks untuk tabel `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `products`
+-- Indeks untuk tabel `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `profile`
+-- Indeks untuk tabel `profile`
 --
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`id`),
   ADD KEY `profile_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -633,163 +635,163 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_username_unique` (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `api_data_test`
+-- AUTO_INCREMENT untuk tabel `api_data_test`
 --
 ALTER TABLE `api_data_test`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `articles`
+-- AUTO_INCREMENT untuk tabel `articles`
 --
 ALTER TABLE `articles`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `category_articles`
+-- AUTO_INCREMENT untuk tabel `category_articles`
 --
 ALTER TABLE `category_articles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `category_message`
+-- AUTO_INCREMENT untuk tabel `category_message`
 --
 ALTER TABLE `category_message`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `category_product`
+-- AUTO_INCREMENT untuk tabel `category_product`
 --
 ALTER TABLE `category_product`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `contact_message`
+-- AUTO_INCREMENT untuk tabel `contact_message`
 --
 ALTER TABLE `contact_message`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `event`
+-- AUTO_INCREMENT untuk tabel `event`
 --
 ALTER TABLE `event`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `joining`
+-- AUTO_INCREMENT untuk tabel `joining`
 --
 ALTER TABLE `joining`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `member`
+-- AUTO_INCREMENT untuk tabel `member`
 --
 ALTER TABLE `member`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `order_product`
+-- AUTO_INCREMENT untuk tabel `order_product`
 --
 ALTER TABLE `order_product`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT untuk tabel `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `profile`
+-- AUTO_INCREMENT untuk tabel `profile`
 --
 ALTER TABLE `profile`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `articles`
+-- Ketidakleluasaan untuk tabel `articles`
 --
 ALTER TABLE `articles`
   ADD CONSTRAINT `articles_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category_articles` (`id`);
 
 --
--- Constraints for table `category_product`
+-- Ketidakleluasaan untuk tabel `category_product`
 --
 ALTER TABLE `category_product`
   ADD CONSTRAINT `category_product_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
   ADD CONSTRAINT `category_product_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `contact_message`
+-- Ketidakleluasaan untuk tabel `contact_message`
 --
 ALTER TABLE `contact_message`
   ADD CONSTRAINT `contact_message_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category_message` (`id`);
 
 --
--- Constraints for table `joining`
+-- Ketidakleluasaan untuk tabel `joining`
 --
 ALTER TABLE `joining`
   ADD CONSTRAINT `joining_member_id_foreign` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `joining_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `member`
+-- Ketidakleluasaan untuk tabel `member`
 --
 ALTER TABLE `member`
   ADD CONSTRAINT `member_sponsor_id_foreign` FOREIGN KEY (`sponsor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `member_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `orders`
+-- Ketidakleluasaan untuk tabel `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `order_product`
+-- Ketidakleluasaan untuk tabel `order_product`
 --
 ALTER TABLE `order_product`
   ADD CONSTRAINT `order_product_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `order_product_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `profile`
+-- Ketidakleluasaan untuk tabel `profile`
 --
 ALTER TABLE `profile`
   ADD CONSTRAINT `profile_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

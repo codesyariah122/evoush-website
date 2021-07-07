@@ -77,6 +77,12 @@
                         </div>
                         <br>
 
+                        <label for="link">Link</label>
+                        <input type="text" name="link" id="link" placeholder="https://your-link-event.com/your-link-event-id" class="form-control {{$errors->first('link') ? 'is-invalid' : ''}}" value="{{old('link')}}">
+                        <div class="invalid-feedback">
+                            {{$errors->link}}
+                        </div>
+
                 		<input
                 		class="btn btn-primary"
                 		type="submit"

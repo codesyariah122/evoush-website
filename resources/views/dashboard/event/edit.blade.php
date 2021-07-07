@@ -38,22 +38,22 @@
                       </div>
                       <br>
 
-                     <label for="cover">Cover Event</label>
+                    <label for="cover">Cover Event</label>
                      <br>
                      Current cover : <br>
-                     @if($event->cover)
-                     <img src="{{asset('storage/'.$event->cover)}}" width="120px" />
+                    @if($event->cover)
+                    <img src="{{asset('storage/'.$event->cover)}}" width="120px" />
                      <br>
-                     @else
+                    @else
                      No cover event
-                     @endif
-                     <br>
-                     <input id="cover" name="cover" type="file" class="form-control">
-                     <small class="text-muted">Kosongkan jika tidak ingin mengubah
+                    @endif
+                    <br>
+                    <input id="cover" name="cover" type="file" class="form-control">
+                    <small class="text-muted">Kosongkan jika tidak ingin mengubah
                      cover</small>
-                     <hr class="my-4">
+                    <hr class="my-4">
 
-                     <label for="cover">File Event</label>
+                    <label for="cover">File Event</label>
                      <br>
                      Current file : <br>
                      @if($event->file)
@@ -62,26 +62,33 @@
                      @else
                      No cover event
                      @endif
-                     <br>
-                     <input id="file" name="file" type="file" class="form-control">
-                     <small class="text-muted">Kosongkan jika tidak ingin mengubah
+                    <br>
+                    <input id="file" name="file" type="file" class="form-control">
+                    <small class="text-muted">Kosongkan jika tidak ingin mengubah
                      file</small>
-                     <hr class="my-4">
+                    <hr class="my-4">
 
-                     <label for="full-featured-non-premium">Content</label>
-                     <textarea
+                    <label for="full-featured-non-premium">Content</label>
+                    <textarea
                      name="content"
                      id="full-featured-non-premium" class="form-control"
                      class="form-control {{$errors->first('content') ? "is-invalid" : ""}}">
                        {{old('content') ? old('content') : $event->content}}
-                     </textarea>
+                    </textarea>
 
-                     <div class="invalid-feedback">
+                    <div class="invalid-feedback">
                       {{$errors->first('content')}}
                     </div>
                     <br>
 
-                     <input class="btn btn-primary" type="submit" value="Simpan"/>
+                    <label for="link">Link Video/Content</label>
+                    <input type="text" name="link" placeholder="https://event-link.com/event-video-id" id="link" class="form-control {{$errors->first('link') ? "is-invalid" : ""}} value="{{old('link') ? old('link') : $event->title}}">
+                    <div class="invalid-feedback">
+                        {{$errors->first('link')}}
+                    </div>
+                    <br>
+
+                    <input class="btn btn-primary" type="submit" value="Simpan"/>
                     </form>
 
                 	</div>

@@ -13,7 +13,9 @@ class PenambahanFieldTableEvent extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('event', function(Blueprint $table){
+            $table->string('link');
+        });
     }
 
     /**
@@ -24,5 +26,8 @@ class PenambahanFieldTableEvent extends Migration
     public function down()
     {
         //
+        Schema::table('event', function(Blueprint $table){
+            $table->dropColumn('link');
+        });
     }
 }

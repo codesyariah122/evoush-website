@@ -87,6 +87,7 @@ class EventCreatedController extends Controller
         }
 
         $new_event->content = $request->get('content');
+        $new_event->link = $request->get('link');
 
         $new_event->save();
 
@@ -159,6 +160,7 @@ class EventCreatedController extends Controller
         }
 
         $event->content = $request->get('content');
+        $event->link = $request->get('link');
 
         $event->save();
 

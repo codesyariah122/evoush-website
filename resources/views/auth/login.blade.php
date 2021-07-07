@@ -94,8 +94,7 @@
                                 {{ __('Login') }}
                             </button>
 
-                            <a @click="historyBack()" class="btn btn-hover color-1 btn-block mt-2">Back</a>
-
+                            <a @click="historyBack()" class="btn btn-hover color-1 btn-block mt-2 back-btn">Back</a>
                            {{--  @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="btn btn-danger mx-auto">Register Admin</a>
                             <div class="mb-5"></div>
@@ -170,8 +169,15 @@
                     background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
                     box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
                 }
+                .back-btn{
+                    margin-bottom: 15rem!important;
+                }
                 /*end button*/
-
+                @media (min-width: 992px) { 
+                    .back-btn{
+                        margin-bottom: 0;
+                    }
+                }
             </style>
 
             @endsection

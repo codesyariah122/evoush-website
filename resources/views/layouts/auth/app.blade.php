@@ -42,12 +42,12 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
+                            <div class="col-lg-6  bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     @yield('content')
                                 </div>
                             </div>
-                            <div class="col-lg-6  bg-login-image"></div>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
     .card{
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.70)!important;
       border-radius: 2%;
-      height: 85%!important;
+      height: 80%!important;
     }
     
 </style>

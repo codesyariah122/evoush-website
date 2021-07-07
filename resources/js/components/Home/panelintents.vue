@@ -22,7 +22,7 @@
 								<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
 									<div v-if="panel.iframe">
 										<!-- <iframe class="embed-responsive-item" :src="panel.iframe" allowfullscreen></iframe> -->
-										<video controls>
+										<video controls autoplay="on">
 											<source :src="panel.iframe" type="video/mp4">
 											<source src="mov_bbb.ogg" type="video/ogg">
 													Your browser does not support HTML video.

@@ -10,13 +10,14 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
+import VueSweetalert2 from 'vue-sweetalert2'
 import Home from './pages/Home/index'
 import About from './pages/About/index'
 import MarketingPlan from './pages/MarketingPlan/index'
 
-
+Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
-
+Vue.use(VueSweetalert2)
 
 // web component vue template
 new Vue({

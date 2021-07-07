@@ -1,5 +1,7 @@
 <template>
   <div>
+
+  	<Popup/>
     <Hero/>
     
     <!-- <PanelHeader/> -->
@@ -26,6 +28,7 @@
 	import ParallaxHome from '../../components/Home/parallaxhome'
 	import PanelFocus from '../../components/Home/panelfocus'
 	import ParallaxEnd from '../../components/Home/parallaxend'
+	import Popup from '../../components/Home/popupcomingsoon'
 
 	export default {
 		components: {
@@ -34,7 +37,8 @@
 			PanelIntents,
 			ParallaxHome,
 			PanelFocus,
-			ParallaxEnd
+			ParallaxEnd,
+			Popup
 		}
 	}
 </script>

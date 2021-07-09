@@ -113,6 +113,7 @@
 					this.results = data
 				})
 				.catch(err => console.log(err.response))
+				.finally(() => this.loading=false)
 			},
 
 			getDetail(category, slug){

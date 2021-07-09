@@ -15,7 +15,7 @@
 								<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
 									<div v-if="panel.iframe" class="embed-responsive embed-responsive-1by1">
 										<!-- <iframe v-if="panel.iframe" :src="panel.iframe"  width="560" height="397" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe> -->
-										<video controls autoplay="off">
+										<video controls>
 											<source :src="panel.iframe" type="video/mp4">
 												<source src="mov_bbb.ogg" type="video/ogg">
 													Your browser does not support HTML video.

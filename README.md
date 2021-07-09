@@ -5,12 +5,16 @@ website preview : <a href="https://evoush.com">Evoush</a>
 
 ### Official Website & Web Replika
 * Front End
+	- WebPack
 	- Bootstrap v4.6
 	- Vue JS
 	- Blade Template
+	- jQuery
+	- Navive Javascript
 * Backend 
 	- Laravel 8 as a Framework
-
+	- Backend
+	- RestApi
 
 ### Next Schedule
 * Create Strore Front For Mobile Device

@@ -12,27 +12,44 @@ import VueAxios from 'vue-axios'
 import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 import Home from './pages/Home/index'
+import Popup from './components/molecules/popup'
 import About from './pages/About/index'
+import Product from './pages/Product/index'
 import MarketingPlan from './pages/MarketingPlan/index'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'jquery/dist/jquery.min'
+import 'popper.js/dist/popper.min'
+import 'bootstrap/dist/js/bootstrap.min'
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
 Vue.use(VueSweetalert2)
-
+Vue.component('pagination', require('laravel-vue-pagination'))
 // web component vue template
 new Vue({
 	el: '#home',
 	components: {Home},
-	render: h=>h(Home)
+	render: h => h(Home)
+})
+
+new Vue({
+	el: '#popup',
+	components: {Popup},
+	render: h => h(Popup)
 })
 
 
 new Vue({
 	el: '#about',
 	components: {About},
-	render: h=>h(About)
+	render: h => h(About)
 })
 
+new Vue({
+	el: '#product',
+	components: {Product},
+	render: h => h(Product)
+})
 
 new Vue({
 	el: '#marketing-plan',

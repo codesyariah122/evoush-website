@@ -17,5 +17,5 @@
 	<div id="marketing-plan">
 		<marketing-plan></marketing-plan>
 	</div>
-
+<script src="{{asset('js/app.js')}}"></script>
 @endsection

@@ -15,9 +15,13 @@
 {{-- content --}}
 @section('content')
 
+<div id="popup">
+	<popup></popup>
+</div>
+
 <div id="home">
 	<home></home>
 </div>
-
+<script src="{{asset('js/app.js')}}"></script>
 @endsection
 

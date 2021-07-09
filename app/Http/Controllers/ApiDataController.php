@@ -266,7 +266,7 @@ class ApiDataController extends Controller
             $query->where('name', 'Kosmetik');
         }])
         ->whereIn('id', [4, 5, 6, 7, 8, 9, 10, 11, 12])
-        ->get();
+        ->paginate(6);
        
         return json_encode($data);
     }
@@ -277,7 +277,7 @@ class ApiDataController extends Controller
             $query->where('name', 'Nutrisi');
         }])
         ->whereIn('id', [1, 2, 3])
-        ->get();
+        ->paginate(6);
        
         return json_encode($data);
     }

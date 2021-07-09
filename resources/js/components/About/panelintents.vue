@@ -1,52 +1,54 @@
 <template>
 	<div>
-		<div class="container mt-5">
-			<div v-for="panel in panels" >
-				<div v-if="panel.id % 2 == 1">
-					<div class="row">
-						<div class="col-md-4">
-							<div data-aos="zoom-out-right" data-aos-easing="ease-out-sine" data-aos-duration="1500">
-								<h1 v-html="panel.header"></h1>
-								<p v-html="panel.paragraph"></p>
-							</div>
-						</div>
-						<div class="col-md-8 col-xs-6 col-sm-6">
-							<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-								<div v-if="panel.iframe" class="embed-responsive embed-responsive-1by1">
-									<iframe width="600" height="400" class="embed-responsive-item" :src="panel.iframe" allowfullscreen></iframe>
-								</div>
-								<div v-else>
-									<img :src="panel.vector" class="img-responsive ganjil-img">
+		<div id="intents-about">
+			<div class="container mt-5">
+				<div v-for="panel in panels" >
+					<div v-if="panel.id % 2 == 1">
+						<div class="row">
+							<div class="col-md-4">
+								<div data-aos="zoom-out-right" data-aos-easing="ease-out-sine" data-aos-duration="1500">
+									<h1 v-html="panel.header"></h1>
+									<p v-html="panel.paragraph"></p>
 								</div>
 							</div>
+							<div class="col-md-8 col-xs-6 col-sm-6">
+								<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+									<div v-if="panel.iframe" class="embed-responsive embed-responsive-1by1">
+										<iframe width="600" height="400" class="embed-responsive-item" :src="panel.iframe" allowfullscreen></iframe>
+									</div>
+									<div v-else>
+										<img :src="panel.vector" class="img-responsive ganjil-img">
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="row justify-content-start">
-						<div class="p-2">
-							<div v-if="panel.anim">
-								<img :src="panel.anim" class="img-responsive anim">
+						<div class="row justify-content-start">
+							<div class="p-2">
+								<div v-if="panel.anim">
+									<img :src="panel.anim" class="img-responsive anim">
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div v-else>
-					<div class="row justify-content-center mt-5 mb-5">
-						<div class="col-md-12 col-xs-12 col-sm-12">
-							<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-								<img :src="panel.vector" class="img-responsive intents-about-img">
+					<div v-else>
+						<div class="row justify-content-center mt-5 mb-5">
+							<div class="col-md-12 col-xs-12 col-sm-12">
+								<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+									<img :src="panel.vector" class="img-responsive intents-about-img">
+								</div>
+							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 mt-5">
+								<div data-aos="zoom-out-right" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+									<h1 v-html="panel.header"></h1>
+									<p class="mt-5" v-html="panel.paragraph"></p>
+								</div>
 							</div>
 						</div>
-						<div class="col-md-12 col-xs-12 col-sm-12 mt-5">
-							<div data-aos="zoom-out-right" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-								<h1 v-html="panel.header"></h1>
-								<p class="mt-5" v-html="panel.paragraph"></p>
-							</div>
-						</div>
-					</div>
-					<div class="row justify-content-end mb-5">
-						<div class="p-2">
-							<div v-if="panel.anim">
-								<img :src="panel.anim" class="img-responsive anim">
+						<div class="row justify-content-end mb-5">
+							<div class="p-2">
+								<div v-if="panel.anim">
+									<img :src="panel.anim" class="img-responsive anim">
+								</div>
 							</div>
 						</div>
 					</div>

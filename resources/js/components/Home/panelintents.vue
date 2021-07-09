@@ -22,7 +22,7 @@
 								<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
 									<div v-if="panel.iframe">
 										<!-- <iframe class="embed-responsive-item" :src="panel.iframe" allowfullscreen></iframe> -->
-										<video controls autoplay="on">
+										<video controls>
 											<source :src="panel.iframe" type="video/mp4">
 											<source src="mov_bbb.ogg" type="video/ogg">
 													Your browser does not support HTML video.
@@ -148,6 +148,10 @@
 	#panel-intents-home h1{
 		text-transform: uppercase;
 	}
+	#panel-intents-home video{
+      width:350px!important;
+      margin-top: -1rem!important;
+    }
 	.intents-home-img{
 		width: 300px !important;
 		height: 300px !important;

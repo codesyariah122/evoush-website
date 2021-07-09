@@ -1,48 +1,49 @@
-<div id="panel-kosmetik">
-	<div class="container mt-5">
-		<div v-for="panel in panels" >
-			<div v-if="panel.id % 2 == 1">
-				<div class="row">
-					<div class="col-md-4">
-						<div data-aos="zoom-out-right" data-aos-easing="ease-out-sine" data-aos-duration="1500">
-							<h1 v-html="panel.header"></h1>
-							<p v-html="panel.paragraph"></p>
-						</div>
-					</div>
-					<div class="col-md-8 col-xs-8 col-sm-8">
-						<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-							<div v-if="panel.iframe" class="embed-responsive embed-responsive-1by1">
-								<iframe class="embed-responsive-item" :src="panel.iframe" allowfullscreen></iframe>
+<template>
+	<div>
+		<div class="container mt-5">
+			<div v-for="panel in panels" >
+				<div v-if="panel.id % 2 == 1">
+					<div class="row">
+						<div class="col-md-4">
+							<div data-aos="zoom-out-right" data-aos-easing="ease-out-sine" data-aos-duration="1500">
+								<h1 v-html="panel.header"></h1>
+								<p v-html="panel.paragraph"></p>
 							</div>
-							<div v-else>
-								<img :src="panel.vector" class="img-responsive panel-cosmetic-img">
+						</div>
+						<div class="col-md-8 col-xs-8 col-sm-8">
+							<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+								<div v-if="panel.iframe" class="embed-responsive embed-responsive-1by1">
+									<iframe class="embed-responsive-item" :src="panel.iframe" allowfullscreen></iframe>
+								</div>
+								<div v-else>
+									<img :src="panel.vector" class="img-responsive panel-cosmetic-img">
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div v-else>
-				<div class="row genap-kosmetik mb-5">
-					<div class="col-md-6 col-xs-6 col-sm-6">
-						<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-							<img :src="panel.vector" class="img-responsive panel-cosmetic-img">
+				<div v-else>
+					<div class="row genap-kosmetik mb-5">
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+								<img :src="panel.vector" class="img-responsive panel-cosmetic-img">
+							</div>
 						</div>
-					</div>
-					<div class="col-md-6 col-xs-6 col-sm-6">
-						<div data-aos="zoom-out-right" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-							<h1 v-html="panel.header"></h1>
-							<p class="mt-5" v-html="panel.paragraph"></p>
+						<div class="col-md-6 col-xs-6 col-sm-6">
+							<div data-aos="zoom-out-right" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+								<h1 v-html="panel.header"></h1>
+								<p class="mt-5" v-html="panel.paragraph"></p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</template>
 
-<script type="text/javascript">
-	new Vue({
-		el: '#panel-kosmetik',
+<script>
+	export default {
 		data(){
 			return {
 				panels: [
@@ -70,10 +71,9 @@
 				]
 			}
 		}
-	})
+	}
 </script>
-
-<style>
+<style scoped>
 @media only screen and (max-device-width: 812px) {
 	#panel-kosmetik{
 		width: 100%!important;
@@ -97,10 +97,10 @@
 
 }
 /* DESKTOP VERSION */
-  @media (min-width: 992px) { 
-  	#panel-cosmetic{
-  		width: 100%!important;
-  	}
+@media (min-width: 992px) { 
+	#panel-cosmetic{
+		width: 100%!important;
+	}
 	#panel-kosmetik p{
 		font-family: 'Poiret One';
 		font-size: 21px!important;

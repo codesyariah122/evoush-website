@@ -111,40 +111,40 @@ class HomeController extends Controller
         return view('pages.products.index', $context);
     }
 
-    public function detail(Request $request, $category, $slug)
-    {
-        $category = $request->segment(2);
-        if($category == "Kosmetik"){
-            $data = Product::with(['categories' => function($query){
-                $query->where('name', 'Kosmetik');
-            }])
-            ->where('slug', $slug)
-            ->get();
-        }else{
-            $data = Product::with(['categories' => function($query){
-                $query->where('name', 'Nutrisi');
-            }])
-            ->where('slug', $slug)
-            ->get();
-        }
+    // public function detail(Request $request, $category, $slug)
+    // {
+    //     $category = $request->segment(2);
+    //     if($category == "Kosmetik"){
+    //         $data = Product::with(['categories' => function($query){
+    //             $query->where('name', 'Kosmetik');
+    //         }])
+    //         ->where('slug', $slug)
+    //         ->get();
+    //     }else{
+    //         $data = Product::with(['categories' => function($query){
+    //             $query->where('name', 'Nutrisi');
+    //         }])
+    //         ->where('slug', $slug)
+    //         ->get();
+    //     }
 
-        // echo $data[0]->cover;
-        $context = [
-            'title' => 'Evoush::Product | '.$category.'::'.$slug,
-            'canonical' => 'https://evoush.com/products/'.$category.'/'.$slug,
-            'meta_desc' => 'Evoush::Product | '.$category.'::'.$slug,
-            'meta_key' => $data[0]->title,
-            'meta_author' => 'Evoush::Product | '.$slug,
-            'og_title' => 'Evoush::Product | '.$category.'::'.$slug,
-            'og_site_name' => 'Evoush::Product | '.$category,
-            'og_desc' => $data[0]->description,
-            'og_image' => asset('storage/'.$data[0]->cover),
-            'og_url' => 'https://evoush.com/product/'.$category.'/'.$slug,
-            'product' => $data
-                // 'user' => User::where('name', Auth::user()->name)
-        ];
-        return view('pages.products.detail', $context);
-    }
+    //     // echo $data[0]->cover;
+    //     $context = [
+    //         'title' => 'Evoush::Product | '.$category.'::'.$slug,
+    //         'canonical' => 'https://evoush.com/products/'.$category.'/'.$slug,
+    //         'meta_desc' => 'Evoush::Product | '.$category.'::'.$slug,
+    //         'meta_key' => $data[0]->title,
+    //         'meta_author' => 'Evoush::Product | '.$slug,
+    //         'og_title' => 'Evoush::Product | '.$category.'::'.$slug,
+    //         'og_site_name' => 'Evoush::Product | '.$category,
+    //         'og_desc' => $data[0]->description,
+    //         'og_image' => asset('storage/'.$data[0]->cover),
+    //         'og_url' => 'https://evoush.com/product/'.$category.'/'.$slug,
+    //         'product' => $data
+    //             // 'user' => User::where('name', Auth::user()->name)
+    //     ];
+    //     return view('pages.products.detail', $context);
+    // }
 
     public function contact(Request $request)
     {

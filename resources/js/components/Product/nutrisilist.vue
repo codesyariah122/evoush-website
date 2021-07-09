@@ -11,35 +11,57 @@
 						</h1>
 					</div>
 				</div>
-				<div  class="row">
-					<div v-for="(result, index) in results.data" class="col-md-4 col-xs-12 col-sm-12">
 
-						<div class="card-pricing">
-							<a :href="`../../../storage/${result.cover}`" class="popup-result">
-								<img :src="`../../../storage/${result.cover}`" :alt="result.title" class="img-card-pricing img-responsive"/>
-							</a>
+				<div v-if="loading">
+					<center>
+						<img src="https://img.pikbest.com/58pic/35/39/61/62K58PICb88i68HEwVnm5_PIC2018.gif!bw700" width="200" class="img-responsive">
+					</center>
+				</div>
 
-							<div class="col-12">
-								<center>
-									<div class="fb-share-button btn-lg mt-3 mb-5" :data-href="`https://evoush.com/product/${result.categories[0].name}/${result.title}`" data-layout="button_count">
-									</div>
-								</center>
+				<div v-else>
+					<div  class="row">
+						<div v-for="(result, index) in results.data" class="col-md-4 col-xs-12 col-sm-12">
+
+							<div class="card-pricing">
+								<a :href="`../../../storage/${result.cover}`" class="popup-result">
+									<img :src="`../../../storage/${result.cover}`" :alt="result.title" class="img-card-pricing img-responsive"/>
+								</a>
+
+								<div class="col-12">
+									<center>
+										<div class="fb-share-button btn-lg mt-3 mb-5" :data-href="`https://evoush.com/product/${result.categories[0].name}/${result.title}`" data-layout="button_count">
+										</div>
+									</center>
+								</div>
+
+								<div class="card-content-pricing">
+									<h5 class="card-title-pricing mt-2"> {{result.title}} </h5>
+									<p class="card-text"><small class="text-muted">
+										Category : {{result.categories[0].name}}
+									</small></p>
+									<blockquote class="blockquote-footer" v-html="result.mini_description"></blockquote>
+								</div>
+
+								<div class="card-read-more-pricing">
+									<a v-on:click="getDetail(result.categories[0].name, result.slug)" v-b-modal.modal-2 class="btn btn-link btn-block">Detail</a>
+								</div>
 							</div>
 
-							<div class="card-content-pricing">
-								<h5 class="card-title-pricing mt-2"> {{result.title}} </h5>
-								<p class="card-text"><small class="text-muted">
-									Category : {{result.categories[0].name}}
-								</small></p>
-								<blockquote class="blockquote-footer" v-html="result.mini_description"></blockquote>
-							</div>
+							<b-modal id="modal-2">
+								<div v-if="loading">
+									<center>
+										<img src="https://img.pikbest.com/58pic/35/39/61/62K58PICb88i68HEwVnm5_PIC2018.gif!bw700" width="200" class="img-responsive">
+									</center>
+								</div>
+								<div v-else>
+									<DetailProduct :details="details"/>
+								</div>
+							</b-modal>
 
-							<div class="card-read-more-pricing">
-								<a :href="`/product/${result.categories[0].name}/${result.slug}`" class="btn btn-link btn-block">Detail Product</a>
-							</div>
 						</div>
 					</div>
 				</div>
+				
 				<div class="row justify-content-center">
 					<div class="col-md-12 col-xs-12 col-sm-12">
 						<br>
@@ -60,10 +82,17 @@
 </template>
 
 <script>
+	import DetailProduct from './detailproduct'
+
 	export default{
+		components: {
+			DetailProduct
+		},
 		data(){
 			return {
-				results: {}
+				results: {},
+				details:[],
+				loading: true
 			}
 		},
 
@@ -76,13 +105,26 @@
 				this.axios
 				.get(`/api/product/nutrisi?page=${page}`)
 				.then(res => {
+					console.log(res)
 					return res.data
 				})
 				.then(data => {
-					// console.log(data)
+					console.log(data)
 					this.results = data
 				})
 				.catch(err => console.log(err.response))
+			},
+
+			getDetail(category, slug){
+				console.log(`${category} - ${slug}`)
+				this.axios
+				.get(`/api/detail/${category}/${slug}`)
+				.then( res => {
+					console.log(res)
+					this.details = res.data
+				})
+				.catch(err => console.log(err.response))
+				.finally(() => this.loading=false)
 			}
 		}
 	}

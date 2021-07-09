@@ -282,6 +282,27 @@ class ApiDataController extends Controller
         return json_encode($data);
     }
 
+    public function detail(Request $request, $category, $slug)
+    {
+        $category = $request->segment(2);
+        if($category == "Kosmetik"){
+            $data = Product::with(['categories' => function($query){
+                $query->where('name', 'Kosmetik');
+            }])
+            ->where('slug', $slug)
+            ->get();
+        }else{
+            $data = Product::with(['categories' => function($query){
+                $query->where('name', 'Nutrisi');
+            }])
+            ->where('slug', $slug)
+            ->get();
+        }
+
+        return json_encode($data);
+
+    }
+
     public function show_product_categories(Request $request, $category, $slug)
     {
         if($request->segment(3) == "Kosmetik"){

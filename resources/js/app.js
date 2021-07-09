@@ -9,6 +9,7 @@ require('./bootstrap');
 
 import Vue from 'vue'
 import VueAxios from 'vue-axios'
+import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 import Home from './pages/Home/index'
@@ -23,6 +24,7 @@ import 'bootstrap/dist/js/bootstrap.min'
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
+Vue.use(BootstrapVue)
 Vue.use(VueSweetalert2)
 Vue.component('pagination', require('laravel-vue-pagination'))
 // web component vue template

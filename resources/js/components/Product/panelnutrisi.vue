@@ -57,7 +57,7 @@
 					{
 						id:1,
 						header: `Healthy evoush`,
-						paragraph: `<b><u>Product Nutrisi</u></b> <span style="font-family: Walkway; color:#ff3b40; font-weight: 900;"><b>evoush</b></span> terbaru siap release, tentunya produk ini masih dengan kualitas terbaik untuk kategori kosmetik produk <span style="font-family: Walkway; color:#ff3b40; font-weight: 900;"><b>evoush</b></span>, jangan sampai ketinggalan ya <span style="font-family: Walkway; color:#ff3b40; font-weight: 900;"><b>evousher</span></b>.`,
+						paragraph: `<b><u>Product Nutrisi</u></b> <span style="font-family: Walkway; color:#ff3b40; font-weight: 900;"><b>evoush</b></span> terbaru siap release, tentunya produk ini masih dengan kualitas terbaik untuk kategori produk nutrisi <span style="font-family: Walkway; color:#salmon; font-weight: 900;"><b>evoush</b></span>, jangan sampai ketinggalan ya <span style="font-family: Walkway; color:#salmon; font-weight: 900;"><b>evousher</span></b>.`,
 						vector: '',
 						iframe: "https://github.com/codesyariah122/bahan-evoush/blob/main/videos/teaser/210769414_865265850741933_1297354379708905451_n.mp4?raw=true"
 					},

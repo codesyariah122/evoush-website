@@ -73,7 +73,7 @@
 						</ul>
 						<br>
 
-						<pagination :data="results" @pagination-change-page="getResults"></pagination>
+						<pagination align="center" :data="results" @pagination-change-page="getResults"></pagination>
 
 					</div>
 				</div>

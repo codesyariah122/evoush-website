@@ -15,33 +15,10 @@
 {{-- content --}}
 @section('content')
 
-	<section id="profile">
-		{{-- Hero Jumbotron --}}
-		@include('pages.profile.components.hero')
+	<div id="profile-login">
+		<profile-login></profile-login>
+	</div>
 
-		{{-- Panel Focus --}}
-		@include('pages.profile.components.panelmember')
-		<h1 class="underline" style="margin-top: 5rem;"></h1>
+<script src="{{asset('js/app.js')}}"></script>
 
-		{{-- parallax end --}}
-		@include('pages.profile.components.parallaxprofile', ['user' => $user])
-
-	</section>
-
-	
-	<style type="text/css">
-	/*section {
-		width: 100%;
-	}*/
-	#profile{
-		width: 100%;
-	}
-	/* DESKTOP VERSION */
-	@media (min-width: 992px) { 
-		#profile{
-			width: 100%;
-		}
-	}
-	</style>
 @endsection
-

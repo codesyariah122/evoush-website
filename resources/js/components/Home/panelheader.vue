@@ -1,51 +1,51 @@
 <template>
-	<div>
-		<!-- introd -->
-		<div id="panel-header-home">
-			<div v-for="panel in panels">
-				<div data-aos="zoom-in" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-					<div class="panel panel-default panel-header" style="margin-top: -5rem;">
-						<div class="panel-body panel-body-header">
-							<div class="row">
-								<div data-aos="fade-left">
-									<div class="col-md-3">
-										<img :src="panel.vector" class="img-responsive anim">
-									</div>
-								</div>
+  <div>
+    <!-- introd -->
+    <div id="panel-header-home">
+      <div v-for="panel in panels">
+        <div data-aos="zoom-in" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+          <div class="panel panel-default panel-header" style="margin-top: -5rem;">
+            <div class="panel-body panel-body-header">
+              <div class="row">
+                <div data-aos="fade-left">
+                  <div class="col-md-3">
+                    <img :src="panel.vector" class="img-responsive anim">
+                  </div>
+                </div>
 
-								<div class="col-md-6">
-									<h2 class="ml-1" v-html="panel.header"> </h2>
-									<p class="mt-3" v-html="panel.paragraph"></p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- end intro -->
-	</div>
+                <div class="col-md-6">
+                  <h2 class="ml-1" v-html="panel.header"> </h2>
+                  <p class="mt-3" v-html="panel.paragraph"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end intro -->
+  </div>
 </template>
 
 <script>
-	export default{
-		data(){
-			return {
-				panels: [
-				{
-					id:1,
-					header: `Buat Rencana Besar Bersama <span>evoush</span>`,
-					paragraph: `Mulailah berkembang bersama <b>evoush</b>.  Buat kejutan dengan menentukan rencana penjualan anda diawal, jual produk , kreativitas dan kemampuan anda  bersama team terhebat anda di  <b>evoush</b>.  <b class="text-primary">Tunjukkan Pada Dunia</b> , bahwa anda mampu menciptakan  sesuatu yang dapat membantu orang lain.`,
-					vector: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/animated/anim31.gif"
-				}
-				]
-			}
-		}
-	}
+  export default{
+    data(){
+      return {
+        panels: [
+        {
+          id:1,
+          header: `Buat Rencana Besar Bersama <span>evoush</span>`,
+          paragraph: `Mulailah berkembang bersama <b>evoush</b>.  Buat kejutan dengan menentukan rencana penjualan anda diawal, jual produk , kreativitas dan kemampuan anda  bersama team terhebat anda di  <b>evoush</b>.  <b class="text-primary">Tunjukkan Pada Dunia</b> , bahwa anda mampu menciptakan  sesuatu yang dapat membantu orang lain.`,
+          vector: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/animated/anim31.gif"
+        }
+        ]
+      }
+    }
+  }
 </script>
 
 <style scoped>
-	/*panel*/
+  /*panel*/
 .panel-header{
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
   border-radius: 12px;
@@ -119,10 +119,10 @@
 
 /*mobile setup*/
 @media only screen and (max-device-width: 812px) {
-	.panel-header img{
-		width: 290px!important;
-		height: 270px!important;
-	}
+  .panel-header img{
+    width: 290px!important;
+    height: 270px!important;
+  }
 }
 /*end mobile*/
 /* DESKTOP VERSION */

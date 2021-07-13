@@ -13,6 +13,9 @@ use App\Models\CategoryMessage;
 use App\Models\Contact;
 use App\Models\Event;
 
+use Validator;
+use Auth;
+
 class ApiDataController extends Controller
 {
     /**
@@ -205,7 +208,7 @@ class ApiDataController extends Controller
 
     public function data_member(Request $request)
     {
-        $keyword = $request->segment(3);
+        $keyword = $request->username;
         $profiles = User::join('profile', 'users.id', '=', 'profile.user_id')
         ->where('username', "LIKE", "%$keyword%")->get(['profile.*', 'users.*']);
 
@@ -217,9 +220,9 @@ class ApiDataController extends Controller
         
     }
 
-    public function data_join_member(Request $request)
+    public function member_join_active(Request $request)
     {
-        $keyword = $request->segment(4);
+        $keyword = $request->username;
         $profiles = User::join('profile', 'users.id', '=', 'profile.user_id')
         ->where('username', "LIKE", "%$keyword%")->get(['profile.*', 'users.*']);
 
@@ -240,10 +243,31 @@ class ApiDataController extends Controller
             $message = "Data sponsor belum tersedia";
             return json_encode(['message' => $message]);
         }
+    }
 
+    public function member_join_inactive(Request $request)
+    {
+        $keyword = $request->username;
+        $profiles = User::join('profile', 'users.id', '=', 'profile.user_id')
+        ->where('username', "LIKE", "%$keyword%")->get(['profile.*', 'users.*']);
 
-        // var_dump($member);
-
+        if(count($profiles) > 0){
+            $sponsor_id = $profiles[0]->id;
+            $member = Member::join('profile', 'member.user_id', '=', 'profile.user_id')
+            ->join('users', 'member.user_id', '=', 'users.id')
+            ->where('sponsor_id', '=', $sponsor_id)
+            ->where('status', '=', 'INACTIVE')
+            ->get(['profile.*', 'users.*']);
+            if(count($member) > 0){
+                return json_decode($member);
+            }else{
+                $message = "Belum ada member join";
+                return json_encode(['message' => $message]);
+            }
+        }else{
+            $message = "Data sponsor belum tersedia";
+            return json_encode(['message' => $message]);
+        }
     }
 
 
@@ -348,5 +372,51 @@ class ApiDataController extends Controller
 
         return json_decode($members);
     }
+
+    public function member_list(Request $request)
+    {
+        $members = User::join('profile', 'profile.user_id', '=', 'users.id')
+                    ->where('roles', '=', json_encode(['MEMBER']))
+                    ->paginate(6);
+
+        return json_encode($members);
+    }
+
+    public function profile_data_public(Request $request)
+    {
+        $users = User::join('profile', 'users.id', '=', 'profile.user_id')
+                ->where('status', '=', 'ACTIVE')
+                ->where('username', $request->username)
+                ->get(['profile.*', 'users.*']);
+
+        if(count($users) > 0){
+            return json_encode($users);
+        }else{
+            return json_encode(['message' => 'Data member tidak ditemukan / member mungkin belum terdaftar']);  
+        }
+    }
+
+    public function profile_data_login(Request $request)
+    {
+        $users = User::join('profile', 'users.id', '=', 'profile.user_id')
+                ->where('status', '=', 'ACTIVE')
+                ->where('username', $request->username)
+                ->get(['profile.*', 'users.*']);
+
+        if(count($users) > 0){
+            return json_encode($users);
+        }else{
+            return json_encode(['message' => 'Data member tidak ditemukan / member mungkin belum terdaftar']);  
+        }
+    }
+
+    public function member_join($id)
+    {
+        $joins = User::join('member', 'member.user_id', '=', 'users.id')
+        ->where('member.sponsor_id', '=', $id)
+        ->where('status', '=', 'INACTIVE')
+        ->get();
+    }
+
 
 }

@@ -1,12 +1,13 @@
 <template>
 	<div>
-		<div class="parallax" :style="parallax.style">
-			<div class="row justify-content-center">
-				<div class="caption">
-					<!-- <h2 v-html="parallax.caption"></h2> -->
-					<h1 style="font-family: Walkway; text-transform: lowercase!important; color: #ff3b40;" class="display-4">
-						<Logo/> <span style="color:#fff;">{{parallax.country}}</span>
+		<div id="parallax-end-about">
+			<div class="parallax" :style="parallax.style">
+				<div class="row justify-content-center">
+					<div class="caption">
+						<h1 style="font-family: Walkway; text-transform: lowercase!important; color: #ff3b40;" class="display-4">
+						<Logo/> <span style="color:#fff;">{{parallax.caption}}</span>
 					</h1>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -24,20 +25,22 @@
 			return {
 				parallax: {
 					style: {
-						'background-image': `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/about/3.jpg)`
+						'background-image': `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/member-list/parallax_member_list.jpg)`,
 					},
-					country: 'Indonesia'
+					caption: 'Member',
+					company: `<span style="font-family: 'walkway';color: #ff3b40; font-weight: 900;">evoush</span> | <span style="font-family:Walkway; color:#fff;text-shadow: 0 3px 20px rgba(0, 0, 0, 1.5);">Member</span> `
 				}
 			}
 		}
 	}
 </script>
 
-
 <style scoped>
-
 .parallax{
-	min-height: 250px; 
+	min-height: 500px; 
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
 	background-size: cover;
 	margin:0;
 }
@@ -46,7 +49,7 @@
 	background:rgba(255,255,255,0.3);
 	/* clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); */
 	position: absolute;
-	margin-top: 2rem;
+	margin-top: 15rem;
 	width: 100%;
 	text-align: center;
 	color: #fff;
@@ -56,6 +59,7 @@
 	text-shadow: 0 3px 20px rgba(0, 0, 0, 1.7);
 	margin-bottom: .9rem;
 	font-size: 18px;
+	margin-top: 1rem!important;
 }
 .caption p{
 	text-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);

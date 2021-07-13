@@ -69,7 +69,7 @@
 						header: `Selamat datang evousher`,
 						paragraph: `<b>PT. Pineleng Indah Cemerlang</b> Sebagai landasan hukum dan rumah yang menaungi bahtera bisnis dengan merk dagang  <b>evoush</b>. Ayo kita bangun bersama semangat dalam meraih kesuksesan dalam bisnis.`,
 						vector: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/management/PAK%20MUS.jpg",
-						iframe: "https://www.youtube.com/embed/4uY11lCCKUs?rel=0"
+						iframe: "https://www.youtube.com/embed/WpYLfr7FDXA"
 					},
 					{
 						id: 2,
@@ -88,8 +88,8 @@
 					{
 						id: 4,
 						header: `Management evoush`,
-						paragraph: `Team management kami yang senantiasa memberikan pelayanan terbaik bagi anda , senantiasa bekerja dengan ketelitian dan keseriusan.<br/> Karena bisnis yang anda bangun di <b>evoush</b> adalah prioritas bagi management kami. <br/> Berikut lengkapnya mengenai management <b>evoush</b> : <br/> <a href="{{route('management')}}" class="btn btn-success mt-3 mb-3">Management Evoush</a>`,
-						vector: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/vector_image/vector33.jpg",
+						paragraph: `Yang menjadi faktor sebuah bisnis cepat berkembang pesat karena adanya management yang solid dan utuh, yang selalu senantiasa menjadi support bagi perkembangan bisnis member-member <b>evoush</b>. Sejatinya menjadi sebuah pemicu semangat untuk selalu percaya dan fokus pada bisnis ini. Berikut lengkapnya profile mengenai management <b>evoush</b> : <br/> <a href="{{route('management')}}" class="btn btn-success mt-3 mb-3">Management Evoush</a>`,
+						vector: "",
 						anim: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/animated/management1.gif"
 					}
 				],

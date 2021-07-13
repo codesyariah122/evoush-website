@@ -1,29 +1,29 @@
 <template>
-	<div>
-		<div id="hero-home">
-			<div class="jumbotron jumbotron-fluid jumbotron-content" :style="image">
-				<div class="container">
-					<div class="row no-gutters justify-content-center">
-						<div class="col-md-6 col-xs-12 col-sm-12">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div>
+    <div id="hero-home">
+      <div class="jumbotron jumbotron-fluid jumbotron-content" :style="image">
+        <div class="container">
+          <div class="row no-gutters justify-content-center">
+            <div class="col-md-6 col-xs-12 col-sm-12">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-	export default{
-		data(){
-			return {
-				image: {
-					backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/MARKETING%20PLAN/1.jpg)`
-				}
-			}
-		}
-	}
+  export default{
+    data(){
+      return {
+        image: {
+          backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/MARKETING%20PLAN/1.jpg)`
+        }
+      }
+    }
+  }
 </script>
 
 <style scoped>

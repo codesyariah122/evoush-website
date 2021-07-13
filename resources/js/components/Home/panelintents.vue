@@ -43,12 +43,17 @@
 					</div>
 					<div v-else>
 						<div class="row genap-home">
-							<div class="col-md-6 col-xs-6 col-sm-6">
+							<div class="col-md-8 col-xs-6 col-sm-6">
 								<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-									<img :src="panel.vector" class="img-responsive intents-home-img">
+									<div v-if="panel.id == 2">
+										<VideoCarousel/>
+									</div>
+									<div v-else>
+										<img :src="panel.vector" class="img-responsive intents-home-img">
+									</div>
 								</div>
 							</div>
-							<div class="col-md-6 col-xs-6 col-sm-6">
+							<div class="col-md-4 col-xs-6 col-sm-6">
 								<div data-aos="zoom-out-right" data-aos-easing="ease-in-sine" data-aos-duration="1500">
 									<h1 v-html="panel.header"></h1>
 									<p class="mt-5" v-html="panel.paragraph"></p>
@@ -65,10 +70,12 @@
 
 <script>
 	import carousel from './carousel'
+	import VideoCarousel from './carouselvideo'
 
 	export default {
 		components: {
-			carousel
+			carousel,
+			VideoCarousel
 		},
 		data(){
 			return {
@@ -86,9 +93,9 @@
 				},
 				{
 					id:2,
-					header: `Tunjukan <span> Strategimu </span> agar semakin dikenal`,
+					header: `<span> Product-product </span> unggulan dengan kualitas terbaik di tiap category nya`,
 					welcome: '',
-					paragraph: `<b>Dedikasikan Diri anda</b> dengan seluruh kemampuan anda, dan buat orang lain tertarik untuk mencoba produk kita. Setiap hasil kerja kerasmu akan dihargai dengan nilai kepuasan oleh pengguna.`,
+					paragraph: `<b>Komoditas </b> unggulan bagi dunia usaha tentunya adalah product-product nya, selain kualitas tentunya ada banyak faktor lain seperti design package nya terlebih hingga ke nilai manfaatnya. Kami mengedepankan segala faktor terbaik dan unggulan diatas, tentunya sebagai kelengkapan bisnis kita di evoush.`,
 					vector: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/animated/anim32.gif",
 					carousel: false
 				},
@@ -149,7 +156,7 @@
 		text-transform: uppercase;
 	}
 	#panel-intents-home video{
-      width:350px!important;
+      width:200px!important;
       margin-top: -1rem!important;
     }
 	.intents-home-img{

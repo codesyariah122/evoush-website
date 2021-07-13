@@ -217,78 +217,37 @@ class HomeController extends Controller
 
     public function profile_page(Request $request)
     {   
-        // $users = User::with('profile')->where('username', $request->username)->get();
-        $users = User::join('profile', 'users.id', '=', 'profile.user_id')
-                ->where('status', '=', 'ACTIVE')
-                ->where('username', $request->username)
-                ->get(['profile.*', 'users.*']);
-        // echo $users->count() ."<br/>";
-
-        $members = Member::join('profile', 'member.user_id', '=', 'profile.id')
-                ->join('users', 'member.user_id', '=', 'users.id')
-                ->where('status', '=', 'ACTIVE')
-                ->get(['profile.*', 'users.*']);
-
-
+       
         if(Auth::check() && Auth::user()->id){
-
+            $users = User::join('profile', 'users.id', '=', 'profile.user_id')
+                ->where('status', '=', 'ACTIVE')
+                ->where('username', Auth::user()->username)
+                ->get(['profile.*', 'users.*']);
             if($users->count() > 0){
-
                 $id = Auth::user()->id;
-
-                $joins = User::join('member', 'member.user_id', '=', 'users.id')
-                ->where('member.sponsor_id', '=', $id)
-                ->where('status', '=', 'INACTIVE')
-                ->get();
-
-                $sponsors = Member::join('profile', 'profile.id', '=', 'member.sponsor_id')
-                ->join('users', 'users.id', '=', 'profile.user_id')
-                ->where('member.sponsor_id', '=', $id)
-                ->get();
-
                 $user = $users[0];
 
-                $followers = Member::join('users', 'users.id', '=', 'member.sponsor_id')
-                            ->get();
+                    if($user->avatar){
+                        $og_image = asset('storage/'.$user->avatar);
+                    }else{
+                        $og_image = 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/assets/img/examples/studio-4.jpg';
+                    }
 
-                // echo "<pre>";
-                //     // var_dump($sponsors); die;
-                // echo count($sponsors); die;
-                // echo "</pre>";
-
-                if(count($sponsors) > 0){
-                    $sponsor = $sponsors[0];
-                }else{
-                    $sponsor = "Belum ada member join";
-                }
-
-                if($user->avatar){
-                    $og_image = asset('storage/'.$user->avatar);
-                }else{
-                    $og_image = 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/assets/img/examples/studio-4.jpg';
-                }
-
-                $context = [
-                    'title' => 'Evoush::Profile | Member::'.ucfirst($user->username),
-                    'canonical' => 'https://evoush.com/member/'.$user->username,
-                    'meta_desc' => 'Evoush::Profile | Profile::'.$user->name,
-                    'meta_key' => $user->username .' | Evoush::Profile',
-                    'meta_author' => 'Evoush::Profile-'.$user->username,
-                    'og_title' => 'Evoush::Profile | '.$user->name,
-                    'og_site_name' => 'Evoush::Profile | '.$user->username,
-                    'og_desc' => $user->quotes,
-                    'og_image' => $og_image,
-                    'og_url' => 'https://evoush.com/member/'.$user->username,
-                    'user' => $user,
-                    'members' => $members,
-                    'joins' => $joins,
-                    'sponsor' => $sponsor,
-                    'followers' => $followers,
-                    'session' => $request->session()->all()
-                ];
-
-                return view('pages.profile.index', $context);
-
+                    $context = [
+                        'title' => 'Evoush::Profile | Member::'.ucfirst($user->username),
+                        'canonical' => 'https://evoush.com/member/'.$user->username,
+                        'meta_desc' => 'Evoush::Profile | Profile::'.$user->name,
+                        'meta_key' => $user->username .' | Evoush::Profile',
+                        'meta_author' => 'Evoush::Profile-'.$user->username,
+                        'og_title' => 'Evoush::Profile | '.$user->name,
+                        'og_site_name' => 'Evoush::Profile | '.$user->username,
+                        'og_desc' => $user->quotes,
+                        'og_image' => $og_image,
+                        'og_url' => 'https://evoush.com/member/'.$user->username,
+                        'user' => $user,
+                        'session' => $request->session()->all()
+                    ];
+                return view('pages.profile-login.index', $context);
             }else{
                 $context = [
                     'title' => 'Evoush::Official | Not::Found',
@@ -307,69 +266,8 @@ class HomeController extends Controller
                 return view('pages.profile.error', $context);
             }
         }else{
-            if(count($users) > 0){
-                $id = $users[0]->id;
-                $joins = User::join('member', 'member.user_id', '=', 'users.id')
-                ->where('member.sponsor_id', '=', $id)
-                ->where('status', '=', 'INACTIVE')
-                ->get();
-
-                $sponsors = Member::join('profile', 'profile.id', '=', 'member.sponsor_id')
-                ->join('users', 'users.id', '=', 'profile.user_id')
-                ->where('member.sponsor_id', '=', $id)
-                ->get();
-
-                $user = $users[0];
-
-                $followers = Member::join('users', 'users.id', '=', 'member.sponsor_id')
-                            // ->where('users.username', '=', $request->segment(2))
-                            ->get();
-               
-
-                if(count($sponsors) > 0){
-                    $sponsor = $sponsors[0];
-                }else{
-                    $sponsor = "Belum ada member join";
-                }
-                $context = [
-                    'title' => 'Evoush::Profile | Member::'.ucfirst($user->username),
-                    'canonical' => 'https://evoush.com/member/'.$user->username,
-                    'meta_desc' => 'Evoush::Profile | Profile::'.$user->name,
-                    'meta_key' => $user->username .' | Evoush::Profile',
-                    'meta_author' => 'Evoush::Profile-'.$user->username,
-                    'og_title' => 'Evoush::Profile | '.$user->name,
-                    'og_site_name' => 'Evoush::Profile | '.$user->username,
-                    'og_desc' => $user->quotes,
-                    'og_image' => asset('storage/'.$user->avatar),
-                    'og_url' => 'https://evoush.com/member/'.$user->username,
-                    'user' => $user,
-                    'members' => $members,
-                    'joins' => $joins,
-                    'sponsor' => $sponsor,
-                    'sponsor' => $followers,
-                    'session' => $request->session()->all()
-                ];
-
-                return view('pages.profile.index', $context);
-                // return redirect()->route('login')->with('status', 'Sesi anda telah habis, silahkan login ulang');
-            }else{
-                $context = [
-                    'title' => 'Evoush::Official | Not::Found',
-                    'canonical' => 'https://evoush.com/member/not-found',
-                    'meta_desc' => 'Evoush::Official | Profile::NotFound',
-                    'meta_key' => 'Not::Found | Evoush::Official',
-                    'meta_author' => 'Evoush::Official | Not::Found',
-                    'og_title' => 'Evoush::Official | Not::Found',
-                    'og_site_name' => 'Evoush::Official | Not::Found',
-                    'og_desc' => 'Your Eternal Future',
-                    'og_image' => 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/animated/funny_not_found.gif',
-                    'og_url' => 'https://evoush.com/member/not-found',
-                    // 'user' => $request->segment(2),
-                    'user' => "User tidak ditemukan"
-                ];
-                return view('pages.profile.error', $context);
-            }
-        }    
+            return "You are not login | you in page : ".$request->username;
+        }
     }
 
 

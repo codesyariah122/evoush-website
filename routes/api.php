@@ -35,9 +35,17 @@ Route::get('/paging/{categories}/{id}', [ApiDataController::class, 'paging']);
 Route::get('/categorymessage/search', [ApiDataController::class, 'categorymessage']);
 Route::get('/member/search/{username}', [ApiDataController::class, 'search_member']);
 Route::get('/member/{username}', [ApiDataController::class, 'data_member']);
-Route::get('/member/join/{username}', [ApiDataController::class, 'data_join_member']);
+Route::get('/member/join/active/{username}', [ApiDataController::class, 'member_join_active']);
+Route::get('/member/join/inactive/{username}', [ApiDataController::class, 'member_join_active']);
 Route::get('/evoush/top-leaders', [ApiDataController::class, 'top_leaders']);
 Route::get('/evoush/event', [ApiDataController::class, 'data_event']);
+Route::get('/evoush/member-list', [ApiDataController::class, 'member_list']);
+
+// Route data untuk profile page public
+Route::get('/evoush/profile-data/{username}', [ApiDataController::class, 'profile_data_public']);
+// Route data untuk profile page login
+Route::get('/evoush/profile-data/login/{username}', [ApiDataController::class, 'profile_data_login']);
+
 
 // Route::post('/create/member', [HomeController::class, 'store_new_member']);
 

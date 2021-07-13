@@ -6,21 +6,26 @@
 
 require('./bootstrap');
 
-
+// components module and assets
 import Vue from 'vue'
 import VueAxios from 'vue-axios'
 import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
-import Home from './pages/Home/index'
-import Popup from './components/molecules/popup'
-import About from './pages/About/index'
-import Product from './pages/Product/index'
-import MarketingPlan from './pages/MarketingPlan/index'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'jquery/dist/jquery.min'
 import 'popper.js/dist/popper.min'
 import 'bootstrap/dist/js/bootstrap.min'
+
+// components web
+import Home from './pages/Home/index'
+import Popup from './components/molecules/popup'
+import About from './pages/About/index'
+import Product from './pages/Product/index'
+import Member from './pages/Member/index'
+import MarketingPlan from './pages/MarketingPlan/index'
+import ProfileLogin from './pages/ProfileLogin/index'
+
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
@@ -40,7 +45,6 @@ new Vue({
 	render: h => h(Popup)
 })
 
-
 new Vue({
 	el: '#about',
 	components: {About},
@@ -54,6 +58,18 @@ new Vue({
 })
 
 new Vue({
+	el: '#member',
+	components: {Member},
+	render: h => h(Member)
+})
+
+new Vue({
+	el: '#profile-login',
+	components: {ProfileLogin},
+	render: h => h(ProfileLogin)
+})
+
+new Vue({
 	el: '#marketing-plan',
 	components: {MarketingPlan},
 	render: h => h(MarketingPlan)
@@ -61,7 +77,7 @@ new Vue({
 
 
 
-// Component for webpage evoush for blade template
+// Component assets for webpage evoush for blade template
 new Vue({
 	el: '#login',
 	data(){

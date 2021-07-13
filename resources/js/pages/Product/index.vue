@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<Hero/>
+    <div>
+        <Hero/>
         <h1 class="underline" style="margin-top: 5rem;"></h1>
 
         <PanelKosmetik/>
@@ -21,11 +21,11 @@
 
         <ParallaxProduct/>
 
-	</div>
+    </div>
 </template>
 
 <script>
-	import Hero from '../../components/Product/hero'
+    import Hero from '../../components/Product/hero'
     import PanelKosmetik from '../../components/Product/panelkosmetik'
     import ParallaxBeauty from '../../components/Product/parallaxbeauty'
     import KosmetikList from '../../components/Product/kosmetiklist'
@@ -34,9 +34,9 @@
     import NutrisiList from '../../components/Product/nutrisilist'
     import ParallaxProduct from '../../components/Product/parallaxproduct'
 
-	export default {
-		components: {
-			Hero,
+    export default {
+        components: {
+            Hero,
             PanelKosmetik,
             ParallaxBeauty,
             KosmetikList,
@@ -44,20 +44,20 @@
             ParallaxHealthy,
             NutrisiList,
             ParallaxProduct
-		}
-	}
+        }
+    }
 </script>
 
 <style scoped>
-	
+    
     #product{
-    	width: 100%;
+        width: 100%;
     }
     /* DESKTOP VERSION */
     @media (min-width: 992px) { 
-    	#product{
-    		width: 100%;
-    	}
-    	
+        #product{
+            width: 100%;
+        }
+        
     }
 </style>

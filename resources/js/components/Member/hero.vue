@@ -1,14 +1,14 @@
 <template>
 	<div>
-		<div class="jumbotron jumbotron-fluid jumbotron-content" :style="image">
-			<div class="container">
-				<div class="row no-gutters justify-content-center ml-3">
-					<div class="col-md-6 col-xs-4 col-sm-4">
-						<h1 class="display-4 text-center" style="font-family:'Walkway'; text-transform: lowercase!important; color: #ff3b40;">
-							<Logo/>
-						</h1>
-						<h3 class="text-center" style="font-family:'Walkway'; text-transform: capitalize!important; color: #fff; font-weight: 900;" v-html="title">
-						</h3>
+		<div id="hero-about">
+			<div class="jumbotron jumbotron-fluid jumbotron-content" :style="image">
+				<div class="container">
+					<div class="row no-gutters justify-content-center">
+						<div class="col-md-6 col-xs-8 col-sm-8">
+							<h1 class="display-4 text-center" style="font-family:'Walkway'; text-transform: capitalize!important; color: #fff; font-weight: 900;" v-html="title">
+							</h1>
+							<p class="blockquote-text text-justify" style="font-family:'Poiret One'; font-size: 21px; color: white;" v-html="paragraph"></p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -17,21 +17,15 @@
 </template>
 
 <script>
-	import Logo from '../molecules/brand'
-
 	export default {
-		components: {
-			Logo
-		},
 		data(){
 			return {
 				image: {
-					backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/about-us.jpg)`
+					backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/banner_member.jpg)`
 				},
-				title: `Your Eternal Future`,
-				paragraph: `<span style="font-family: Walkway; color: red; font-weight: 1000;">evoush</span> merupakan sebuah merk dagang persembahan dari <br/> <span style="font-family: Walkway; font-weight: 800;">PT. Pineleng Indah Cemerlang. <br/> Berikut ini selengkapnya tentang profile evoush</span>.`
-
-
+				brand: "voush",
+				title: `<span style="color:#fff;">Member</span> Lists`,
+				paragraph: `Member lists <span style="color:#ff3b40;">evoush</span> adalah daftar member-member evoush yang sudah masuk dalam system web replika kami, yang ditujukan guna meningkatkan nilai branding member-member <span style="color:#ff3b40;">evoush</span>.`
 			}
 		}
 	}
@@ -46,16 +40,16 @@
   text-align: center;
   position: relative;
   background-color: #17234E;
-  margin-bottom: 0;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  /*background-size: contain;*/
-  /*min-height: 100vh;*/
-  width: 100%;
-  -webkit-background-size: cover;
+/*  margin-bottom: 0;
+height: 100vh;*/
+background-repeat: no-repeat;
+background-position: center;
+background-size: contain;
+  /*min-height: 100vh;
+  width: 100%;*/
+  /*-webkit-background-size: cover;
   background-size: cover;
-  position: relative;
+  position: relative;*/
   clip-path: polygon(50% 0%, 100% 0, 100% 89%, 92% 92%, 84% 94%, 50% 100%, 0 100%, 0 59%, 0 0);
   z-index: -1!important;
 }
@@ -63,7 +57,7 @@
 .jumbotron-content .container {
 	z-index: 1;
 	position: relative;
-	margin-top: -1rem!important;
+	margin-top: -5rem!important;
 }
 
 .jumbotron-content::after {
@@ -84,7 +78,7 @@
 	font-weight: 200;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 	margin-bottom: 10px!important;
-	font-family: "Poppins", sans-serif;
+	font-family: 'Walkway';
 }
 
 .jumbotron-content .display-4 span {
@@ -112,10 +106,6 @@
 		-webkit-background-size: cover;
 		background-size: cover;
 		position: relative;
-		clip-path: polygon(50% 0%, 100% 0, 100% 89%, 92% 92%, 84% 94%, 50% 100%, 0 100%, 0 59%, 0 0);
-	}
-	.jumbotron-content .container{
-		margin-top: 3rem!important;
 	}
 	.jumbotron-content .display-4{
 		text-transform: capitalize;

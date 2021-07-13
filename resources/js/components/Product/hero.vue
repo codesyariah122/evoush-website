@@ -1,21 +1,21 @@
 <template>
-	<div>
-		<div class="jumbotron jumbotron-fluid jumbotron-content" :style="image">
+  <div>
+    <div class="jumbotron jumbotron-fluid jumbotron-content" :style="image">
 
-		</div>
-	</div>
+    </div>
+  </div>
 </template>
 
 <script>
-	export default {
-		data(){
-			return {
-				image: {
-					backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/NEW%20PRODUCT/2.jpeg)`
-				}
-			}
-		}
-	}
+  export default {
+    data(){
+      return {
+        image: {
+          backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/NEW%20PRODUCT/2.jpeg)`
+        }
+      }
+    }
+  }
 </script>
 
 <style scoped>

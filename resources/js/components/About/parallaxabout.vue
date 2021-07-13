@@ -4,7 +4,9 @@
 			<div class="row justify-content-center">
 				<div class="caption-parallax-about">
 					<p v-html="parallax.paragraph" class="mt-1"></p>
-					<h2 v-html="parallax.title"></h2>
+					<h1 style="font-family: Walkway; text-transform: lowercase!important; color: #ff3b40;" class="display-4">
+						<Logo/> <span style="color:#fff;">{{parallax.country}}</span>
+					</h1>
 				</div>
 			</div>
 		</div>
@@ -12,14 +14,20 @@
 </template>
 
 <script>
+	import Logo from '../molecules/brand'
+
 	export default {
+		components: {
+			Logo
+		},
+
 		data(){
 			return {
 				parallax: {
 					style: {
-						'background-image': `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/about/business_idea1.jpg)`,
+						'background-image': `url(https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGJ1c2luZXNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80)`,
 					},
-					title: `<span style="font-family: Walkway; color: red;">evoush</span> <span style="font-family:'Walkway'; color: #fff">Indonesia</span>`,
+					country: 'Indonesia',
 					paragraph: '<span style="font-family: Walkway;"> JANGAN TAKUT GAGAL <br/> Karena <b>Orang</b> yang tidak pernah <b>Gagal Hanyalah </b> Orang yang todak pernah Melangkah</span>.'
 				}
 			}
@@ -44,7 +52,7 @@
 	color: #fff;
 }
 .caption-parallax-about h2 {
-	font-family: 'Poiret One', cursive;font-weight:bold;
+	font-family: 'Walkway', cursive;font-weight:bold;
 	text-shadow: 0 3px 20px rgba(0, 0, 0, 1.7);
 	margin-bottom: .2rem;
 	font-size: 18px;

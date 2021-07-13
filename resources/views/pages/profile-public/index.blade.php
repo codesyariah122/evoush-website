@@ -1,4 +1,4 @@
-@extends('layouts.homepage.global')
+@extends('layouts.homepage.global', ['user'=>$user])
 {{-- meta head --}}
 @section('title'){{$title}}@endsection
 @section('canonical'){{ $canonical }}@endsection
@@ -15,9 +15,10 @@
 {{-- content --}}
 @section('content')
 
-<div id="member">
-	<member></member>
-</div>
-<script src="{{asset('js/app.js')}}"></script>
-@endsection
+	<div id="profile">
+		<profile></profile>
+	</div>
 
+<script src="{{asset('js/app.js')}}"></script>
+
+@endsection

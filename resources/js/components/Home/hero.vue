@@ -1,43 +1,43 @@
 <template>
-	<div>
-		<div id="hero-home">
-			<div class="jumbotron jumbotron-fluid jumbotron-content" :style="image">
-				<div class="container">
-					<div class="row no-gutters justify-content-center">
-						<div class="col-md-6 col-xs-12 col-sm-12">
-							<a href="/">
-								<h1 class="display-4 text-center" style="font-family:'Walkway'; text-transform: capitalize;!important; color: #fff;font-size: 4rem;font-weight: 900;">
-									{{header}} 
-								</h1>
-							</a>
-							<p class="blockquote-text text-center" style="font-family:'Poiret One'; color: white;"> 
-								{{paragraph}}
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div>
+    <div id="hero-home">
+      <div class="jumbotron jumbotron-fluid jumbotron-content" :style="image">
+        <div class="container">
+          <div class="row no-gutters justify-content-center">
+            <div class="col-md-6 col-xs-12 col-sm-12">
+              <a href="/">
+                <h1 class="display-4 text-center" style="font-family:'Walkway'; text-transform: capitalize;!important; color: #fff;font-size: 4rem;font-weight: 900;">
+                  {{header}} 
+                </h1>
+              </a>
+              <p class="blockquote-text text-center" style="font-family:'Poiret One'; color: white;"> 
+                {{paragraph}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-	import Logo from '../molecules/logo'
+  import Logo from '../molecules/logo'
 
-	export default{
-		components: {
-			Logo
-		},
-		data(){
-			return {
-				image: {
-					backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/NEW%20PRODUCT/1.jpg)`
-				},
-				header: "Our New Product",
-				paragraph: "Coming Soon"
-			}
-		}
-	}
+  export default{
+    components: {
+      Logo
+    },
+    data(){
+      return {
+        image: {
+          backgroundImage: `url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/NEW%20PRODUCT/1.jpg)`
+        },
+        header: "Our New Product",
+        paragraph: "Coming Soon"
+      }
+    }
+  }
 </script>
 
 <style scoped>

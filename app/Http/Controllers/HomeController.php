@@ -102,7 +102,7 @@ class HomeController extends Controller
             'og_title' => 'Evoush::Official | Product::Page',
             'og_site_name' => 'Evoush::Official | Product::Page',
             'og_desc' => 'Evoush::Product dengan kualitas terbaik yang siap meroketkan bisnis anda, tidak hanya kualitas dan keuntungan dari produk kami, namun lebih dari itu Evoush::Product sangat kaya manfaat bagi pribadi kita',
-            'og_image' => 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/model/new_model.jpg',
+            'og_image' => 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/NEW%20PRODUCT/1.jpg',
             'og_url' => 'https://evoush.com/product',
                 // 'kosmetiks' => $kosmetik,
                 // 'nutrisi' => $nutrisi
@@ -337,15 +337,15 @@ class HomeController extends Controller
 
         $context = [
             'title' => 'Evoush::Member | Lists::Member',
-            'canonical' => 'https://evoush.com/evoush/member-lists',
+            'canonical' => 'https://evoush.com/member-lists',
             'meta_desc' => 'Evoush::Official | Lists::Member',
             'meta_key' => 'Evoush::Official | Lists::Member',
             'meta_author' => 'Evoush::Official | Your::Eternal::Future',
             'og_title' => 'Evoush::Official | Lists::Member',
             'og_site_name' => 'Evoush::Official | Lists::Member',
             'og_desc' => 'Your Eternal Future | Evoush::Official',
-            'og_image' => 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/member-list/member_list.jpeg',
-            'og_url' => 'https://evoush.com/evoush/member-lists',
+            'og_image' => 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/about/3.jpg',
+            'og_url' => 'https://evoush.com/member-lists',
             'members' => $members
         ];
 

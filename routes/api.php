@@ -36,7 +36,7 @@ Route::get('/categorymessage/search', [ApiDataController::class, 'categorymessag
 Route::get('/member/search/{username}', [ApiDataController::class, 'search_member']);
 Route::get('/member/{username}', [ApiDataController::class, 'data_member']);
 Route::get('/member/join/active/{username}', [ApiDataController::class, 'member_join_active']);
-Route::get('/member/join/inactive/{username}', [ApiDataController::class, 'member_join_active']);
+Route::get('/member/join/inactive/{username}', [ApiDataController::class, 'member_join_inactive']);
 Route::get('/evoush/top-leaders', [ApiDataController::class, 'top_leaders']);
 Route::get('/evoush/event', [ApiDataController::class, 'data_event']);
 Route::get('/evoush/member-list', [ApiDataController::class, 'member_list']);

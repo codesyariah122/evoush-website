@@ -191,7 +191,7 @@ class ApiDataController extends Controller
         
         if($new_join->count() > 0){
             // return redirect()->route('member.username', [$username_path])->with('status', 'Username anda : '.$new_user->username.' berhasil dibuat selanjutnya system kami akan memproses setelah pihak sponsor mengaktivasi akun member anda.');
-            return response()->json(['message' => $new_user->username.' berhasil join member baru, selanjutnya klik tombol aktivasi di bawah ini.']);
+            return response()->json(['message' => $new_user->username.' berhasil join member baru, selanjutnya klik tombol aktivasi akun.']);
         }else{
             return response()->json(['message' => 'Proses join gagal, ada kesalahan teknis di server kami.']);
         }

@@ -233,7 +233,8 @@ export default {
     },
 
     mounted() {
-        this.getMemberJoinActive(), this.getMemberJoinInActive();
+        this.getMemberJoinActive(), 
+        this.getMemberJoinInActive()
     },
 
     methods: {
@@ -253,7 +254,7 @@ export default {
                     this.members = res.data;
                 })
                 .catch(err => console.log(err.response))
-                .finally(() => (this.loading = false));
+                .finally(() => (this.loading = false))
         },
 
         getMemberJoinInActive() {
@@ -265,7 +266,7 @@ export default {
                     this.joins = res.data;
                 })
                 .catch(err => console.log(err.response))
-                .finally(() => (this.loading = false));
+                .finally(() => (this.loading = false))
         }
     }
 };

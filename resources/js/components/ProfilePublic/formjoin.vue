@@ -33,7 +33,7 @@
                                 <div class="alert alert-success">
                                     {{ messages }}
                                     <br />
-                                    <a
+                                    <a @click="deleteCookie('New Member')"
                                         :href="
                                             `https://wa.me/${profile.phone}?text=Hallo%20${profile.name}%20saya%20${name_join}%20telah%20join%20untuk%20menjadi%20member%20anda, %20bisakah%20saya%20dibantu%20untuk%20proses%20aktivasi%20akun%20member%20saya`
                                         "
@@ -346,7 +346,7 @@ export default {
     },
 
     mounted() {
-        this.getProvinsi();
+        this.getProvinsi()
     },
 
     methods: {
@@ -482,6 +482,16 @@ export default {
             d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
             let expires = "expires=" + d.toGMTString();
             document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        },
+
+        deleteCookie(cname) {
+            var d = new Date(); //Create an date object
+            d.setTime(d.getTime() - (1000*60*60*24)); //Set the time to the past. 1000 milliseonds = 1 second
+            var expires = "expires=" + d.toGMTString(); //Compose the expirartion date
+            window.document.cookie = cname+"="+"; "+expires;//Set the cookie with name and the expiration date
+            // window.location.reload()
+            this.hideModal()
+            this.new_member = null
         }
     }
 };

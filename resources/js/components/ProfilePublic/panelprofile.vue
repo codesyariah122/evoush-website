@@ -20,25 +20,6 @@
 									</div>
 
 									<div class="container mt-3">
-										<div class="row justify-content-center">
-											<center>
-												<div class="col-md-6 col-xs-6 col-sm-6">
-													<div class="alert alert-success alert-dismissible fade show" role="alert">
-														<strong>Halo {{profile.name}}!</strong> Anda sedang login menggunakan <b>Username : {{profile.username}} </b>.
-														<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-															<span aria-hidden="true">&times;</span>
-														</button>
-													</div>
-												</div>
-												<br>
-												<div class="col-4 col-xs-6 col-sm-6">
-													<div class="fb-share-button btn-lg" 
-														:data-href="`https://evoush.com/member/${profile.username}`" 
-														data-layout="button_count">
-													</div>
-												</div>
-											</center>
-										</div>
 
 										<div class="row justify-content-center mt-3 mb-3">
 											<div class="col-md-6 col-xs-8 col-sm-8">
@@ -251,8 +232,8 @@ label{
 		margin-top: -8rem;
 		/*padding: 12px;*/
 		background-color: white;
-		margin-left: 3.5rem;
-		width: 90%;
+		margin-left: 7rem;
+		width: 80%;
 		/*height: 50vh;*/
 	}
 	.panel-body-focus {

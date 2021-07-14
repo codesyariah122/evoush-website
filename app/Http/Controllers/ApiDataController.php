@@ -139,6 +139,8 @@ class ApiDataController extends Controller
            "name" => "required|min:5|max:100",
            "email" => "required|email|unique:users",
            "phone" => "required|digits_between:10,15",
+           "province" => "required",
+           "city" => "required",
            "password" => "required",
            "password_confirmation" => "required|same:password"
        ])->validate();

@@ -106,6 +106,7 @@
                                         >Join Now</a
                                     >
                                     <br />
+                                    
                                     <div v-if="new_member">
                                         <div class="alert alert-success mt-3">
                                             Hallo, {{ new_member }} apakah anda
@@ -113,7 +114,8 @@
                                             anda ? jika sudah
                                             <b>Abaikan pesan ini !</b>
                                             <br />
-                                            <a
+                                            <!-- {{cname}} -->
+                                            <a @click="deleteCookie(cname)"
                                                 :href="
                                                     `https://wa.me/${profile.phone}?text=Hallo%20${profile.name}%20saya%20${new_member}%20telah%20join%20untuk%20menjadi%20member%20anda, %20bisakah%20saya%20dibantu%20untuk%20proses%20aktivasi%20akun%20member%20saya`
                                                 "
@@ -274,19 +276,30 @@ export default {
 
     mounted() {
         this.getMemberJoinActive(),
-            this.getMemberJoinInActive(),
-            this.getCookie(this.cname);
+        this.getMemberJoinInActive(),
+        this.getCookie(this.cname)
     },
 
     methods: {
         getMemberJoinActive() {
             this.axios
-                .get(`/api/member/join/active/${this.profileData[0].username}`)
+                .get(`/api/member/join/active/${this.profile.username}`)
                 .then(res => {
+                    console.log(res)
                     this.members = res.data;
                 })
                 .catch(err => console.log(err.response))
-                .finally(() => (this.loading = false));
+                .finally(() => (this.loading = false))
+        },
+
+        getMemberJoinInActive() {
+            this.axios
+                .get(`/api/member/join/inactive/${this.profileData.username}`)
+                .then(res => {
+                    this.length = res.data.length;
+                })
+                .catch(err => console.log(err.response))
+                .finally(() => (this.loading = false))
         },
 
         getCookie(cname) {
@@ -314,6 +327,15 @@ export default {
                     setCookie("username", user, 365);
                 }
             }
+        },
+
+        deleteCookie(cname) {
+            var d = new Date(); //Create an date object
+            d.setTime(d.getTime() - (1000*60*60*24)); //Set the time to the past. 1000 milliseonds = 1 second
+            var expires = "expires=" + d.toGMTString(); //Compose the expirartion date
+            window.document.cookie = cname+"="+"; "+expires;//Set the cookie with name and the expiration date
+            // window.location.reload()
+            this.new_member = null
         }
     }
 };

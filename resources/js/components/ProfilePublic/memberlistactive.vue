@@ -43,6 +43,14 @@
                                             >{{ member.name }}</a
                                         >
                                     </h5>
+                                    <br>
+                                    <div v-if="profile.status">
+                                        <b>Status : </b
+                                            ><span
+                                            class="badge badge-success text-white"
+                                            >{{ profile.status }}</span
+                                            >
+                                        </div>
 
                                     <blockquote class="blockquote-footer">
                                         {{ member.city }} |
@@ -50,10 +58,8 @@
                                     </blockquote>
 
                                     <p class="card-text ml-2">
-                                        Join pada :
-                                        <small class="text-muted">{{
-                                            member.created_at
-                                        }}</small>
+                                        Join pada : <br>
+                                        <small class="text-muted">{{created}}</small>
                                     </p>
                                 </div>
                             </div>
@@ -73,12 +79,13 @@ export default {
             noAvatar:
                 "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/profile/default.jpg",
             loading: true,
-            members: []
+            members: [],
+            created: ''
         };
     },
 
     mounted() {
-        this.getMemberJoinActive();
+        this.getMemberJoinActive()
     },
 
     methods: {
@@ -87,9 +94,60 @@ export default {
                 .get(`/api/member/join/active/${this.profileData.username}`)
                 .then(res => {
                     this.members = res.data;
+                     res.data.map(d => {
+                        this.formatDate(d.created_at)
+                    })
                 })
                 .catch(err => console.log(err.response))
-                .finally(() => (this.loading = false));
+                .finally(() => (this.loading = false))
+        },
+
+        formatDate(date){
+            const d = new Date(date)
+            switch(d.getMonth()+1){
+                case 1:
+                var month = 'Januari';
+                break;
+                case 2:
+                var month = 'Februari';
+                break;
+                case 3:
+                var month = 'Maret';
+                break;
+                case 4:
+                var month = 'April';
+                break;
+                case 5:
+                var month = 'Mei';
+                break;
+                case 6:
+                var month = 'Juni';
+                break;
+                case 7:
+                var month = 'Juli';
+                break;
+                case 8:
+                var month = 'Agustus';
+                break;
+                case 9:
+                var month = 'September';
+                break;
+                case 10:
+                var month = 'Oktober';
+                break;
+                case 11:
+                var month = 'November';
+                break;
+                case 12:
+                var month = 'Desember';
+                break;
+                default:
+                var month  = 'Tidak ada';
+                break;
+              }
+            this.created = d.getDate() +' ' +month+ ' ' + d.getFullYear() 
+            console.log(this.created)
+
         }
     }
 };

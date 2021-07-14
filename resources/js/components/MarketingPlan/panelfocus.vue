@@ -89,8 +89,8 @@
             id:2,
             header: `Marketing Plan.</span>.`,
             paragraph: `<span><b>evoush</b></span> sebagai merk dagang dari <b>PT. Pineleng Indah Cemerlang</b>, mempunyai standar bisnis terbaik dengan marketing plan lengkap, yang selengkapnya dapat anda simak dalam penjelasan video dari <b>Coach Rifqi</b> berikut ini, silahkan di simak...`,
-            anim: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/animated/Solutions-for-entierprise.gif",
-            vector: "https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/vector_image/vector38.jpg",
+            anim: "",
+            vector: "",
             iframe: 'https://www.youtube.com/embed/2020_7Rtpi4'
           }
         ]

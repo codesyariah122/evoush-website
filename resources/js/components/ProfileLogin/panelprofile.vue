@@ -37,13 +37,15 @@
 														data-layout="button_count">
 													</div>
 												</div>
-												<br>
-												<div class="col-md-8 col-xs-8 col-sm-8">
-													<a href="/marketing-plan" class="btn btn-hover color-4">Marketing Plan</a>
-												</div>
-												<br>
 											</center>
 										</div>
+
+										<div class="row justify-content-center mt-3 mb-3">
+											<div class="col-md-6 col-xs-8 col-sm-8">
+												<a href="/marketing-plan" class="btn btn-hover color-4">Marketing Plan</a>
+											</div>
+										</div>
+
 									</div>
 
 									<!-- ini untuk bagian tabs profile -->

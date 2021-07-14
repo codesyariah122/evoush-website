@@ -15,8 +15,8 @@
 {{-- content --}}
 @section('content')
 
-	<div id="profile">
-		<profile></profile>
+	<div id="profile-public">
+		<profile-public></profile-public>
 	</div>
 
 <script src="{{asset('js/app.js')}}"></script>

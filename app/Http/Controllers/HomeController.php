@@ -247,7 +247,13 @@ class HomeController extends Controller
                         'user' => $user,
                         'session' => $request->session()->all()
                     ];
-                return view('pages.profile-login.index', $context);
+
+                if(in_array("MEMBER", json_decode(Auth::user()->roles))):
+                    return view('pages.profile-login.index', $context);
+                elseif(in_array("FOLLOWER", json_decode(Auth::user()->roles))):
+                    return view('pages.profile-login.member.index', $context);
+                endif;
+
             }else{
                 $context = [
                     'title' => 'Evoush::Official | Not::Found',
@@ -266,7 +272,58 @@ class HomeController extends Controller
                 return view('pages.profile.error', $context);
             }
         }else{
-            return "You are not login | you in page : ".$request->username;
+            $users = User::join('profile', 'users.id', '=', 'profile.user_id')
+                ->where('status', '=', 'ACTIVE')
+                ->where('username', $request->username)
+                ->get(['profile.*', 'users.*']);
+
+                if($users->count() > 0){
+                    $user = $users[0];
+
+                    if($user->avatar){
+                        $og_image = asset('storage/'.$user->avatar);
+                    }else{
+                        $og_image = 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/assets/img/examples/studio-4.jpg';
+                    }
+
+                    $context = [
+                        'title' => 'Evoush::Profile | Member::'.ucfirst($user->username),
+                        'canonical' => 'https://evoush.com/member/'.$user->username,
+                        'meta_desc' => 'Evoush::Profile | Profile::'.$user->name,
+                        'meta_key' => $user->username .' | Evoush::Profile',
+                        'meta_author' => 'Evoush::Profile-'.$user->username,
+                        'og_title' => 'Evoush::Profile | '.$user->name,
+                        'og_site_name' => 'Evoush::Profile | '.$user->username,
+                        'og_desc' => $user->quotes,
+                        'og_image' => $og_image,
+                        'og_url' => 'https://evoush.com/member/'.$user->username,
+                        'user' => $user,
+                        'session' => $request->session()->all()
+                    ];
+                    
+                    if(in_array("MEMBER", json_decode($user->roles))):
+                        return view('pages.profile-public.index', $context);
+                    elseif(in_array("FOLLOWER", json_decode($user->roles))):
+                        return view('pages.profile-public.member.index', $context);
+                    endif;
+
+            }else{
+                $context = [
+                    'title' => 'Evoush::Official | Not::Found',
+                    'canonical' => 'https://evoush.com/member/not-found',
+                    'meta_desc' => 'Evoush::Official | Profile::NotFound',
+                    'meta_key' => 'Not::Found | Evoush::Official',
+                    'meta_author' => 'Evoush::Official | Not::Found',
+                    'og_title' => 'Evoush::Official | Not::Found',
+                    'og_site_name' => 'Evoush::Official | Not::Found',
+                    'og_desc' => 'Your Eternal Future',
+                    'og_image' => 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/animated/funny_not_found.gif',
+                    'og_url' => 'https://evoush.com/member/not-found',
+                    // 'user' => $request->segment(2),
+                    'user' => "User tidak ditemukan"
+                ];
+                return view('pages.profile.error', $context);
+            }
         }
     }
 

@@ -67,14 +67,24 @@
 </style> --}}
 
 <style type="text/css">
-    .login-card{
-        border-radius: 50%!important;
-    }
+.login-card{
+    border-radius: 50%!important;
+}
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.70)!important;
+    border-radius: 2%;
+    margin-top: 2rem!important;
+    height: 80%!important;
+}
+
+  @media (min-width: 992px) { 
     .card{
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.70)!important;
-      border-radius: 2%;
-      height: 80%!important;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.70)!important;
+        border-radius: 2%;
+        margin-top: 7rem!important;
+        height: 60%!important;
     }
+}
     
 </style>
 

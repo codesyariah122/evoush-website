@@ -13,28 +13,30 @@
 				</div>
 				<div class="card-body pt-5">
 					<div v-if="profile.avatar">
-						<a :href="`../../../storage/${profile.cover}`" class="profile-popup">
-							<img :src="`../../../storage/${profile.cover}`" class="img-fluid" alt="Sample Image">
+						<a :href="`../../../storage/${profile.avatar}`" class="profile">
+							<img :src="`../../../storage/${profile.avatar}`" class="img-fluid" alt="Sample Image">
 						</a>
 					</div>
 					<div v-else>
 						<img :src="noAvatar" alt="profile-image" class="profile"/>
 					</div>
 					
-					<h5 class="card-title">{{profile.name}}</h5>
+					<h5 class="card-title" style="text-transform: capitalize;">{{profile.name}}</h5>
 
 					<div v-if="profile.quotes">
 						<blockquote class="card-text blockquote-footer">
 							{{profile.quotes}}
 							<br>
-							<small>Quotes by : {{profile.username}}</small>
+							<h6>Quotes by : {{profile.username}}</h6>
 						</blockquote>
 					</div>
 					<div v-else>
-						<small class="text-danger">{{profile.username}} <b>belum menambahkan quotes</b></small>
+						<div class="alert alert-danger" role="alert">
+							{{profile.username}} <b>belum menambahkan quotes</b>
+						</div>
 					</div>
 
-					<h1 class="underline" style="margin-top: 5rem;"></h1>
+					<h1 class="underline" style="margin-top: 2rem;"></h1>
 
 
 					<h5 class="text-center">Success Story</h5>
@@ -45,7 +47,9 @@
 					</div>
 
 					<div v-else>
-						<small class="text-danger">{{profile.username}} <b>belum menambahkan success story</b></small>
+						<div class="alert alert-danger" role="alert">
+							{{profile.username}} <b>belum menambahkan success story</b>
+						</div>
 					</div>
 
 				</div>
@@ -60,8 +64,8 @@
 		props: ['profileData'],
 		data(){
 			return {
-				profile: this.profileData[0],
-				noCover: 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/banner_profile.jpg',
+				profile: this.profileData,
+				noCover: 'https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb',
 				noAvatar: 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/profile/default.jpg'
 			}
 		}

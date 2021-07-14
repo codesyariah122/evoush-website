@@ -12,6 +12,7 @@ import VueAxios from 'vue-axios'
 import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
+import "bootstrap-vue/dist/bootstrap-vue.css";
 import 'bootstrap/dist/css/bootstrap.css'
 import 'jquery/dist/jquery.min'
 import 'popper.js/dist/popper.min'
@@ -25,6 +26,7 @@ import Product from './pages/Product/index'
 import Member from './pages/Member/index'
 import MarketingPlan from './pages/MarketingPlan/index'
 import ProfileLogin from './pages/ProfileLogin/index'
+import ProfilePublic from './pages/ProfilePublic/index'
 
 
 Vue.config.productionTip = false
@@ -68,6 +70,13 @@ new Vue({
 	components: {ProfileLogin},
 	render: h => h(ProfileLogin)
 })
+
+new Vue({
+	el: '#profile-public',
+	components: {ProfilePublic},
+	render: h => h(ProfilePublic)
+})
+
 
 new Vue({
 	el: '#marketing-plan',

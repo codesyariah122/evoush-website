@@ -27,23 +27,19 @@
 </script>
 
 <style scoped>
-/* jumbotron */
-
 .jumbotron-content {
-  /* background-size: cover;
-  height: 540px; */
   text-align: center;
   position: relative;
   background-color: #17234E;
   margin-bottom: 0;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  /*background-size: contain;*/
-  /*min-height: 100vh;*/
-  width: 100%;
+  /*background-repeat: no-repeat;
   -webkit-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
+  background-position: center;
+  background-size: contain;
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
   position: relative;
   clip-path: polygon(50% 0%, 100% 0, 100% 89%, 92% 92%, 84% 94%, 50% 100%, 0 100%, 0 59%, 0 0);
   z-index: -1!important;
@@ -52,7 +48,7 @@
 .jumbotron-content .container {
   z-index: 1;
   position: relative;
-  margin-top: -1rem!important;
+  margin-top: -1.5rem!important;
 }
 
 .jumbotron-content::after {
@@ -63,7 +59,6 @@
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
   position: absolute;
   bottom: 0;
-  /*margin-left: -0.7rem;*/
 }
 
 .jumbotron-content .display-4 {
@@ -89,9 +84,7 @@
   font-weight: bold;
 }
 
-/* DESKTOP VERSION */
 @media (min-width: 992px) { 
-  /* jumbotron */
   .jumbotron-content{
     margin-top: -75px;
     height: 840px;

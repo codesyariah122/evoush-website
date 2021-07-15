@@ -156,8 +156,8 @@
 		text-transform: uppercase;
 	}
 	#panel-intents-home video{
-      width:200px!important;
-      margin-top: -1rem!important;
+      width:355px!important;
+      margin-top:1rem!important;
     }
 	.intents-home-img{
 		width: 300px !important;

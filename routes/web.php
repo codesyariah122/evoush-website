@@ -20,9 +20,12 @@ use App\Http\Controllers\JoinMemberController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryArticleController;
 use App\Http\Controllers\ApiDataController;
+use App\Http\Controllers\TestSpaController;
 
 // Testing Api Data
 Route::get('/api/test', [ApiDataController::class, 'index'])->name('testing.data');
+// testing spa web application
+Route::get('/api/spa', [TestSpaController::class, 'index']);
 
 /*
 |--------------------------------------------------------------------------

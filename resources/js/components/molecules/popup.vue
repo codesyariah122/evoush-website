@@ -1,6 +1,24 @@
 <template>
 	<div>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
 
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>        
+						<!-- 16:9 aspect ratio -->
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" :src="video" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div> 
 	</div>
 </template>
 
@@ -10,12 +28,13 @@
 		data(){
 			return {
 				date: new Date().getDate(),
-				show: false
+				show: false,
+				video: ''
 			}
 		},
 
 		mounted(){
-			this.getComingSoon()
+			this.getTopIncome()
 		},
 
 		methods: {
@@ -50,7 +69,46 @@
 					no-repeat
 					`
 				})
+			},
+
+			getTopIncome(){
+				if(date < 31){
+					$('#myModal').modal({
+						show: true
+					})
+					this.video = 'https://www.youtube.com/embed/2EGfDiGcK-E'
+				}else{
+					$('#myModal').modal({
+						show: false
+					})
+				}
 			}
 		}
 	}
 </script>
+
+
+<style scoped>
+
+.modal-dialog {
+	max-width: 800px;
+	margin: 30px auto;
+}
+
+
+
+.modal-body {
+	position:relative;
+	padding:0px;
+}
+.close {
+	position:absolute;
+	right:-30px;
+	top:0;
+	z-index:999;
+	font-size:2rem;
+	font-weight: normal;
+	color:#fff;
+	opacity:1;
+}
+</style>

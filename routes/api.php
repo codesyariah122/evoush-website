@@ -51,13 +51,16 @@ Route::get('/evoush/profile-data/login/{username}', [ApiDataController::class, '
 // Route::post('/create/member', [HomeController::class, 'store_new_member']);
 
 // Login via passport
-Route::post('login', [UserController::class, 'login']);
+// Route::post('login', [UserController::class, 'login']);
 
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::get('user/detail', [UserController::class, 'details']);
-    Route::post('logout', [UserController::class, 'logout']);
-});
+// Route::group(['middleware' => 'auth:api'], function(){
+//     Route::get('user/detail', [UserController::class, 'details']);
+//     Route::post('logout', [UserController::class, 'logout']);
+// });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:api');

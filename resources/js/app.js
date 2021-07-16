@@ -8,11 +8,12 @@ require('./bootstrap');
 
 // components module and assets
 import Vue from 'vue'
+import VueRouter from 'vue-router'
 import VueAxios from 'vue-axios'
 import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
-import "bootstrap-vue/dist/bootstrap-vue.css";
+import "bootstrap-vue/dist/bootstrap-vue.css"
 import 'bootstrap/dist/css/bootstrap.css'
 import 'jquery/dist/jquery.min'
 import 'popper.js/dist/popper.min'
@@ -29,11 +30,14 @@ import ProfileLogin from './pages/ProfileLogin/index'
 import ProfilePublic from './pages/ProfilePublic/index'
 
 
+
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
 Vue.use(BootstrapVue)
 Vue.use(VueSweetalert2)
 Vue.component('pagination', require('laravel-vue-pagination'))
+
+
 // web component vue template
 new Vue({
 	el: '#home',

@@ -16,6 +16,7 @@
 
     <ParallaxEnd/>
 
+    <Popup/>
   </div>
 </template>
 
@@ -27,6 +28,7 @@
 	import ParallaxHome from '../../components/Home/parallaxhome'
 	import PanelFocus from '../../components/Home/panelfocus'
 	import ParallaxEnd from '../../components/Home/parallaxend'
+	import Popup from '../../components/molecules/popup'
 
 	export default {
 		components: {
@@ -35,7 +37,8 @@
 			PanelIntents,
 			ParallaxHome,
 			PanelFocus,
-			ParallaxEnd
+			ParallaxEnd,
+			Popup
 		},
 		data(){
 			return {

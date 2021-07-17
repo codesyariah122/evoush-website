@@ -52,16 +52,7 @@
 							</div>
 						</div>
 
-						<b-modal id="modal-1">
-							<div v-if="loading">
-								<center>
-									<img src="https://img.pikbest.com/58pic/35/39/61/62K58PICb88i68HEwVnm5_PIC2018.gif!bw700" width="200" class="img-responsive">
-								</center>
-							</div>
-							<div v-else>
-								<DetailProduct :details="details"/>
-							</div>
-						</b-modal>
+						<DetailProduct :details="details"/>
 
 					</div>
 				</div>

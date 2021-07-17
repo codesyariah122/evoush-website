@@ -302,7 +302,7 @@ class ApiDataController extends Controller
         $data = Product::with(['categories' => function($query){
             $query->where('name', 'Nutrisi');
         }])
-        ->whereIn('id', [1, 2, 3])
+        ->whereIn('id', [1, 2, 3, 14])
         ->paginate(6);
        
         return json_encode($data);

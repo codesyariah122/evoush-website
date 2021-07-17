@@ -43,9 +43,7 @@
 										{{detail.mini_description}}
 									</blockquote>
 									<br>
-									<p>
-										{{detail.description}}
-									</p>
+									<p v-html="detail.description"></p>
 								</div>
 								<button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
 							</div>

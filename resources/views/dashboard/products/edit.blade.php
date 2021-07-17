@@ -60,8 +60,8 @@
                                 <br>
 
                                 <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <textarea name="description" id="description" class="form-control {{$errors->first('description') ? "is-invalid" : ""}} ">{{old('description') ? old('description') : $product->description}}</textarea>
+                                    <label for="full-featured-non-premium">Description</label>
+                                    <textarea name="description" id="full-featured-non-premium" class="form-control {{$errors->first('description') ? "is-invalid" : ""}} ">{{old('description') ? old('description') : $product->description}}</textarea>
                                 </div>
                                 <div class="invalid-feedback">
                                     {{$errors->first('description')}}

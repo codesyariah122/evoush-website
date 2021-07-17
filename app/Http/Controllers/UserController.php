@@ -227,7 +227,7 @@ class UserController extends Controller
             if($user->avatar && file_exists(storage_path('app/public/'.$user->username .'/' . $user->avatar))){
                 \Storage::delete('public/'.$user->username.'/'.$user->avatar);
             }
-            $file = $request->file('avatar')->store($new_user->username.'/profile', 'public');
+            $file = $request->file('avatar')->store($user->username.'/profile', 'public');
             $user->avatar = $file;
         }
 

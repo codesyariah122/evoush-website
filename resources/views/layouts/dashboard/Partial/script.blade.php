@@ -18,7 +18,7 @@
 <script type="text/javascript">
     $('#categories').select2({
     	ajax: {
-    		url: 'http://localhost:8000/ajax/categories/search',
+    		url: '/ajax/categories/search',
     		processResults: function(data){
     			return {
     				results: data.map(function(item){return {id: item.id, text: item.name} })

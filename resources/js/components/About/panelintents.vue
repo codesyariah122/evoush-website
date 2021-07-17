@@ -13,12 +13,16 @@
 							</div>
 							<div class="col-md-8 col-xs-6 col-sm-6">
 								<div data-aos="zoom-out-left" data-aos-easing="ease-in-sine" data-aos-duration="1500">
-									<div v-if="panel.iframe" class="embed-responsive embed-responsive-1by1">
+									<!-- div v-if="panel.iframe" class="embed-responsive embed-responsive-1by1">
 										<iframe width="600" height="400" class="embed-responsive-item" :src="panel.iframe" allowfullscreen></iframe>
-									</div>
+									</div> -->
+									
+									<CarouselVideo/>
+
+									<!-- 
 									<div v-else>
 										<img :src="panel.vector" class="img-responsive ganjil-img">
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -60,7 +64,13 @@
 
 
 <script>
+	import CarouselVideo from './carouselvideo'
+
+
 	export default {
+		components:{
+			CarouselVideo
+		},
 		data(){
 			return {
 				panels: [

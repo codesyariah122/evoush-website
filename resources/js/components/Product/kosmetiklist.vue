@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="kosmetik-list">
 		<div class="panel panel-default panel-focus">
 			<div class="panel-body panel-body-focus">
 				<div class="row justify-content-center">
@@ -44,7 +44,10 @@
 
 								<div class="card-read-more-pricing">
 									<!-- <a :href="`/product/${result.categories[0].name}/${result.slug}`" class="btn btn-link btn-block">Detail Product</a> -->
-									<a v-on:click="getDetail(result.categories[0].name, result.slug)" v-b-modal.modal-1 class="btn btn-link btn-block">Detail</a>
+									<!-- <a v-on:click="getDetail(result.categories[0].name, result.slug)" v-b-modal.modal-1 class="btn btn-link btn-block">Detail</a> -->
+									<a v-on:click="getDetail(result.categories[0].name, result.slug)" data-target="#modalProduct" data-toggle="modal" class="btn btn-link btn-block">Detail</a>
+
+
 								</div>
 							</div>
 						</div>

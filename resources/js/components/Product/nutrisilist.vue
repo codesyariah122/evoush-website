@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="nutrisi-list">
 		<div class="panel panel-default panel-focus">
 			<div class="panel-body panel-body-focus">
 				<div class="row justify-content-center">
@@ -43,21 +43,14 @@
 								</div>
 
 								<div class="card-read-more-pricing">
-									<a v-on:click="getDetail(result.categories[0].name, result.slug)" v-b-modal.modal-2 class="btn btn-link btn-block">Detail</a>
+									<!-- <a v-on:click="getDetail(result.categories[0].name, result.slug)" v-b-modal.modal-2 class="btn btn-link btn-block">Detail</a> -->
+									<a v-on:click="getDetail(result.categories[0].name, result.slug)" data-target="#modalProduct" data-toggle="modal" class="btn btn-link btn-block">Detail</a>
 								</div>
 							</div>
 						</div>
 
-						<b-modal id="modal-2">
-							<div v-if="loading">
-								<center>
-									<img src="https://img.pikbest.com/58pic/35/39/61/62K58PICb88i68HEwVnm5_PIC2018.gif!bw700" width="200" class="img-responsive">
-								</center>
-							</div>
-							<div v-else>
-								<DetailProduct :details="details"/>
-							</div>
-						</b-modal>
+						
+						<DetailProduct :details="details"/>
 						
 					</div>
 				</div>

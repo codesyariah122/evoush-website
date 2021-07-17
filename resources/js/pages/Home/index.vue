@@ -16,7 +16,8 @@
 
     <ParallaxEnd/>
 
-    <Popup/>
+    <PopupLaunching/>
+    
   </div>
 </template>
 
@@ -28,7 +29,7 @@
 	import ParallaxHome from '../../components/Home/parallaxhome'
 	import PanelFocus from '../../components/Home/panelfocus'
 	import ParallaxEnd from '../../components/Home/parallaxend'
-	import Popup from '../../components/molecules/popup'
+	import PopupLaunching from '../../components/molecules/popuplaunching'
 
 	export default {
 		components: {
@@ -38,7 +39,7 @@
 			ParallaxHome,
 			PanelFocus,
 			ParallaxEnd,
-			Popup
+			PopupLaunching
 		},
 		data(){
 			return {

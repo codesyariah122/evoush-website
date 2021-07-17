@@ -34,7 +34,7 @@
 		},
 
 		mounted(){
-			this.getTopIncome()
+			
 		},
 
 		methods: {
@@ -72,7 +72,7 @@
 			},
 
 			getTopIncome(){
-				if(date < 31){
+				if(this.date < 31){
 					$('#myModal').modal({
 						show: true
 					})

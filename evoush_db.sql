@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jul 2021 pada 18.42
--- Versi server: 10.4.19-MariaDB
--- Versi PHP: 7.3.28
+-- Generation Time: Jul 17, 2021 at 08:37 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `api_data_test`
+-- Table structure for table `api_data_test`
 --
 
 CREATE TABLE `api_data_test` (
@@ -36,7 +37,7 @@ CREATE TABLE `api_data_test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `api_data_test`
+-- Dumping data for table `api_data_test`
 --
 
 INSERT INTO `api_data_test` (`id`, `title`, `content`, `created_at`, `updated_at`) VALUES
@@ -48,7 +49,7 @@ INSERT INTO `api_data_test` (`id`, `title`, `content`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `articles`
+-- Table structure for table `articles`
 --
 
 CREATE TABLE `articles` (
@@ -67,7 +68,7 @@ CREATE TABLE `articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `articles`
+-- Dumping data for table `articles`
 --
 
 INSERT INTO `articles` (`id`, `author`, `category_id`, `title`, `slug`, `headline`, `cover`, `content`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -76,7 +77,7 @@ INSERT INTO `articles` (`id`, `author`, `category_id`, `title`, `slug`, `headlin
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -93,7 +94,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_by`, `updated_by`, `deleted_by`, `deleted_at`, `created_at`, `updated_at`) VALUES
@@ -103,7 +104,7 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `created_by`, `updated_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category_articles`
+-- Table structure for table `category_articles`
 --
 
 CREATE TABLE `category_articles` (
@@ -116,7 +117,7 @@ CREATE TABLE `category_articles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `category_articles`
+-- Dumping data for table `category_articles`
 --
 
 INSERT INTO `category_articles` (`id`, `category_name`, `caption`, `deleted_at`, `created_at`, `updated_at`) VALUES
@@ -127,7 +128,7 @@ INSERT INTO `category_articles` (`id`, `category_name`, `caption`, `deleted_at`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category_message`
+-- Table structure for table `category_message`
 --
 
 CREATE TABLE `category_message` (
@@ -140,7 +141,7 @@ CREATE TABLE `category_message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `category_message`
+-- Dumping data for table `category_message`
 --
 
 INSERT INTO `category_message` (`id`, `category_name`, `caption`, `deleted_at`, `created_at`, `updated_at`) VALUES
@@ -151,7 +152,7 @@ INSERT INTO `category_message` (`id`, `category_name`, `caption`, `deleted_at`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category_product`
+-- Table structure for table `category_product`
 --
 
 CREATE TABLE `category_product` (
@@ -163,7 +164,7 @@ CREATE TABLE `category_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `category_product`
+-- Dumping data for table `category_product`
 --
 
 INSERT INTO `category_product` (`id`, `product_id`, `category_id`, `created_at`, `updated_at`) VALUES
@@ -183,7 +184,7 @@ INSERT INTO `category_product` (`id`, `product_id`, `category_id`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `contact_message`
+-- Table structure for table `contact_message`
 --
 
 CREATE TABLE `contact_message` (
@@ -204,7 +205,7 @@ CREATE TABLE `contact_message` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -220,7 +221,7 @@ CREATE TABLE `event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `event`
+-- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`id`, `title`, `quotes`, `cover`, `file`, `content`, `created_at`, `updated_at`, `link`) VALUES
@@ -229,7 +230,7 @@ INSERT INTO `event` (`id`, `title`, `quotes`, `cover`, `file`, `content`, `creat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -239,13 +240,13 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `joining`
+-- Table structure for table `joining`
 --
 
 CREATE TABLE `joining` (
@@ -262,7 +263,7 @@ CREATE TABLE `joining` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE `member` (
@@ -277,7 +278,7 @@ CREATE TABLE `member` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -287,7 +288,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -341,7 +342,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -357,7 +358,7 @@ CREATE TABLE `orders` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `order_product`
+-- Table structure for table `order_product`
 --
 
 CREATE TABLE `order_product` (
@@ -372,7 +373,7 @@ CREATE TABLE `order_product` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -384,7 +385,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -395,8 +396,8 @@ CREATE TABLE `products` (
   `mini_description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `cover` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
-  `views` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `stock` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `views` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `stock` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `status` enum('PUBLISH','DRAFT') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_by` int(11) NOT NULL,
   `updated_by` int(11) DEFAULT NULL,
@@ -407,7 +408,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `title`, `slug`, `description`, `mini_description`, `cover`, `price`, `views`, `stock`, `status`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -427,15 +428,15 @@ INSERT INTO `products` (`id`, `title`, `slug`, `description`, `mini_description`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `profile`
+-- Table structure for table `profile`
 --
 
 CREATE TABLE `profile` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
-  `quotes` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `quotes` mediumtext COLLATE utf8mb4_unicode_ci,
   `cover` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `about` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about` longtext COLLATE utf8mb4_unicode_ci,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -448,7 +449,7 @@ CREATE TABLE `profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `profile`
+-- Dumping data for table `profile`
 --
 
 INSERT INTO `profile` (`id`, `user_id`, `quotes`, `cover`, `about`, `deleted_at`, `created_at`, `updated_at`, `instagram`, `facebook`, `youtube`, `city`, `province`, `parallax`) VALUES
@@ -468,7 +469,7 @@ INSERT INTO `profile` (`id`, `user_id`, `quotes`, `cover`, `about`, `deleted_at`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -482,14 +483,14 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `roles`, `address`, `phone`, `avatar`, `status`) VALUES
@@ -511,39 +512,32 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 
 --
--- Indeks untuk tabel `api_data_test`
+-- Indexes for table `api_data_test`
 --
 ALTER TABLE `api_data_test`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `articles`
+-- Indexes for table `articles`
 --
 ALTER TABLE `articles`
   ADD PRIMARY KEY (`id`),
   ADD KEY `articles_category_id_foreign` (`category_id`);
 
 --
--- Indeks untuk tabel `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `categories_slug_unique` (`slug`);
-
---
--- Indeks untuk tabel `category_articles`
+-- Indexes for table `category_articles`
 --
 ALTER TABLE `category_articles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `category_message`
+-- Indexes for table `category_message`
 --
 ALTER TABLE `category_message`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `category_product`
+-- Indexes for table `category_product`
 --
 ALTER TABLE `category_product`
   ADD PRIMARY KEY (`id`),
@@ -551,27 +545,20 @@ ALTER TABLE `category_product`
   ADD KEY `category_product_category_id_foreign` (`category_id`);
 
 --
--- Indeks untuk tabel `contact_message`
+-- Indexes for table `contact_message`
 --
 ALTER TABLE `contact_message`
   ADD PRIMARY KEY (`id`),
   ADD KEY `contact_message_category_id_foreign` (`category_id`);
 
 --
--- Indeks untuk tabel `event`
+-- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indeks untuk tabel `joining`
+-- Indexes for table `joining`
 --
 ALTER TABLE `joining`
   ADD PRIMARY KEY (`id`),
@@ -579,7 +566,7 @@ ALTER TABLE `joining`
   ADD KEY `joining_user_id_foreign` (`user_id`);
 
 --
--- Indeks untuk tabel `member`
+-- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`id`),
@@ -587,20 +574,20 @@ ALTER TABLE `member`
   ADD KEY `member_user_id_foreign` (`user_id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `orders_user_id_foreign` (`user_id`);
 
 --
--- Indeks untuk tabel `order_product`
+-- Indexes for table `order_product`
 --
 ALTER TABLE `order_product`
   ADD PRIMARY KEY (`id`),
@@ -608,193 +595,10 @@ ALTER TABLE `order_product`
   ADD KEY `order_product_product_id_foreign` (`product_id`);
 
 --
--- Indeks untuk tabel `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
--- Indeks untuk tabel `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `profile`
---
-ALTER TABLE `profile`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `profile_user_id_foreign` (`user_id`);
-
---
--- Indeks untuk tabel `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`),
-  ADD UNIQUE KEY `users_username_unique` (`username`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
-
---
--- AUTO_INCREMENT untuk tabel `api_data_test`
---
-ALTER TABLE `api_data_test`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT untuk tabel `articles`
---
-ALTER TABLE `articles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT untuk tabel `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `category_articles`
---
-ALTER TABLE `category_articles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT untuk tabel `category_message`
---
-ALTER TABLE `category_message`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT untuk tabel `category_product`
---
-ALTER TABLE `category_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT untuk tabel `contact_message`
---
-ALTER TABLE `contact_message`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `event`
---
-ALTER TABLE `event`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `joining`
---
-ALTER TABLE `joining`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `member`
---
-ALTER TABLE `member`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
-
---
--- AUTO_INCREMENT untuk tabel `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `order_product`
---
-ALTER TABLE `order_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT untuk tabel `profile`
---
-ALTER TABLE `profile`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT untuk tabel `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `articles`
---
-ALTER TABLE `articles`
-  ADD CONSTRAINT `articles_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category_articles` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `category_product`
---
-ALTER TABLE `category_product`
-  ADD CONSTRAINT `category_product_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-  ADD CONSTRAINT `category_product_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `contact_message`
---
-ALTER TABLE `contact_message`
-  ADD CONSTRAINT `contact_message_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category_message` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `joining`
---
-ALTER TABLE `joining`
-  ADD CONSTRAINT `joining_member_id_foreign` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `joining_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `member`
---
-ALTER TABLE `member`
-  ADD CONSTRAINT `member_sponsor_id_foreign` FOREIGN KEY (`sponsor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `member_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `order_product`
---
-ALTER TABLE `order_product`
-  ADD CONSTRAINT `order_product_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  ADD CONSTRAINT `order_product_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `profile`
---
-ALTER TABLE `profile`
-  ADD CONSTRAINT `profile_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD KEY `password_resets_email_index` (`email`(191));
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

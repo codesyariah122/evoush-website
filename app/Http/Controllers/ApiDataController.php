@@ -302,6 +302,7 @@ class ApiDataController extends Controller
         $data = Product::with(['categories' => function($query){
             $query->where('name', 'Nutrisi');
         }])
+        ->orderBy('id', 'Desc')
         ->whereIn('id', [1, 2, 3, 14])
         ->paginate(6);
        

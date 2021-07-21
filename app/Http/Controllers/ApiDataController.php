@@ -124,7 +124,6 @@ class ApiDataController extends Controller
     // =========================================================================================
 
     // Regenerate api data all page using axios 
-
     public function data_event()
     {
         $event = Event::get();

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\MetaDataController;
 // use App\Http\Controllers\CategoryMessageController;
 
 
@@ -47,6 +48,14 @@ Route::get('/evoush/profile-data/{username}', [ApiDataController::class, 'profil
 // Route data untuk profile page login
 Route::get('/evoush/profile-data/login/{username}', [ApiDataController::class, 'profile_data_login']);
 
+
+// route data web page
+Route::prefix('web-data')->group(function(){
+	Route::get('/home', [MetaDataController::class, 'home_page_data']);
+	Route::get('/about', [MetaDataController::class, 'about_page_data']);
+	Route::get('/product', [MetaDataController::class, 'product_page_data']);
+	Route::get('/articles', [MetaDataController::class, 'articles_page_data']);
+});
 
 // Route::post('/create/member', [HomeController::class, 'store_new_member']);
 

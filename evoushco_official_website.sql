@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 17, 2021 at 02:58 PM
+-- Generation Time: Jul 21, 2021 at 10:03 AM
 -- Server version: 10.2.38-MariaDB-log-cll-lve
 -- PHP Version: 7.3.28
 
@@ -179,7 +179,8 @@ INSERT INTO `category_product` (`id`, `product_id`, `category_id`, `created_at`,
 (22, 10, 1, NULL, NULL),
 (23, 11, 1, NULL, NULL),
 (24, 12, 1, NULL, NULL),
-(25, 13, 1, NULL, NULL);
+(25, 13, 1, NULL, NULL),
+(26, 14, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -423,7 +424,8 @@ INSERT INTO `products` (`id`, `title`, `slug`, `description`, `mini_description`
 (10, 'Evoush Peeling Spray', 'evoush-peeling-spray', 'Produk spray terbaik yang akan menjaga kulit anda dari sel-sel mati dari kulit yang biasanya sangat mengganggu penampilan, Evoush Peeling Spray sangat mudah di gunakan, praktis dan tentunya kualitas bahan yang tidak akan bisa di ragukan lagi manfaat dan kandungannya', 'Menjaga kulit dan membersihkan sel-sel mati pada kulit anda dengan cara praktis', 'product-covers/ScyuxusiG3992wHvBJfBcegfSSD0npdOrfyxUSzc.jpg', 1.00, 0, 100, 'PUBLISH', 1, NULL, NULL, '2021-06-12 15:44:05', '2021-06-12 15:44:05', NULL),
 (11, 'Evoush Pefect Gold Jelly Night', 'evoush-pefect-gold-jelly-night', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum', 'Perfect Gold Jelly Night From Evoush', 'product-covers/e2jGaFkB5aialN2nhUHxFvGaoyoBCUu6Dii6HqXF.jpg', 1.00, 0, 100, 'PUBLISH', 1, NULL, NULL, '2021-06-12 15:45:18', '2021-06-12 15:45:18', NULL),
 (12, 'Evoush Facewash', 'evoush-facewash', 'Menjaga kesehatan kulit terutama kulit wajah adalah sebuah modal utama dalam menjaga penampilan anda, Evoush Facewash melakukannya dengan sentuhan lembut bagi kulit anda', 'Deep Cleaning Beauty your facewash By Evoush', 'product-covers/sHDd5FdciecwM9mSzJS0sJHXDmAzdT55n8ay5tmh.jpg', 1.00, 0, 100, 'PUBLISH', 1, NULL, NULL, '2021-06-12 15:47:00', '2021-06-12 15:47:00', NULL),
-(13, 'Evoush Facial Toner', 'evoush-facial-toner', 'Cara praktis dan simple untuk merawat kulit dengan kualitas terbaik dari produk Evoush Facial Toner yang senantiasa memberikan manfaat bagi kulit terbaik anda', 'Simple Shooting For Beauty Skin', 'product-covers/HxPgM4M9HZw7mVehmJuoA1xgSOoW5hC4UvHy1DCh.jpg', 1.00, 0, 100, 'PUBLISH', 1, NULL, NULL, '2021-06-12 15:48:03', '2021-06-12 15:48:03', NULL);
+(13, 'Evoush Facial Toner', 'evoush-facial-toner', 'Cara praktis dan simple untuk merawat kulit dengan kualitas terbaik dari produk Evoush Facial Toner yang senantiasa memberikan manfaat bagi kulit terbaik anda', 'Simple Shooting For Beauty Skin', 'product-covers/HxPgM4M9HZw7mVehmJuoA1xgSOoW5hC4UvHy1DCh.jpg', 1.00, 0, 100, 'PUBLISH', 1, NULL, NULL, '2021-06-12 15:48:03', '2021-06-12 15:48:03', NULL),
+(14, 'Evost SUP 5000 Collagen', 'evost-sup-5000-collagen', '<h1><strong>Apple Powder Drink With Collagen</strong></h1>\r\n<p><strong>(Minuman Serbuk Apel dengan Kolagen)</strong></p>\r\n<ul>\r\n<li>Kolagen 5000 mg per sajian</li>\r\n<li>Salmon Bubuk</li>\r\n<li>Tinggi Protein</li>\r\n<li>Tinggi Serat Pangan</li>\r\n<li>Sumber Vitamin A</li>\r\n<li>Sumber Vitamin E</li>\r\n<li>Sumber Vitamin B2 (Riboflavin)</li>\r\n<li>Sumber Vitamin B6 (Pridoksin)</li>\r\n<li>Sumber Vitamin B9 (Asam Folat)</li>\r\n<li>Tinggi Vitamin C</li>\r\n<li>Sumber Kalsium</li>\r\n<li>Sumber Magnesium</li>\r\n<li>Sumber Selenium</li>\r\n<li>Tinggi Kolin</li>\r\n</ul>\r\n<p><strong>Komposisi : </strong></p>\r\n<p><strong>Peptide Kolagen Ikan (25%). </strong>Apel Bubuk (25%), Anggur bubuk, Serat larut dari jagung. Ekstrak buah-buahan, Inulin. <strong>Serat Gandum, </strong> L-Glutation, L-Aegnin, Premiks vitamin dan mineral, Antioksidan asam askorbat, Kalsium dari ekstrak ganggang laut, <strong>Salmon Bubuk. </strong> Pengatur keasaman ( Asam malat, Asam sitrat), Serat Jeruk, Ekstrak tebu, Ekstrak lidah buaya, Pemanis alami glikosida steviol, Biotin, Asam Folat.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Cara Penyajian : </strong></p>\r\n<ol>\r\n<li>Masukan 1 sachet ke dalam shaker</li>\r\n<li>Tambahkan 150 ml air dingin</li>\r\n<li>Aduk lalu shake hingga merata</li>\r\n<li>Evost siap disajikan</li>\r\n</ol>', 'Apple Powder Drink With Collagen\r\n(Minuman Serbuk Apel dengan Kolagen)', 'product-covers/Ux10CWz88lZ36vQysHJe7YTbthdYSZCbfU9hN43T.jpg', 1.00, 0, 100, 'PUBLISH', 1, 1, NULL, '2021-07-17 03:31:11', '2021-07-17 03:39:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -458,7 +460,7 @@ INSERT INTO `profile` (`id`, `user_id`, `quotes`, `cover`, `about`, `deleted_at`
 (3, 3, 'Masa depan adalah milik Anda yang telah menyiapkannya dari hari ini', NULL, NULL, NULL, '2021-06-29 04:28:04', '2021-06-29 04:28:04', NULL, NULL, 'citradevi', 'Kabupaten Sidoarjo', 'Jawa Timur', NULL),
 (4, 4, 'jangan cemas kalau badai datang, karena disana juga akan ada pelangi yang menunggu', NULL, '<p>Saya adalah seorang praktisi kesehatan di bidang kefarmasian yang telah memulai berbisnis dg evoush. Saya memulai bisnis evoush ini dengan menjadi pemakai dr produk nya terlebih dahulu.<br />Dengan bermodalkan uang tabungan yang dulu beserta dengan bantuan suami dan tekad yang kuat, saya pun memulai bisnis yang sekarang sudah membawa saya k peringkat shapire dlm kurung waktu 2,5 bulan dg omset puluhan juta rupiah🥰</p>', NULL, '2021-06-29 04:40:21', '2021-06-29 04:40:21', NULL, NULL, 'saidahlaila', 'Kabupaten Hulu Sungai Selatan', 'Kalimantan Selatan', NULL),
 (5, 5, 'TERIMA KESEMPATAN PELUANG YANG DATANG, GAGAL ITU URUSAN NANTI YANG TERPENTING KITA BERANI MENCOBA DAN MENCOBA', NULL, '<p>Saya seorang ibu rumah tangga yang memiliki 2 org putri,setelah selesai mengeyam pendidikan diperguruan tinggi swasta di kota malang saya langsung bekerja dgn berbagai profesi sebagai seorang guru akuntansi &nbsp;dan kemudian bekerja sebagai staff acounting di perusahaan swasta.<br />Karena suami yang hrs berpindah tempat kerja ke kota lain dan keterbatasan waktu untuk keluarga saya akhirnya resign.<br />Kemudian saya memulai bisnis sendiri dan akhirnya saya di perkenalkan oleh seorang teman dengan <strong>product Evoush</strong>.<br />Awalnya saya hanya pemakai krn &nbsp;saya merasakan manfaat dr product tersebut saya ingin langsung menjalankan bisnisnya.<br />Dengan tekad yang kuat bermodalkan tabungan dari bisnis sebelumnya saya mengambil inisiatif untuk bergabung menjadi mitra <strong>Evoush</strong>...banyak yg saya dptkan di bisnis ini selain pencapaian <strong>Sapphire &nbsp;dgn income puluhan juta rupiah</strong> dlm <strong>kurun waktu 3 bulan</strong>...yang membuat saya lebih mantap lagi adalah menjadi mitra <strong>PT. Pineleng Indah Cemerlang</strong>, perusahaan yg sdh memiliki legalitas dan kompoten untuk menaungi mitra2nya di seluruh Indonesia maupun di Asia</p>', NULL, '2021-06-29 05:03:57', '2021-06-29 05:03:57', NULL, NULL, 'putriku', 'Kabupaten Bima', 'Nusa Tenggara Barat', NULL),
-(6, 6, 'Selama kita tidak menyerah, maka segala kemungkinan masih bisa terjadi, tidak ada yang tidak mungkin.. Jadi berjuang lah sekuat tenaga untuk meraih semua mimpi.. Orang SUKSES selalu kelebihan satu cara.. Sedangkan orang gagal selalu kelebihan satu alasan', NULL, NULL, NULL, '2021-06-29 05:05:58', '2021-06-29 05:05:58', NULL, NULL, 'hendry', 'Kabupaten Sidoarjo', 'Jawa Timur', NULL),
+(6, 6, 'Selama kita tidak menyerah, maka segala kemungkinan masih bisa terjadi, tidak ada yang tidak mungkin.. Jadi berjuang lah sekuat tenaga untuk meraih semua mimpi.. Orang SUKSES selalu kelebihan satu cara.. Sedangkan orang gagal selalu kelebihan satu alasan', 'covers/dJWGjZPdHUKQ2qWFyz4Q3Tr6bfuiy8brlps7tvfU.jpg', NULL, NULL, '2021-06-29 05:05:58', '2021-07-17 05:11:45', NULL, NULL, 'hendry', 'Kabupaten Sidoarjo', 'Jawa Timur', 'hendry/parallax/GTQ9fbg1W94SKZP6JRdmG9dHHzOj89KAsePj3Jio.jpg'),
 (7, 7, NULL, NULL, '<p>Pertama kenal Evoush di Fb dengan bapak dir langsung..<br />Awalnya diperkenalkan produk dan sistem marketing<br />Buat sya ini ada peluang usaha sangat bagus..selain produk2 bermanfaat juga peluang usaha yg sngat baik dimasa sperti sekarang ini / pandemi covid 19<br />Selain bisnis nya yg sangat mudah dilakukan sy memperkanalkan ke semua kalangan sperti anak sekolah SMA .ibu rumah tangga..Karyawan swasta dan ASN juga mau mengambil peluang usaha evoush ini<br />Dan disela2 kesibukan sy sbgai Ibu Rumah Tangga dan Pengusaha dan tetap bisa memperkenalkan bisnis evoush kepada teman2<br />Dengan bermodal hanya 3,2 jt saya sdh mendpatkan omset smpai 35 jt an dan mencapai posisi saphire</p>', NULL, '2021-06-29 05:13:00', '2021-06-29 05:13:00', NULL, NULL, NULL, 'Kabupaten Lombok Tengah', 'Nusa Tenggara Barat', NULL),
 (8, 8, 'Dunia ini dipenui dengan orang-orang baik dan jika kamu tidak dapat menemukannya, jadilah salah satunya', NULL, '<p>Berkomitmen yang kuat untuk selalu maju dan selalu menyampaikan informasi tentang berbisnis di evoush. Baik itu manfaat produknya maupun system bisnisnya yang handal, selalu belajar ...</p>', NULL, '2021-06-29 05:16:59', '2021-06-29 05:16:59', NULL, NULL, NULL, 'Kabupaten Kapuas', 'Kalimantan Tengah', NULL),
 (9, 9, NULL, NULL, NULL, NULL, '2021-06-29 05:19:16', '2021-06-29 05:19:16', NULL, 'reninurhayati', NULL, 'Kabupaten Kendal', 'Jawa Tengah', NULL),
@@ -505,7 +507,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (9, 'Reni Nurhayati', 'nurhayati.reni.nr@gmail.com', NULL, '$2y$10$h7Y1X0p2BVvKG0t5G8EY3OP/wYHCmvnbbekOcILKDAVvkx.jhgmKK', NULL, '2021-06-29 05:19:15', '2021-06-29 05:19:15', 'salwa', '[\"MEMBER\"]', NULL, '6282299683355', NULL, 'ACTIVE'),
 (10, 'omay tri wahyuni', 'a0903991328@gmail.com', NULL, '$2y$10$B6A/4d1YXknvKfIY0/Ivp.ziMpkvbj1B1u823/1e0PSnFEJ/Q3/CG', NULL, '2021-06-29 05:31:08', '2021-06-29 05:31:08', 'youlia', '[\"MEMBER\"]', NULL, '6289514462738', NULL, 'ACTIVE'),
 (11, 'Suprihanik Mujiastuti,SE', 'hanik.hansel@gmail.com', NULL, '$2y$10$3QxVI19L6YTxvCHXxm2psOfpvXg5Ei/n3tTg2ueTEKp9r3GTzUycW', NULL, '2021-06-29 08:01:00', '2021-06-29 08:01:00', 'hanik', '[\"MEMBER\"]', NULL, '6282264640950', NULL, 'ACTIVE'),
-(12, 'Tutik Rahayu', 'kinclong@evoush.com', NULL, '$2y$10$dkMBXFp9MzVIVP89ib2ZUeZC6OfnjeNwcsOvl3.76xz7CqYd0Zexa', NULL, '2021-07-01 04:12:31', '2021-07-02 09:39:25', 'kinclong', '[\"MEMBER\"]', NULL, '6282131609949', 'kinclong/profile/5D006BbpiCoMKxTgxR0SJUixh4KCfcOSJWT6nRz9.jpg', 'ACTIVE');
+(12, 'Tutik Rahayu', 'kinclong@evoush.com', NULL, '$2y$10$dkMBXFp9MzVIVP89ib2ZUeZC6OfnjeNwcsOvl3.76xz7CqYd0Zexa', NULL, '2021-07-01 04:12:31', '2021-07-17 01:51:07', 'kinclong', '[\"MEMBER\"]', NULL, '6282131609949', 'kinclong/profile/QkIahVq6B9ixDXNdCIhv6Dln1j2mjJofL1AEScAl.png', 'ACTIVE');
 
 --
 -- Indexes for dumped tables
@@ -673,7 +675,7 @@ ALTER TABLE `category_message`
 -- AUTO_INCREMENT for table `category_product`
 --
 ALTER TABLE `category_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `contact_message`
@@ -727,7 +729,7 @@ ALTER TABLE `order_product`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `profile`

@@ -1,16 +1,24 @@
+@if(Auth::check() && Auth::user()->username === "administrator")
+{{
+    session(['already' => 'Anda sudah melakukan login sebagai administrator'])
+}}
+<script>
+    window.location="{{route('dashboard.evoush')}}"
+</script>
+@endif
 @extends('layouts.auth.app')
 @section('title') Evoush::Profile | Login::Page @endsection
 
+
 @section('content')
 <div id="login">
-
     {{-- <h3 class="text-primary mt-2 mb-5 text-center">Login System</h3> --}}
 
     <div class="row justify-content-center">
         {{-- @include('layouts.components.logo') --}}
-        <h1 class="header-text" style="font-family: 'Walkway';">Profile Member</h1>
+        <h1 class="header-text" style="font-family: 'Walkway';">Administrator Login</h1>
         <blockquote class="blockquote-footer">
-            bergabunglah menjadi bagian besar dari <span class="text-danger">evoush</span>
+            <span class="text-danger">evoush</span> website management content 
         </blockquote>
     </div>
 

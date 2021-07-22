@@ -13,11 +13,15 @@ use App\Http\Controllers\MetaDataController;
 // Testing percobaan crud api
 Route::get('/test/data/show-all', [ApiDataController::class, 'show_all']);
 Route::post('/test/data/store', [ApiDataController::class, 'store']);
-// new member join
-Route::post('/member/new-join', [ApiDataController::class, 'store_new_member']);
 Route::middleware(['cors'])->group(function(){
 	Route::resource('/test/data', ApiDataController::class);
 });
+
+
+
+// new member join
+Route::post('/member/new-join', [ApiDataController::class, 'store_new_member']);
+
 
 /*
 |--------------------------------------------------------------------------

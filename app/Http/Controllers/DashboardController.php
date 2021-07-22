@@ -48,6 +48,7 @@ class DashboardController extends Controller
                     'user' => User::where('username', Auth::user()->username)->get(),
                 ];
             }
+            
             return view('dashboard.index', $context);
         }else{
             return redirect()->route('login')->with('status', 'Sesi anda telah habis, silahkan login ulang');

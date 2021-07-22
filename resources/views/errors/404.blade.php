@@ -31,7 +31,7 @@
 
           <a @click="historyBack()" class="btn btn-success btn-block">Kembali</a> 
 
-          <a href="{{route('evoush.contact')}}" class="btn btn-info btn-block text-white mb-5">Admin Contact</a>
+          <a href="#" class="btn btn-info btn-block text-white mb-5">Admin Contact</a>
         </div>
       </div>
     </div>

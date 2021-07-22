@@ -19,19 +19,19 @@ fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 {{-- Check Condition For Product page --}}
 
-@if(Request::segment(2) !== 'Kosmetik' && Request::segment(2) !== 'Nutrisi')
+{{-- @if(Request::segment(2) !== 'Kosmetik' && Request::segment(2) !== 'Nutrisi')
   @include('layouts.homepage.partials.navigation')
-@endif
+@endif --}}
 
     {{-- Page Content --}}
     @yield('content')
     {{-- End Page Content --}}
 
 {{-- Check Condition For Product page --}}
-@include('layouts.homepage.partials.backToTop')
+{{-- @include('layouts.homepage.partials.backToTop')
 @if(Request::segment(2) !== 'Kosmetik' && Request::segment(2) !== 'Nutrisi')
   @include('layouts.homepage.partials.footer')
-@endif
+@endif --}}
 
 
 <script src="{{mix('js/app.js')}}"></script>

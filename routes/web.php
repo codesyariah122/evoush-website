@@ -38,34 +38,10 @@ Route::get('/api/spa', [TestSpaController::class, 'index']);
 |
 */
 // Web Page Route HOMEPAGE EVOUSH
-Route::get('/', [HomeController::class, 'index'])->name('evoush.home');
-Route::get('/about', [HomeController::class, 'about'])->name('evoush.about');
-Route::get('/product', [HomeController::class, 'product'])->name('evoush.product');
-Route::get('/product/{category}/{slug}', [HomeController::class, 'detail']);
-Route::get('/articles', [HomeController::class, 'article'])->name('evoush.articles');
-Route::get('/contact', [HomeController::class, 'contact'])->name('evoush.contact');
-Route::post('/contact/store', [HomeController::class, 'store_contact'])->name('contactpage.store');
-Route::get('/member-search', [HomeController::class, 'search_profile'])->name('member.search');
-Route::get('/member-lists', [HomeController::class, 'member_lists'])->name('member.lists');
-Route::get('/marketing-plan', [HomeController::class, 'marketing_plan'])->name('marketing.plan');
-// Application Route
-Route::get('/evoush/application/product/healthy', [EvoushApplicationController::class, 'healthy'])->name('evoush.healthy');
-Route::get('/evoush/application/product/beauty', [EvoushApplicationController::class, 'beauty'])->name('evoush.beauty');
-Route::get('/evoush/application/salaam', [EvoushApplicationController::class, 'salaam'])->name('evoush.salaam');
-Route::get('/evoush/application/cargo', [EvoushApplicationController::class, 'cargo'])->name('evoush.cargo');
+Route::get('/', function(){
+    return view('auth.login');
+});
 
-
-// Route Profile Page
-Route::get('/member/{username}', [HomeController::class, 'profile_page'])->name('member.username');
-Route::get('/signup/member/{id}', [HomeController::class, 'create_new_member'])->name('signup.member');
-// Route::post('/store/member', [HomeController::class, 'store_new_member'])->name('store.member');
-
-
-// Route In Sites Footer
-Route::get('/management', [HomeController::class, 'management_evoush'])->name('management');
-Route::get('/event', [HomeController::class, 'event'])->name('event');
-Route::get('/success-stories', [HomeController::class, 'stories'])->name('stories');
-Route::get('/top-leaders', [HomeController::class, 'top_leaders'])->name('leaders');
 // Auth::routes();
 Auth::routes(['register' => false, 'login' => true, 'reset' => false]);
 

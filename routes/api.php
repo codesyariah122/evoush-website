@@ -22,6 +22,8 @@ Route::middleware(['cors'])->group(function(){
 // new member join
 Route::post('/member/new-join', [ApiDataController::class, 'store_new_member']);
 
+// profile update
+// Route::resource('/profile', ProfileController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +35,7 @@ Route::post('/member/new-join', [ApiDataController::class, 'store_new_member']);
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::get('/product/all', [ApiDataController::class, 'allProduct']);
 Route::get('/product/kosmetik', [ApiDataController::class, 'kosmetik']);
 Route::get('/product/nutrisi', [ApiDataController::class, 'nutrisi']);
 Route::get('/detail/{categories}/{slug}', [ApiDataController::class, 'show_product_categories']);

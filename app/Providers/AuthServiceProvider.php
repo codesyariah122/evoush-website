@@ -27,24 +27,26 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::routes();
 
+        // Passport::loadKeysFrom(__DIR__.'/../secrets/oauth');
+
         Gate::define('manage-users', function($user){
-           return count(array_intersect(["ADMIN"], json_decode($user->roles)));
-        });
+         return count(array_intersect(["ADMIN"], json_decode($user->roles)));
+     });
 
         Gate::define('manage-categories', function($user){
-           return count(array_intersect(["ADMIN", "STAFF"],
+         return count(array_intersect(["ADMIN", "STAFF"],
             json_decode($user->roles)));
-        });
+     });
 
         Gate::define('manage-products', function($user){
-           return count(array_intersect(["ADMIN", "STAFF"],
+         return count(array_intersect(["ADMIN", "STAFF"],
             json_decode($user->roles)));
-        });
+     });
 
         Gate::define('manage-orders', function($user){
-           return count(array_intersect(["ADMIN", "STAFF"],
+         return count(array_intersect(["ADMIN", "STAFF"],
             json_decode($user->roles)));
-        });
+     });
 
         //
     }

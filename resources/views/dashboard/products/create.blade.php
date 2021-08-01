@@ -39,6 +39,17 @@
                                     {{$errors->first('cover')}}
                                 </div>
                                 <br>
+
+                                <label for="sliders">Sliders</label>
+                                <input type="file"
+                                    class="form-control {{$errors->first('slider') ? "is-invald" : ""}}"
+                                    name="slider[]" 
+                                    multiple="multiple">
+                                <div class="invalid-feedback">
+                                    {{$errors->first('cover')}}
+                                </div>
+                                <br>
+                                
                                 <label for="full-featured-non-premium">Detail Description</label><br>
                                 <textarea name="description" id="full-featured-non-premium" class="form-control {{$errors->first('description') ? "is-invald" : ""}}" placeholder="Give a description about this product" value="{{old('description')}}"></textarea>
                                 <div class="invalid-feedback">

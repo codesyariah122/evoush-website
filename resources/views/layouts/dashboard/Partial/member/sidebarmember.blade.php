@@ -11,6 +11,8 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
+            
+            @if(Auth::check() && Auth::user()->username)
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
@@ -57,6 +59,7 @@
                     </div>
                 </div>
             </li>
+            @endif
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

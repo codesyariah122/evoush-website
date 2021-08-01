@@ -177,7 +177,7 @@ class ProfileController extends Controller
             if($profile->cover && file_exists(storage_path('app/public/'.$update_user->username.'/'.$profile->cover))){
                 \Storage::delete('public/'.$update_user->username.'/covers/'.$profile->cover);
             }
-            $file = $request->file('cover')->store($profile->username.'/covers', 'public');
+            $file = $request->file('cover')->store($update_user->username.'/covers', 'public');
             $profile->cover = $file;
         }
         $profile->about = $request->get('about');

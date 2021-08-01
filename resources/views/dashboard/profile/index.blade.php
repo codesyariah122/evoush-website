@@ -59,7 +59,7 @@
                     <div class="col-12">
                         <center>
                             <a href="{{route('profile.edit', [$profile->id])}}" class="btn btn-primary">Edit Profile</a>
-                            <a href="{{route('member.username', ['username' => $profile->username])}}" class="btn btn-success" target="_blank">View Profile</a>
+                            {{-- <a href="{{route('member.username', ['username' => $profile->username])}}" class="btn btn-success" target="_blank">View Profile</a> --}}
                         </center>
                     </div>
                 </div>

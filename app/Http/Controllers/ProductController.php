@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use App\Traits\ImageUpload;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 use Auth;
@@ -178,12 +179,30 @@ class ProductController extends Controller
             $new_cover_path = $new_cover->store('product-covers', 'public');
             $product->cover = $new_cover_path;
         }
-           $product->updated_by = \Auth::user()->id;
-           $product->status = $request->get('status');
-           $product->save();
-           $product->categories()->sync($request->get('categories'));
-           return redirect()->route('products.edit', [$product->id])->with('status',
-            'product successfully updated');
+
+        if($request->hasFile('slider')) {
+          foreach($request->file('slider') as $file)
+          {
+            $name = $file->getClientOriginalName();
+            if($product->slider && file_exists(storage_path('app/public/' .
+                    $product->slider))){
+                     \Storage::delete('public/'. $product->slider);
+            }
+
+            $file->move(public_path('storage').'/product-sliders/', $name); 
+            // $file->store('product-sliders', 'public', $name);
+            $imgData[] = $name;  
+          }
+
+          $product->slider = json_encode($imgData);
+
+        }
+        $product->updated_by = \Auth::user()->id;
+        $product->status = $request->get('status');
+        $product->save();
+        $product->categories()->sync($request->get('categories'));
+        return redirect()->route('products.edit', [$product->id])->with('status',
+          'product successfully updated');
     }
 
     /**

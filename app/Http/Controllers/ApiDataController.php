@@ -280,6 +280,15 @@ class ApiDataController extends Controller
 
 
     // Api Data Product
+
+    public function allProduct()
+    {
+        $data = Product::with(['categories'])
+            ->orderBy('id', 'DESC')
+            ->get();
+        return json_encode($data);
+    }
+
     public function kosmetik(Request $request)
     {
         $category = $request->segment(3);

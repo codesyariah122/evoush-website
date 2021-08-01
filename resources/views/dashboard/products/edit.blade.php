@@ -51,6 +51,31 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="slider">Slider</label>
+                                    <small class="text-muted">Current slider</small><br>
+                                    @if($product->slider)
+                                    {{-- @php
+                                        $sliders = explode(",", $product->slider);
+                                        // var_dump($sliders); die;
+                                    @endphp --}}
+
+                                    @foreach(json_decode($product->slider, true) as $slider)
+                                        <img src="{{asset('storage/product-sliders/' . $slider)}}" width="96px"/>
+                                    @endforeach
+                                    @endif
+                                    <br><br>
+                                    <input
+                                    type="file"
+                                    class="form-control"
+                                    name="slider[]" 
+                                    multiple="multiple"
+                                    >
+                                    <small class="text-muted">Kosongkan jika tidak ingin mengubah
+                                    slider</small>
+                                    <br><br>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="slug">Slug</label>
                                     <input type="text" name="slug" id="slug" value="{{old('slug') ? old('slug') : $product->slug}}" placeholder="enter-a-slug" class="form-control {{$errors->first('slug') ? "is-invalid" : ""}} ">
                                 </div>

@@ -144,6 +144,9 @@ class ProfileController extends Controller
         // Updated User By field user_id on table profile
         $update_user = User::findOrFail($id);
         $update_user->name = $request->get('name');
+
+        // var_dump($request->file('avatar')); die;
+
         if($request->file('avatar')){
             if($update_user->avatar && file_exists(storage_path('app/public/'.$update_user->username .'/' . $update_user->avatar))){
                 \Storage::delete('public/'.$update_user->username.'/'.$update_user->avatar);

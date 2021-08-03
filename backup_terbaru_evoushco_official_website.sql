@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 03, 2021 at 03:34 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.3.29
+-- Host: localhost:3306
+-- Generation Time: Aug 03, 2021 at 10:38 PM
+-- Server version: 10.2.39-MariaDB-log-cll-lve
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `evoush_db`
+-- Database: `evoushco_official_website`
 --
 
 -- --------------------------------------------------------
@@ -363,6 +364,13 @@ CREATE TABLE `oauth_access_tokens` (
   `expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `oauth_access_tokens`
+--
+
+INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('a56065436a2bd6048b461c0721b6bbf0730532b8e66e336f19bbd35a5b42fe13a2f53c1bea46d8f7', 6, 1, 'authToken', '[]', 0, '2021-08-03 05:45:39', '2021-08-03 05:45:39', '2022-08-03 12:45:39');
+
 -- --------------------------------------------------------
 
 --
@@ -403,8 +411,8 @@ CREATE TABLE `oauth_clients` (
 --
 
 INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `provider`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
-(7, NULL, 'Evoush:App Personal Access Client', 'rTdJ087rvsQB1fhMHe6QrNhqfUSk9qjC48SdSbdc', NULL, 'http://localhost', 1, 0, 0, '2021-07-31 00:01:03', '2021-07-31 00:01:03'),
-(8, NULL, 'Evoush:App Password Grant Client', 'LJCWZbFm5j62CUp6u1BNYFzIeqdki1847bqnUpY1', 'users', 'http://localhost', 0, 1, 0, '2021-07-31 00:01:03', '2021-07-31 00:01:03');
+(1, NULL, 'Evoush:App Personal Access Client', 'Tn1nxvi9TByMrVr0UJETDSZFhtuqInnk8SP1eMqY', NULL, 'http://localhost', 1, 0, 0, '2021-07-28 23:59:53', '2021-07-28 23:59:53'),
+(2, NULL, 'Evoush:App Password Grant Client', 'fCo7E5zyHFvkR8YB0R71rIxdzkvJGBNqefIHu8Bv', 'users', 'http://localhost', 0, 1, 0, '2021-07-28 23:59:53', '2021-07-28 23:59:53');
 
 -- --------------------------------------------------------
 
@@ -424,7 +432,7 @@ CREATE TABLE `oauth_personal_access_clients` (
 --
 
 INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
-(4, 7, '2021-07-31 00:01:03', '2021-07-31 00:01:03');
+(1, 1, '2021-07-28 23:59:53', '2021-07-28 23:59:53');
 
 -- --------------------------------------------------------
 
@@ -557,17 +565,16 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`id`, `user_id`, `quotes`, `cover`, `about`, `deleted_at`, `created_at`, `updated_at`, `instagram`, `facebook`, `youtube`, `city`, `province`, `parallax`) VALUES
 (1, 1, 'Your Eternal Future', 'administrator/covers/Cl8rxRRBKSsrRS9UXMOqA5uTuh16caKbzp4jKB1Q.jpg', 'Membangun bisnis jaringan dengan semangat yang penuh inovasi, product-product terbaik yang di sajikan sebagai modal dan motivasi untuk menjadi juaranya.', NULL, NULL, '2021-07-28 23:42:33', 'pujiermanto', 'pujiermanto', 'https://www.youtube.com/channel/UCxptCTRqJ5amS9nmztsG7jw', 'Kota Bandung', 'Jawa Barat', 'administrator/parallax/Ulj7Wu7TQTzKbTR8qc4tbyZNYek1g8g8NDpgQ6FS.png'),
 (2, 2, 'Daun yang jatuh tak pernah menyalahkan angin yang berhembus', NULL, '<p>Akun ini bertugas untuk mengelola konten untuk artikel ataupun informasi yang menarik seputar evoush. Secara fungsional akun ini mengatur management kontent baik itu kontent tulisan dan design grafis yang memberikan informasi menarik dan terupdate untuk para member evoush utamanya dan khalayak awam selebihnya.</p>', NULL, '2021-06-28 00:19:32', '2021-06-28 00:19:32', 'evoush.official', 'evoush.evoush.12', 'https://www.youtube.com/channel/UCIzNgeNDD58z8XNppkopwzw', 'Kabupaten Sidoarjo', 'Jawa Timur', NULL),
-(3, 3, 'jangan cemas kalau badai datang, karena disana juga akan ada pelangi yang menunggu', NULL, '<p>Saya adalah seorang praktisi kesehatan di bidang kefarmasian yang telah memulai berbisnis dg evoush. Saya memulai bisnis evoush ini dengan menjadi pemakai dr produk nya terlebih dahulu.<br />Dengan bermodalkan uang tabungan yang dulu beserta dengan bantuan suami dan tekad yang kuat, saya pun memulai bisnis yang sekarang sudah membawa saya k peringkat shapire dlm kurung waktu 2,5 bulan dg omset puluhan juta rupiah🥰</p>', NULL, '2021-06-29 04:40:21', '2021-06-29 04:40:21', NULL, NULL, 'saidahlaila', 'Kabupaten Hulu Sungai Selatan', 'Kalimantan Selatan', NULL),
-(4, 4, 'TERIMA KESEMPATAN PELUANG YANG DATANG, GAGAL ITU URUSAN NANTI YANG TERPENTING KITA BERANI MENCOBA DAN MENCOBA', NULL, '<p>Saya seorang ibu rumah tangga yang memiliki 2 org putri,setelah selesai mengeyam pendidikan diperguruan tinggi swasta di kota malang saya langsung bekerja dgn berbagai profesi sebagai seorang guru akuntansi &nbsp;dan kemudian bekerja sebagai staff acounting di perusahaan swasta.<br />Karena suami yang hrs berpindah tempat kerja ke kota lain dan keterbatasan waktu untuk keluarga saya akhirnya resign.<br />Kemudian saya memulai bisnis sendiri dan akhirnya saya di perkenalkan oleh seorang teman dengan <strong>product Evoush</strong>.<br />Awalnya saya hanya pemakai krn &nbsp;saya merasakan manfaat dr product tersebut saya ingin langsung menjalankan bisnisnya.<br />Dengan tekad yang kuat bermodalkan tabungan dari bisnis sebelumnya saya mengambil inisiatif untuk bergabung menjadi mitra <strong>Evoush</strong>...banyak yg saya dptkan di bisnis ini selain pencapaian <strong>Sapphire &nbsp;dgn income puluhan juta rupiah</strong> dlm <strong>kurun waktu 3 bulan</strong>...yang membuat saya lebih mantap lagi adalah menjadi mitra <strong>PT. Pineleng Indah Cemerlang</strong>, perusahaan yg sdh memiliki legalitas dan kompoten untuk menaungi mitra2nya di seluruh Indonesia maupun di Asia</p>', NULL, '2021-06-29 05:03:57', '2021-06-29 05:03:57', NULL, NULL, 'putriku', 'Kabupaten Bima', 'Nusa Tenggara Barat', NULL),
-(5, 5, 'Selama kita tidak menyerah, maka segala kemungkinan masih bisa terjadi, tidak ada yang tidak mungkin.. Jadi berjuang lah sekuat tenaga untuk meraih semua mimpi.. Orang SUKSES selalu kelebihan satu cara.. Sedangkan orang gagal selalu kelebihan satu alasan', NULL, NULL, NULL, '2021-06-29 05:05:58', '2021-07-17 05:11:45', NULL, NULL, 'hendry', 'Kabupaten Sidoarjo', 'Jawa Timur', 'hendry/parallax/GTQ9fbg1W94SKZP6JRdmG9dHHzOj89KAsePj3Jio.jpg'),
-(6, 6, NULL, NULL, '<p>Pertama kenal Evoush di Fb dengan bapak dir langsung..<br />Awalnya diperkenalkan produk dan sistem marketing<br />Buat sya ini ada peluang usaha sangat bagus..selain produk2 bermanfaat juga peluang usaha yg sngat baik dimasa sperti sekarang ini / pandemi covid 19<br />Selain bisnis nya yg sangat mudah dilakukan sy memperkanalkan ke semua kalangan sperti anak sekolah SMA .ibu rumah tangga..Karyawan swasta dan ASN juga mau mengambil peluang usaha evoush ini<br />Dan disela2 kesibukan sy sbgai Ibu Rumah Tangga dan Pengusaha dan tetap bisa memperkenalkan bisnis evoush kepada teman2<br />Dengan bermodal hanya 3,2 jt saya sdh mendpatkan omset smpai 35 jt an dan mencapai posisi saphire</p>', NULL, '2021-06-29 05:13:00', '2021-06-29 05:13:00', NULL, NULL, NULL, 'Kabupaten Lombok Tengah', 'Nusa Tenggara Barat', NULL),
-(7, 7, 'Dunia ini dipenui dengan orang-orang baik dan jika kamu tidak dapat menemukannya, jadilah salah satunya', NULL, '<p>Berkomitmen yang kuat untuk selalu maju dan selalu menyampaikan informasi tentang berbisnis di evoush. Baik itu manfaat produknya maupun system bisnisnya yang handal, selalu belajar ...</p>', NULL, '2021-06-29 05:16:59', '2021-06-29 05:16:59', NULL, NULL, NULL, 'Kabupaten Kapuas', 'Kalimantan Tengah', NULL),
-(8, 8, NULL, NULL, NULL, NULL, '2021-06-29 05:19:16', '2021-06-29 05:19:16', NULL, 'reninurhayati', NULL, 'Kabupaten Kendal', 'Jawa Tengah', NULL),
-(9, 9, NULL, NULL, '<p>Hallo ... nama saya <strong>omay tri wahyuni</strong> saya mantan BMI Taiwan sy pernah menjadi leader di Duta Network indonesia, &amp; sekarang saya jadi ibu rumah tangga,sekaligus online olshop, saya jg ada beberapa bln ini <strong>gabung di Evoush</strong>, sy mulai dri nol di Evoush &amp; alhamdulilah sdh mendapatkan bonus nya, bsr harapan sy di Evoush ini sy ingin success, beribadah ketanah suci &amp; jdi leader besar yg bertanggung jawab sm team nya &amp; menebar terus <strong>manfaat produk Evoush</strong> kesemua kalangan masyarakat indonesia &amp; luar negri</p>', NULL, '2021-06-29 05:31:09', '2021-06-29 05:31:09', 'yuliagtulooh', 'omaytriwahyuni', 'https://www.youtube.com/channel/UCy_H53ISURYZ37d7wmOk2Ag', 'Kota Bogor', 'Jawa Barat', NULL),
-(10, 10, 'there is only one thing that make a dream impossible to achieve; the fear of failure', NULL, '<p>&lt;p&gt;&amp;nbsp;mendapatkan &lt;strong&gt;3 nasabah asuransi&lt;/strong&gt; dalam seminggu dan&lt;strong&gt; mendapat 7 bintang&lt;/strong&gt;&lt;/p&gt;</p>', NULL, '2021-06-29 08:01:02', '2021-06-29 08:01:02', NULL, NULL, NULL, 'Kabupaten Sidoarjo', 'Jawa Timur', NULL),
-(11, 11, 'Tidak ada eskalator menuju sukses.Kamu harus berani menaiki tangga demi tangga menuju puncak,tidak ada jalan pintas.', NULL, NULL, NULL, '2021-07-01 04:12:34', '2021-07-02 08:28:01', NULL, NULL, NULL, 'Kabupaten Sidoarjo', 'Jawa Timur', 'kinclong/parallax/XOqXGVTCPcjDUb8MIZ8mdf52dLqKMPHsWXjVaCvU.jpg'),
-(12, 12, 'Masa depan adalah milik Anda yang telah menyiapkannya dari hari ini', NULL, NULL, NULL, '2021-06-29 04:28:04', '2021-06-29 04:28:04', NULL, NULL, 'citradevi', 'Kabupaten Sidoarjo', 'Jawa Timur', NULL),
-(13, 13, 'jadilah seperti daun yang jatuh, seperti joni sang maung bandung', 'jonikemod/covers/agDUPyOJfU0S98f8fx7FBgNbccAKidzqf6tmbxH3.jpg', 'nya kitu tea', NULL, '2021-08-03 02:55:25', '2021-08-03 04:49:33', 'joni.kemod', 'joni.kemod', NULL, 'Kota Cirebon', 'Jawa Barat', NULL);
+(3, 3, 'Masa depan adalah milik Anda yang telah menyiapkannya dari hari ini', NULL, NULL, NULL, '2021-06-29 04:28:04', '2021-06-29 04:28:04', NULL, NULL, 'citradevi', 'Kabupaten Sidoarjo', 'Jawa Timur', NULL),
+(4, 4, 'jangan cemas kalau badai datang, karena disana juga akan ada pelangi yang menunggu', NULL, '<p>Saya adalah seorang praktisi kesehatan di bidang kefarmasian yang telah memulai berbisnis dg evoush. Saya memulai bisnis evoush ini dengan menjadi pemakai dr produk nya terlebih dahulu.<br />Dengan bermodalkan uang tabungan yang dulu beserta dengan bantuan suami dan tekad yang kuat, saya pun memulai bisnis yang sekarang sudah membawa saya k peringkat shapire dlm kurung waktu 2,5 bulan dg omset puluhan juta rupiah🥰</p>', NULL, '2021-06-29 04:40:21', '2021-06-29 04:40:21', NULL, NULL, 'saidahlaila', 'Kabupaten Hulu Sungai Selatan', 'Kalimantan Selatan', NULL),
+(5, 5, 'TERIMA KESEMPATAN PELUANG YANG DATANG, GAGAL ITU URUSAN NANTI YANG TERPENTING KITA BERANI MENCOBA DAN MENCOBA', NULL, '<p>Saya seorang ibu rumah tangga yang memiliki 2 org putri,setelah selesai mengeyam pendidikan diperguruan tinggi swasta di kota malang saya langsung bekerja dgn berbagai profesi sebagai seorang guru akuntansi &nbsp;dan kemudian bekerja sebagai staff acounting di perusahaan swasta.<br />Karena suami yang hrs berpindah tempat kerja ke kota lain dan keterbatasan waktu untuk keluarga saya akhirnya resign.<br />Kemudian saya memulai bisnis sendiri dan akhirnya saya di perkenalkan oleh seorang teman dengan <strong>product Evoush</strong>.<br />Awalnya saya hanya pemakai krn &nbsp;saya merasakan manfaat dr product tersebut saya ingin langsung menjalankan bisnisnya.<br />Dengan tekad yang kuat bermodalkan tabungan dari bisnis sebelumnya saya mengambil inisiatif untuk bergabung menjadi mitra <strong>Evoush</strong>...banyak yg saya dptkan di bisnis ini selain pencapaian <strong>Sapphire &nbsp;dgn income puluhan juta rupiah</strong> dlm <strong>kurun waktu 3 bulan</strong>...yang membuat saya lebih mantap lagi adalah menjadi mitra <strong>PT. Pineleng Indah Cemerlang</strong>, perusahaan yg sdh memiliki legalitas dan kompoten untuk menaungi mitra2nya di seluruh Indonesia maupun di Asia</p>', NULL, '2021-06-29 05:03:57', '2021-06-29 05:03:57', NULL, NULL, 'putriku', 'Kabupaten Bima', 'Nusa Tenggara Barat', NULL),
+(6, 6, 'Selama kita tidak menyerah, maka segala kemungkinan masih bisa terjadi, tidak ada yang tidak mungkin.. Jadi berjuang lah sekuat tenaga untuk meraih semua mimpi.. Orang SUKSES selalu kelebihan satu cara.. Sedangkan orang gagal selalu kelebihan satu alasan', NULL, NULL, NULL, '2021-06-29 05:05:58', '2021-07-17 05:11:45', NULL, NULL, 'hendry', 'Kabupaten Sidoarjo', 'Jawa Timur', NULL),
+(7, 7, NULL, NULL, '<p>Pertama kenal Evoush di Fb dengan bapak dir langsung..<br />Awalnya diperkenalkan produk dan sistem marketing<br />Buat sya ini ada peluang usaha sangat bagus..selain produk2 bermanfaat juga peluang usaha yg sngat baik dimasa sperti sekarang ini / pandemi covid 19<br />Selain bisnis nya yg sangat mudah dilakukan sy memperkanalkan ke semua kalangan sperti anak sekolah SMA .ibu rumah tangga..Karyawan swasta dan ASN juga mau mengambil peluang usaha evoush ini<br />Dan disela2 kesibukan sy sbgai Ibu Rumah Tangga dan Pengusaha dan tetap bisa memperkenalkan bisnis evoush kepada teman2<br />Dengan bermodal hanya 3,2 jt saya sdh mendpatkan omset smpai 35 jt an dan mencapai posisi saphire</p>', NULL, '2021-06-29 05:13:00', '2021-06-29 05:13:00', NULL, NULL, NULL, 'Kabupaten Lombok Tengah', 'Nusa Tenggara Barat', NULL),
+(8, 8, 'Dunia ini dipenui dengan orang-orang baik dan jika kamu tidak dapat menemukannya, jadilah salah satunya', NULL, '<p>Berkomitmen yang kuat untuk selalu maju dan selalu menyampaikan informasi tentang berbisnis di evoush. Baik itu manfaat produknya maupun system bisnisnya yang handal, selalu belajar ...</p>', NULL, '2021-06-29 05:16:59', '2021-06-29 05:16:59', NULL, NULL, NULL, 'Kabupaten Kapuas', 'Kalimantan Tengah', NULL),
+(9, 9, NULL, NULL, NULL, NULL, '2021-06-29 05:19:16', '2021-06-29 05:19:16', NULL, 'reninurhayati', NULL, 'Kabupaten Kendal', 'Jawa Tengah', NULL),
+(10, 10, NULL, NULL, '<p>Hallo ... nama saya <strong>omay tri wahyuni</strong> saya mantan BMI Taiwan sy pernah menjadi leader di Duta Network indonesia, &amp; sekarang saya jadi ibu rumah tangga,sekaligus online olshop, saya jg ada beberapa bln ini <strong>gabung di Evoush</strong>, sy mulai dri nol di Evoush &amp; alhamdulilah sdh mendapatkan bonus nya, bsr harapan sy di Evoush ini sy ingin success, beribadah ketanah suci &amp; jdi leader besar yg bertanggung jawab sm team nya &amp; menebar terus <strong>manfaat produk Evoush</strong> kesemua kalangan masyarakat indonesia &amp; luar negri</p>', NULL, '2021-06-29 05:31:09', '2021-06-29 05:31:09', 'yuliagtulooh', 'omaytriwahyuni', 'https://www.youtube.com/channel/UCy_H53ISURYZ37d7wmOk2Ag', 'Kota Bogor', 'Jawa Barat', NULL),
+(11, 11, 'there is only one thing that make a dream impossible to achieve; the fear of failure', NULL, '<p>&lt;p&gt;&amp;nbsp;mendapatkan &lt;strong&gt;3 nasabah asuransi&lt;/strong&gt; dalam seminggu dan&lt;strong&gt; mendapat 7 bintang&lt;/strong&gt;&lt;/p&gt;</p>', NULL, '2021-06-29 08:01:02', '2021-06-29 08:01:02', NULL, NULL, NULL, 'Kabupaten Sidoarjo', 'Jawa Timur', NULL),
+(12, 12, 'Tidak ada eskalator menuju sukses.Kamu harus berani menaiki tangga demi tangga menuju puncak,tidak ada jalan pintas.', NULL, NULL, NULL, '2021-07-01 04:12:34', '2021-07-02 08:28:01', NULL, NULL, NULL, 'Kabupaten Sidoarjo', 'Jawa Timur', NULL);
 
 -- --------------------------------------------------------
 
@@ -597,19 +604,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `roles`, `address`, `phone`, `avatar`, `status`) VALUES
-(1, 'puji ermanto', 'pujiermanto@gmail.com', NULL, '$2y$10$5Mib7Q.KxYo0LXpegbOpCOWy6uQ5CqSDn02QkD/FT0.WemStEtz3q', NULL, '2021-05-28 07:34:40', '2021-07-31 00:05:57', 'administrator', '[\"ADMIN\"]', 'Jl. Boeing Utara 1 No.7', '6288222668778', 'administrator/profile/UXGtWE6NMu8cd5hi6nIEgu6WJL6YctE4fzMK0djb.jpg', 'ACTIVE'),
+(1, 'puji ermanto', 'pujiermanto@gmail.com', NULL, '$2y$10$5Mib7Q.KxYo0LXpegbOpCOWy6uQ5CqSDn02QkD/FT0.WemStEtz3q', NULL, '2021-05-28 07:34:40', '2021-06-15 09:37:48', 'administrator', '[\"ADMIN\"]', 'Jl. Boeing Utara 1 No.7', '6288222668778', 'administrator/profile/UXGtWE6NMu8cd5hi6nIEgu6WJL6YctE4fzMK0djb.jpg', 'ACTIVE'),
 (2, 'evoush author', 'evoushauthor@evoush.com', NULL, '$2y$10$lZ1LcyoA9VlyE0By4TuRGOCraIcyZ630KyaLw2hRnCG2/Nk65lyby', NULL, '2021-06-28 00:19:31', '2021-06-28 00:19:31', 'evoush_author2021', '[\"AUTHOR\"]', 'Pergudangan sirie Blok-S/20', '6288222668778', 'avatars/pUz1wibOjtyfJpjM9IFOd8hDYNGUI7FCCX0WCKLj.jpg', 'ACTIVE'),
-(3, 'saidah laila', 'saidahlaila@evoush.com', NULL, '$2y$10$PkjcW63fJAE70ecJtQ0PMuie0RunquyzzRZfwLBDW3hQXMmKgGz6S', NULL, '2021-06-29 04:40:20', '2021-06-29 04:40:20', 'saidahlaila', '[\"MEMBER\"]', NULL, '6285347231325', 'saidahlaila/profile/C8XdULsc3fKXKSMbun6wtJT6huyxhvsY2Wd3PYaU.png', 'ACTIVE'),
-(4, 'Endang Ekawati,S.E', 'putriku@evoush.com', NULL, '$2y$10$k2sVowHeONULiTUKAX554uyIiZUDh7tKlJ4RORv1jWmPtbM71u1fW', NULL, '2021-06-29 05:03:56', '2021-06-29 05:03:56', 'putriku', '[\"MEMBER\"]', NULL, '6285225497552', 'putriku/profile/2ruhNc7az5e6bfwoFVFvjgW75IjvgVhBmm8bIcWy.png', 'ACTIVE'),
-(5, 'hendriyanto', 'hendry@evoush.com', NULL, '$2y$10$o4MACEXM0Yr9Bmwbnoobfudpa7A1yC32mB7OHRo3zJYs5q9JimlMm', NULL, '2021-06-29 05:05:57', '2021-06-29 05:05:57', 'hendry', '[\"MEMBER\"]', NULL, '6281230174799', 'hendry/profile/SrPPERzayU7a9W3Pff7ziYUoX5oysaHU4YMwZsRj.png', 'ACTIVE'),
-(6, 'Ratmina', 'ratmina@evoush.com', NULL, '$2y$10$RPDLhJo8aX0t1UX4t.ppG.HvUa7iSdsdow5od6Cgcmea4pNdBSobe', NULL, '2021-06-29 05:12:58', '2021-06-29 05:12:58', 'ratmina', '[\"MEMBER\"]', NULL, '6282237984519', 'ratmina/profile/cddC2WgpDF9DwUum3MOkUNVsKN22usfaZwrwuqfa.png', 'ACTIVE'),
-(7, 'Rahmad', 'rahmad@evoush.com', NULL, '$2y$10$lw1SOTDadyjk5aC0PzeATeYrgEorBAAU7iobaqu4GmXLemrtsIcdG', NULL, '2021-06-29 05:16:58', '2021-06-29 05:16:58', 'rahmadisa', '[\"MEMBER\"]', NULL, '6282157497162', 'rahmadisa/profile/8jRbMys4juzPGZrXFxeerVgRHVQ9Xfg2TEPXTIj1.png', 'ACTIVE'),
-(8, 'Reni Nurhayati', 'nurhayati.reni.nr@gmail.com', NULL, '$2y$10$h7Y1X0p2BVvKG0t5G8EY3OP/wYHCmvnbbekOcILKDAVvkx.jhgmKK', NULL, '2021-06-29 05:19:15', '2021-06-29 05:19:15', 'salwa', '[\"MEMBER\"]', NULL, '6282299683355', NULL, 'ACTIVE'),
-(9, 'omay tri wahyuni', 'a0903991328@gmail.com', NULL, '$2y$10$B6A/4d1YXknvKfIY0/Ivp.ziMpkvbj1B1u823/1e0PSnFEJ/Q3/CG', NULL, '2021-06-29 05:31:08', '2021-06-29 05:31:08', 'youlia', '[\"MEMBER\"]', NULL, '6289514462738', NULL, 'ACTIVE'),
-(10, 'Suprihanik Mujiastuti,SE', 'hanik.hansel@gmail.com', NULL, '$2y$10$3QxVI19L6YTxvCHXxm2psOfpvXg5Ei/n3tTg2ueTEKp9r3GTzUycW', NULL, '2021-06-29 08:01:00', '2021-06-29 08:01:00', 'hanik', '[\"MEMBER\"]', NULL, '6282264640950', NULL, 'ACTIVE'),
-(11, 'Tutik Rahayu', 'kinclong@evoush.com', NULL, '$2y$10$dkMBXFp9MzVIVP89ib2ZUeZC6OfnjeNwcsOvl3.76xz7CqYd0Zexa', NULL, '2021-07-01 04:12:31', '2021-07-17 01:51:07', 'kinclong', '[\"MEMBER\"]', NULL, '6282131609949', 'kinclong/profile/QkIahVq6B9ixDXNdCIhv6Dln1j2mjJofL1AEScAl.png', 'ACTIVE'),
-(12, 'citra devijianti', 'citradevi@evoush.com', NULL, '$2y$10$AlE8YdRhpJJnNLcxIFloO.tGodHajpj8wA6EJX893Q9umhtj9BBQm', NULL, '2021-06-29 04:28:03', '2021-06-29 04:28:03', 'citradevi', '[\"MEMBER\"]', NULL, '6285649000069', 'citradevi/profile/8emfcTiHm7VPhNqcoO7BlGFxaVlfMd6IGs5azpsI.png', 'ACTIVE'),
-(13, 'joni kemod', 'joni@gmail.com', NULL, '$2y$10$nqv9kb5FCn/Mwt5VXoweSOXhSrcKUHI8A.Et7tCNEqTym7nAMpxoW', NULL, '2021-08-03 02:55:24', '2021-08-03 03:57:04', 'jonikemod', '[\"MEMBER\"]', NULL, '6288222668778', 'jonikemod/profile/ND6ZcYNtV3kkT1GPAswnbcL60TLTokOeIyPoIwtC.jpg', 'ACTIVE');
+(3, 'citra devijianti', 'citradevi@evoush.com', NULL, '$2y$10$AlE8YdRhpJJnNLcxIFloO.tGodHajpj8wA6EJX893Q9umhtj9BBQm', NULL, '2021-06-29 04:28:03', '2021-06-29 04:28:03', 'citradevi', '[\"MEMBER\"]', NULL, '6285649000069', 'citradevi/profile/8emfcTiHm7VPhNqcoO7BlGFxaVlfMd6IGs5azpsI.png', 'ACTIVE'),
+(4, 'saidah laila', 'saidahlaila@evoush.com', NULL, '$2y$10$PkjcW63fJAE70ecJtQ0PMuie0RunquyzzRZfwLBDW3hQXMmKgGz6S', NULL, '2021-06-29 04:40:20', '2021-06-29 04:40:20', 'saidahlaila', '[\"MEMBER\"]', NULL, '6285347231325', 'saidahlaila/profile/C8XdULsc3fKXKSMbun6wtJT6huyxhvsY2Wd3PYaU.png', 'ACTIVE'),
+(5, 'Endang Ekawati,S.E', 'putriku@evoush.com', NULL, '$2y$10$k2sVowHeONULiTUKAX554uyIiZUDh7tKlJ4RORv1jWmPtbM71u1fW', NULL, '2021-06-29 05:03:56', '2021-06-29 05:03:56', 'putriku', '[\"MEMBER\"]', NULL, '6285225497552', 'putriku/profile/2ruhNc7az5e6bfwoFVFvjgW75IjvgVhBmm8bIcWy.png', 'ACTIVE'),
+(6, 'hendriyanto', 'hendry@evoush.com', NULL, '$2y$10$o4MACEXM0Yr9Bmwbnoobfudpa7A1yC32mB7OHRo3zJYs5q9JimlMm', NULL, '2021-06-29 05:05:57', '2021-06-29 05:05:57', 'hendry', '[\"MEMBER\"]', NULL, '6281230174799', 'hendry/profile/SrPPERzayU7a9W3Pff7ziYUoX5oysaHU4YMwZsRj.png', 'ACTIVE'),
+(7, 'Ratmina', 'ratmina@evoush.com', NULL, '$2y$10$RPDLhJo8aX0t1UX4t.ppG.HvUa7iSdsdow5od6Cgcmea4pNdBSobe', NULL, '2021-06-29 05:12:58', '2021-06-29 05:12:58', 'ratmina', '[\"MEMBER\"]', NULL, '6282237984519', 'ratmina/profile/cddC2WgpDF9DwUum3MOkUNVsKN22usfaZwrwuqfa.png', 'ACTIVE'),
+(8, 'Rahmad', 'rahmad@evoush.com', NULL, '$2y$10$lw1SOTDadyjk5aC0PzeATeYrgEorBAAU7iobaqu4GmXLemrtsIcdG', NULL, '2021-06-29 05:16:58', '2021-06-29 05:16:58', 'rahmadisa', '[\"MEMBER\"]', NULL, '6282157497162', 'rahmadisa/profile/8jRbMys4juzPGZrXFxeerVgRHVQ9Xfg2TEPXTIj1.png', 'ACTIVE'),
+(9, 'Reni Nurhayati', 'nurhayati.reni.nr@gmail.com', NULL, '$2y$10$h7Y1X0p2BVvKG0t5G8EY3OP/wYHCmvnbbekOcILKDAVvkx.jhgmKK', NULL, '2021-06-29 05:19:15', '2021-06-29 05:19:15', 'salwa', '[\"MEMBER\"]', NULL, '6282299683355', NULL, 'ACTIVE'),
+(10, 'omay tri wahyuni', 'a0903991328@gmail.com', NULL, '$2y$10$B6A/4d1YXknvKfIY0/Ivp.ziMpkvbj1B1u823/1e0PSnFEJ/Q3/CG', NULL, '2021-06-29 05:31:08', '2021-06-29 05:31:08', 'youlia', '[\"MEMBER\"]', NULL, '6289514462738', NULL, 'ACTIVE'),
+(11, 'Suprihanik Mujiastuti,SE', 'hanik.hansel@gmail.com', NULL, '$2y$10$3QxVI19L6YTxvCHXxm2psOfpvXg5Ei/n3tTg2ueTEKp9r3GTzUycW', NULL, '2021-06-29 08:01:00', '2021-06-29 08:01:00', 'hanik', '[\"MEMBER\"]', NULL, '6282264640950', NULL, 'ACTIVE'),
+(12, 'Tutik Rahayu', 'kinclong@evoush.com', NULL, '$2y$10$dkMBXFp9MzVIVP89ib2ZUeZC6OfnjeNwcsOvl3.76xz7CqYd0Zexa', NULL, '2021-07-01 04:12:31', '2021-07-17 01:51:07', 'kinclong', '[\"MEMBER\"]', NULL, '6282131609949', 'kinclong/profile/QkIahVq6B9ixDXNdCIhv6Dln1j2mjJofL1AEScAl.png', 'ACTIVE');
 
 --
 -- Indexes for dumped tables
@@ -853,13 +859,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `oauth_clients`
 --
 ALTER TABLE `oauth_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `oauth_personal_access_clients`
 --
 ALTER TABLE `oauth_personal_access_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -883,13 +889,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables

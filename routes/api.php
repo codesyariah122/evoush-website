@@ -24,6 +24,9 @@ Route::post('/member/new-join', [ApiDataController::class, 'store_new_member']);
 
 // profile update
 // Route::resource('/profile', ProfileController::class);
+Route::put('/member/update/avatar/{id}', [ApiDataController::class, 'update_avatar']);
+Route::put('/member/update/cover/{id}', [ApiDataController::class, 'update_cover']);
+Route::put('/member/update/{id}', [ApiDataController::class, 'profile_member_update']);
 
 /*
 |--------------------------------------------------------------------------

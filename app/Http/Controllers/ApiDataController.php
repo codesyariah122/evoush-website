@@ -421,13 +421,150 @@ class ApiDataController extends Controller
         }
     }
 
-    public function member_join($id)
+    // public function member_join($id)
+    // {
+    //     $joins = User::join('member', 'member.user_id', '=', 'users.id')
+    //     ->where('member.sponsor_id', '=', $id)
+    //     ->where('status', '=', 'INACTIVE')
+    //     ->get();
+    // }
+
+    public function update_avatar(Request $request, $id)
     {
-        $joins = User::join('member', 'member.user_id', '=', 'users.id')
-        ->where('member.sponsor_id', '=', $id)
-        ->where('status', '=', 'INACTIVE')
-        ->get();
+        $update_avatar = User::findOrFail($id);
+
+        return response()->json(['data' => $request->file('avatar')]);
+        if($request->hasFile('avatar')){
+            if($update_avatar->avatar && file_exists(storage_path('app/public/'.$update_avatar->username .'/' . $update_avatar->avatar))){
+                \Storage::delete('public/'.$update_avatar->username.'/'.$update_avatar->avatar);
+            }
+            $file->move(public_path('storage').$update_avatar->username.'/profile/', $name);
+            // $file = $request->file('avatar')->store($update_avatar->username.'/profile', 'public');
+            $update_avatar->avatar = $file;
+        }
+
+
+        if($update_avatar->save()){
+             return response()->json([
+                'success' => true,
+                'message' => 'Foto berhasil diupdate',
+                'data' => $update_avatar->avatar
+            ], 200);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal update foto'
+            ], 400);
+        }
     }
 
+    public function update_cover(Request $request, $id)
+    {
+        $update_cover = Profile::findOrFail($id);
+        if($request->file('cover')){
+            if($update_cover->cover && file_exists(storage_path('app/public/'.$update_cover->username .'/' . $update_cover->cover))){
+                \Storage::delete('public/'.$update_cover->cover.'/'.$update_cover->cover);
+            }
+            $file = $request->file('avatar')->store($update_cover->username.'/profile', 'public');
+            $update_cover->cover = $file;
+        }
+
+        if($update_cover->count() > 0){
+             return response()->json([
+                'success' => true,
+                'message' => 'Foto berhasil diupdate'
+            ], 200);
+        }else{
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal update foto'
+            ], 200);
+        }
+    }
+
+
+    public function profile_member_update(Request $request, $id)
+    {
+
+       $validator = Validator::make($request->all(), [
+           "name" => "required|min:5|max:100",
+           // "avatar" => "required|image|mimes:jpeg,png,jpg,gif,svg",
+           "phone" => "required|digits_between:10,13",
+           "email" => "required|email",
+           "username" => "required",
+           "province" => "required",
+           "city" => "required"
+       ]);
+       if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        // Updated User By field user_id on table profile
+        $update_user = User::findOrFail($id);
+        $update_user->name = $request->get('name');
+        
+        $update_user->email = $request->get('email');
+        $update_user->username = $request->get('username');
+        $update_user->address = $request->get('address');
+        $update_user->phone = $request->get('phone');
+        $update_user->save();
+
+        $dataProfile = User::join('profile', 'users.id', '=', 'profile.user_id')->findOrFail($id);
+
+        if($dataProfile !== ''){
+            if($dataProfile->province === $request->get('province')){
+                $provinsi = $request->get('province');    
+            }else{
+                $url = 'https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->get('province');
+                $prov = file_get_contents($url);
+                $data = json_decode($prov, 1);
+                $provinsi = $data['nama'];
+            }
+        }
+
+
+        $profile = Profile::findOrFail($id);
+        $profile->quotes = $request->get('quotes');
+        if($request->file('cover')){
+            if($profile->cover && file_exists(storage_path('app/public/'.$update_user->username.'/'.$profile->cover))){
+                \Storage::delete('public/'.$update_user->username.'/covers/'.$profile->cover);
+            }
+            $file = $request->file('cover')->store($update_user->username.'/covers', 'public');
+            $profile->cover = $file;
+        }
+        $profile->about = $request->get('about');
+        $profile->instagram = $request->get('instagram');
+        $profile->facebook = $request->get('facebook');
+        $profile->youtube = $request->get('youtube');
+        $profile->province = $provinsi;
+        $profile->city = $request->get('city');
+        if($request->file('parallax')){
+            if($profile->parallax && file_exists(storage_path('app/public/'.$update_user->username.'/'.$profile->parallax))){
+                \Storage::delete('public/'.$update_user->username.'/parallax/'.$profile->parallax);
+            }
+            $file = $request->file('parallax')->store($update_user->username.'/parallax', 'public');
+            $profile->parallax = $file;
+        }
+
+        $profile->save();
+
+        // return response()->json(['message' => 'Data berhasil diupdate ']);
+
+        if($profile->count() > 0){
+            return response()->json([
+                'success' => true,
+                'message' => 'Data Updated',
+                'data'    => $profile
+            ], 200);
+            // return response()->json(['message' => 'Data berhasil diupdate']);
+        }else{
+           return response()->json([
+                'success' => false,
+                'message' => 'Data not found Error',
+            ], 404);
+            // return response()->json(['message' => 'Data gagal diupdate ']);
+        }
+
+    }
 
 }

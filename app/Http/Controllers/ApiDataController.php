@@ -421,66 +421,29 @@ class ApiDataController extends Controller
         }
     }
 
-    // public function member_join($id)
-    // {
-    //     $joins = User::join('member', 'member.user_id', '=', 'users.id')
-    //     ->where('member.sponsor_id', '=', $id)
-    //     ->where('status', '=', 'INACTIVE')
-    //     ->get();
-    // }
 
     public function update_avatar(Request $request, $id)
     {
         $update_avatar = User::findOrFail($id);
-
-        return response()->json(['data' => $request->file('avatar')]);
-        if($request->hasFile('avatar')){
+        $avatar = $request->file('avatar');
+        if($avatar){
             if($update_avatar->avatar && file_exists(storage_path('app/public/'.$update_avatar->username .'/' . $update_avatar->avatar))){
                 \Storage::delete('public/'.$update_avatar->username.'/'.$update_avatar->avatar);
             }
-            $file->move(public_path('storage').$update_avatar->username.'/profile/', $name);
-            // $file = $request->file('avatar')->store($update_avatar->username.'/profile', 'public');
+            $file = $avatar->store($update_avatar->username.'/profile', 'public');
             $update_avatar->avatar = $file;
         }
 
+        $update_avatar->save();
 
-        if($update_avatar->save()){
-             return response()->json([
-                'success' => true,
-                'message' => 'Foto berhasil diupdate',
-                'data' => $update_avatar->avatar
-            ], 200);
-        }else{
-            return response()->json([
-                'success' => false,
-                'message' => 'Gagal update foto'
-            ], 400);
-        }
+
+        return response()->json([
+            'message' => 'Success upload image',
+            'data' => $update_avatar->avatar
+        ]);
+       
     }
 
-    public function update_cover(Request $request, $id)
-    {
-        $update_cover = Profile::findOrFail($id);
-        if($request->file('cover')){
-            if($update_cover->cover && file_exists(storage_path('app/public/'.$update_cover->username .'/' . $update_cover->cover))){
-                \Storage::delete('public/'.$update_cover->cover.'/'.$update_cover->cover);
-            }
-            $file = $request->file('avatar')->store($update_cover->username.'/profile', 'public');
-            $update_cover->cover = $file;
-        }
-
-        if($update_cover->count() > 0){
-             return response()->json([
-                'success' => true,
-                'message' => 'Foto berhasil diupdate'
-            ], 200);
-        }else{
-            return response()->json([
-                'success' => false,
-                'message' => 'Gagal update foto'
-            ], 200);
-        }
-    }
 
 
     public function profile_member_update(Request $request, $id)
@@ -502,6 +465,14 @@ class ApiDataController extends Controller
         // Updated User By field user_id on table profile
         $update_user = User::findOrFail($id);
         $update_user->name = $request->get('name');
+
+        // if($request->file('avatar')){
+        //     if($update_user->avatar && file_exists(storage_path('app/public/'.$update_user->username .'/' . $update_user->avatar))){
+        //         \Storage::delete('public/'.$update_user->username.'/'.$update_user->avatar);
+        //     }
+        //     $file = $request->file('avatar')->store($update_user->username.'/profile', 'public');
+        //     $update_user->avatar = $file;
+        // }
         
         $update_user->email = $request->get('email');
         $update_user->username = $request->get('username');
@@ -525,13 +496,13 @@ class ApiDataController extends Controller
 
         $profile = Profile::findOrFail($id);
         $profile->quotes = $request->get('quotes');
-        if($request->file('cover')){
-            if($profile->cover && file_exists(storage_path('app/public/'.$update_user->username.'/'.$profile->cover))){
-                \Storage::delete('public/'.$update_user->username.'/covers/'.$profile->cover);
-            }
-            $file = $request->file('cover')->store($update_user->username.'/covers', 'public');
-            $profile->cover = $file;
-        }
+        // if($request->file('cover')){
+        //     if($profile->cover && file_exists(storage_path('app/public/'.$update_user->username.'/'.$profile->cover))){
+        //         \Storage::delete('public/'.$update_user->username.'/covers/'.$profile->cover);
+        //     }
+        //     $file = $request->file('cover')->store($update_user->username.'/covers', 'public');
+        //     $profile->cover = $file;
+        // }
         $profile->about = $request->get('about');
         $profile->instagram = $request->get('instagram');
         $profile->facebook = $request->get('facebook');

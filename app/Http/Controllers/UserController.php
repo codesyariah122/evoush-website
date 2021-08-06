@@ -92,7 +92,7 @@ class UserController extends Controller
            "name" => "required|min:5|max:100",
            "username" => "required|min:5|max:20|unique:users",
            "roles" => "required",
-           "phone" => "required|digits_between:10,14",
+           // "phone" => "required|digits_between:10,14",
            // "avatar" => "required",
            "email" => "required|email|unique:users",
            "password" => "required",

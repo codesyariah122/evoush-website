@@ -24,7 +24,7 @@ Route::post('/member/new-join', [ApiDataController::class, 'store_new_member']);
 
 // profile update
 // Route::resource('/profile', ProfileController::class);
-Route::put('/member/update/avatar/{id}', [ApiDataController::class, 'update_avatar']);
+Route::post('/member/update/avatar/{id}', [ApiDataController::class, 'update_avatar']);
 Route::put('/member/update/cover/{id}', [ApiDataController::class, 'update_cover']);
 Route::put('/member/update/{id}', [ApiDataController::class, 'profile_member_update']);
 
@@ -38,6 +38,7 @@ Route::put('/member/update/{id}', [ApiDataController::class, 'profile_member_upd
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::get('/product/all', [ApiDataController::class, 'allProduct']);
 Route::get('/product/kosmetik', [ApiDataController::class, 'kosmetik']);
 Route::get('/product/nutrisi', [ApiDataController::class, 'nutrisi']);
@@ -82,3 +83,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:api');
+

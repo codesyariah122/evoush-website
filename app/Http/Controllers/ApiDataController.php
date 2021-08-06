@@ -444,6 +444,29 @@ class ApiDataController extends Controller
        
     }
 
+    public function update_cover(Request $request, $id)
+    {
+        $update_user = User::findOrFail($id);
+        $update_cover = Profile::findOrFail($id);
+        $cover = $request->file('cover');
+        if($cover){
+            if($update_cover->cover && file_exists(storage_path('app/public/'.$update_user->username .'/' . $update_cover->cover))){
+                \Storage::delete('public/'.$update_user->username.'/'.$update_cover->cover);
+            }
+            $file = $cover->store($update_user->username.'/covers', 'public');
+            $update_cover->cover = $file;
+        }
+
+        $update_cover->save();
+
+
+        return response()->json([
+            'message' => 'Success upload image',
+            'data' => $update_cover->cover
+        ]);
+       
+    }
+
 
 
     public function profile_member_update(Request $request, $id)

@@ -52,6 +52,7 @@ Route::get('/member/join/inactive/{username}', [ApiDataController::class, 'membe
 Route::get('/evoush/top-leaders', [ApiDataController::class, 'top_leaders']);
 Route::get('/evoush/event', [ApiDataController::class, 'data_event']);
 Route::get('/evoush/member-list', [ApiDataController::class, 'member_list']);
+Route::get('/evoush/founder-list', [ApiDataController::class, 'founder_list']);
 
 // Route data untuk profile page public
 Route::get('/evoush/profile-data/{username}', [ApiDataController::class, 'profile_data_public']);

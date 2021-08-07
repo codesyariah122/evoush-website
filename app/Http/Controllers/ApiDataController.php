@@ -203,7 +203,8 @@ class ApiDataController extends Controller
         $keyword = $request->segment(4);
     
         $profiles = User::join('profile', 'users.id', '=', 'profile.user_id')
-        ->where("name", "LIKE", "%$keyword%")->get(['profile.*', 'users.*']);
+        ->where("name", "LIKE", "%$keyword%")
+        ->get(['profile.*', 'users.*']);
         return json_decode($profiles);
     }
 
@@ -211,7 +212,8 @@ class ApiDataController extends Controller
     {
         $keyword = $request->username;
         $profiles = User::join('profile', 'users.id', '=', 'profile.user_id')
-        ->where('username', "LIKE", "%$keyword%")->get(['profile.*', 'users.*']);
+        ->where('username',  $keyword)
+        ->get(['profile.*', 'users.*']);
 
         if(count($profiles) > 0){
             return json_decode($profiles);
@@ -388,6 +390,18 @@ class ApiDataController extends Controller
     {
         $members = User::join('profile', 'profile.user_id', '=', 'users.id')
                     ->where('roles', '=', json_encode(['MEMBER']))
+                    ->whereIn('users.id', [3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+                    ->get();
+                    // ->paginate(6);
+
+        return json_encode($members);
+    }
+
+    public function founder_list(Request $request)
+    {
+        $members = User::join('profile', 'profile.user_id', '=', 'users.id')
+                    // ->where('roles', '=', json_encode(['MEMBER']))
+                    ->whereIn('users.id', [3, 6, 7, 16])
                     ->paginate(6);
 
         return json_encode($members);

@@ -41,6 +41,7 @@
                                <th><b>Email</b></th>
                                <th><b>Avatar</b></th>
                                <th><b>Status</b></th>
+                               <th><b>Pencapian</b></th>
                                <th><b>Action</b></th>
                            </tr>
                        </thead>
@@ -52,12 +53,7 @@
                                <td>{{$user->email}}</td>
                                <td>
                                    @if($user->avatar)
-                                     @if(in_array("ADMIN", json_decode($user->roles)) || in_array("AUTHOR", json_decode($user->roles)))
-                                       <img src="{{asset('storage/'.$user->avatar)}}"
-                                     width="70px"/>
-                                     @elseif(in_array("MEMBER", json_decode($user->roles)))
-                                        <img src="{{asset('storage/'.$user->avatar)}}" width="70px">
-                                     @endif
+                                   <img src="{{asset('storage/'.$user->avatar)}}" width="70px">
                                    @else
                                    <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/profile/default.jpg" width="80">
                                    @endif
@@ -72,6 +68,10 @@
                                    {{$user->status}}
                                  </span>
                                  @endif
+                               </td>
+
+                               <td>
+                                {{$user->achievements}}
                                </td>
 
                                <td>

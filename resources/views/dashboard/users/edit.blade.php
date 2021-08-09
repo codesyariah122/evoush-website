@@ -158,6 +158,34 @@
                      </div>
                      <br>
 
+                     <label for="">Pencapian</label>
+                     <br>
+                     <input
+                     type="checkbox"
+                     name="achievements[]"
+                     class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
+                     id="STAR-SAPHIRE"
+                     value="STAR SAPHIRE">
+                     <label for="STAR-SAPHIRE">Star Saphire</label>
+
+                     <br>
+                     <input
+                     type="checkbox"
+                     name="achievements[]"
+                     class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
+                     id="FOUNDER"
+                     value="FOUNDER">
+                     <label for="FOUNDER">Founder</label>
+                     <br>
+                     <input
+                     type="checkbox"
+                     name="achievements[]"
+                     class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
+                     id="SAPHIRE"
+                     value="SAPHIRE">
+                     <label for="SAPHIRE">Saphire</label>
+                     <br>
+
                      <input class="btn btn-primary" type="submit" value="Simpan"/>
                     </form>
 

@@ -390,7 +390,7 @@ class ApiDataController extends Controller
     {
         $members = User::join('profile', 'profile.user_id', '=', 'users.id')
                     ->where('roles', '=', json_encode(['MEMBER']))
-                    ->whereIn('users.id', [3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+                    ->whereIn('users.id', [4, 5, 8, 9, 11, 12, 13, 14, 15, 16])
                     // ->get();
                     ->paginate(6);
 
@@ -401,7 +401,7 @@ class ApiDataController extends Controller
     {
         $members = User::join('profile', 'profile.user_id', '=', 'users.id')
                     // ->where('roles', '=', json_encode(['MEMBER']))
-                    ->whereIn('users.id', [3, 6, 7, 16])
+                    ->whereIn('users.id', [3, 6, 7, 10])
                     ->paginate(6);
 
         return json_encode($members);

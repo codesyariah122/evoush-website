@@ -158,6 +158,7 @@
                      </div>
                      <br>
 
+                     @if(in_array("MEMBER", json_decode($user->roles)))
                      <label for="">Pencapian</label>
                      <br>
                      <input
@@ -188,6 +189,7 @@
                      value="SAPHIRE">
                      <label for="SAPHIRE">Saphire</label>
                      <br>
+                     @endif
 
                      <input class="btn btn-primary" type="submit" value="Simpan"/>
                     </form>

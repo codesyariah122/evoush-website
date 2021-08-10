@@ -71,7 +71,13 @@
                                </td>
 
                                <td>
-                                {{$user->achievements}}
+                                @if(in_array("MEMBER", json_decode($user->roles)))
+                                  @if(in_array("STAR SAPHIRE", json_decode($user->achievements)))
+                                    {{"Star Saphire"}}
+                                  @else
+                                    {{"Saphire"}}
+                                  @endif
+                                @endif
                                </td>
 
                                <td>

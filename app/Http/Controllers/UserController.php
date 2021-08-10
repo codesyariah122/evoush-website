@@ -107,7 +107,7 @@ class UserController extends Controller
         $new_user->phone = $request->get('phone');
         $new_user->email = $request->get('email');
         $new_user->password = \Hash::make($request->get('password'));
-        $new_user->pencapaian = $request->get('achievements');
+        $new_user->achievements = json_encode($request->get('achievements'));
 
         if($request->file('avatar')){
           $file = $request->file('avatar')->store($new_user->username.'/profile', 'public');
@@ -219,6 +219,8 @@ class UserController extends Controller
         
         $user = User::findOrFail($id);
         $user->name = $request->get('name');
+        // $user->email = $request->get('email');
+        $user->username = strtolower($request->get('username')); 
         $user->roles = json_encode($request->get('roles'));
         $user->address = $request->get('address');
         $user->phone = $request->get('phone');

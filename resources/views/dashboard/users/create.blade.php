@@ -241,6 +241,8 @@
                                <br>
                                <hr class="my-3">
 
+                               
+
                         		<label for="password">Password</label>
                         		<input
                         		class="form-control {{$errors->first('password') ? "is-invalid" : ""}} "

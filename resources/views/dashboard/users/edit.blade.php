@@ -162,6 +162,7 @@
                      <br>
                      <input
                      type="checkbox"
+                     {{in_array("STAR SAPHIRE", json_decode($user->achievements)) ? "checked" : ""}}
                      name="achievements[]"
                      class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
                      id="STAR-SAPHIRE"
@@ -172,6 +173,7 @@
                      <input
                      type="checkbox"
                      name="achievements[]"
+                     {{in_array("FOUNDER", json_decode($user->achievements)) ? "checked" : ""}}
                      class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
                      id="FOUNDER"
                      value="FOUNDER">
@@ -180,6 +182,7 @@
                      <input
                      type="checkbox"
                      name="achievements[]"
+                     {{in_array("SAPHIRE", json_decode($user->achievements)) ? "checked" : ""}}
                      class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
                      id="SAPHIRE"
                      value="SAPHIRE">

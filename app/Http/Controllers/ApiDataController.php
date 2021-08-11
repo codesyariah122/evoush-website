@@ -534,9 +534,11 @@ class ApiDataController extends Controller
                 $url = 'https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->get('province');
                 $prov = file_get_contents($url);
                 $data_prov = json_decode($prov, 1);
-                $provinsi = $data['nama'];
+                $provinsi = $data_prov['nama'];
             }
         }
+
+        // return response()->json(['data' => $provinsi]);
 
 
         $profile = Profile::findOrFail($id);

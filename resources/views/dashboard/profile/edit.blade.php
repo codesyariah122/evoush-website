@@ -66,6 +66,9 @@
                         </div>
                         <br>
 
+
+                        <input type="hidden" name="roles[]" value="{{in_array('ADMIN', json_decode(Auth::user()->roles)) ? "ADMIN" : ""}}">
+
                         <div class="form-group">
                           <label for="email">Email</label>
                           <input type="text" name="email" id="email" value="{{old('email') ? old('email') : $profile->email}}" class="form-control {{$errors->first('email') ? "is-invalid" : ""}}">
@@ -168,31 +171,37 @@
 
                        <div class="form-group">
                         <label for="province">Province</label>
-                        @if($profile->province)
-                          <select name="province"  class="form-control" id="province">
+                        {{-- @if($profile->province) --}}
+                        {{-- <pre>
+                          @{{provinces}}
+                        </pre> --}}
+                          <select name="province"  class="form-control" id="province" v-on:change="getCity">
                             <option value="{{$profile->province}}">{{$profile->province}}</option>
+                            <option value="" data-id="">Choose Province</option>
+                            <option v-for="provins in provinces" v-bind:value="provins.id" :value="provins.id" :data-id="provins.id" id="province">@{{provins.nama}}</option>
                           </select>
-                        @else
+                        {{-- @else
                           <select name="province" class="form-control" v-on:change="getCity">
                             <option value="" data-id="">Choose Province</option>
                             <option v-for="provins in provinces.provinsi" v-bind:value="provins.id" :value="provins.id" :data-id="provins.id" id="province">@{{provins.nama}}</option>
                           </select>
-                        @endif
+                        @endif --}}
                       </div>
                       <br>
 
                       <div class="form-group">
                         <label for="city">City</label>
-                        @if($profile->city)
+                        {{-- @if($profile->city) --}}
                           <select name="city" class="form-control" id="city">
                             <option value="{{$profile->city}}">{{$profile->city}}</option>
+                            <option v-if="citys" v-for="city in citys.kota_kabupaten" :key="city.id" :value="city.nama">@{{city.nama}}</option>
                           </select>
-                        @else
+{{--                         @else
                           <select name="city" class="form-control" id="city">
                             <option value="">Choose City</option>
                             <option v-for="city in citys.kota_kabupaten" :key="city.id" :value="city.nama">@{{city.nama}}</option>
                           </select>
-                        @endif
+                        @endif --}}
                       </div>
                       <br>
 
@@ -245,7 +254,8 @@
         getProvinsi(){
           axios.get('https://dev.farizdotid.com/api/daerahindonesia/provinsi')
           .then(res => {
-            this.provinces = res.data        
+            this.provinces = res.data.provinsi
+            console.log(this.provinces)      
           })
         },
 

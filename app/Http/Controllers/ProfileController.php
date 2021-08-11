@@ -156,13 +156,16 @@ class ProfileController extends Controller
         }
         $update_user->email = $request->get('email');
         $update_user->username = $request->get('username');
-        $new_user->roles = json_encode($request->get('roles'));
+        $update_user->roles = json_encode($request->get('roles'));
         $update_user->address = $request->get('address');
         $update_user->phone = $request->get('phone');
         $update_user->achievements = $request->get('achievements');
         $update_user->save();
 
         $dataProfile = User::join('profile', 'users.id', '=', 'profile.user_id')->findOrFail($id);
+
+
+        // var_dump($dataProfile);die;
 
         if($dataProfile !== ''){
             if($dataProfile->province === $request->get('province')){
@@ -191,6 +194,10 @@ class ProfileController extends Controller
         $profile->youtube = $request->get('youtube');
         $profile->province = $provinsi;
         $profile->city = $request->get('city');
+
+
+        // echo $profile->province; die;
+
         if($request->file('parallax')){
             if($profile->parallax && file_exists(storage_path('app/public/'.$update_user->username.'/'.$profile->parallax))){
                 \Storage::delete('public/'.$update_user->username.'/parallax/'.$profile->parallax);

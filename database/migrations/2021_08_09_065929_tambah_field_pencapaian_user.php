@@ -16,7 +16,7 @@ class TambahFieldPencapaianUser extends Migration
         //
           //
         Schema::table('users', function(Blueprint $table){
-            $table->string('achievements');
+            $table->string('achievements')->nullable();
         });
     }
 

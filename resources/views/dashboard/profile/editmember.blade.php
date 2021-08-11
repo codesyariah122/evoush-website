@@ -22,6 +22,7 @@
                         @{{citys}}
                       </pre>
  --}}
+
                   		<form enctype="multipart/form-data" class="bg-white shadow-sm p-3"
                           action="{{route('profile.update', [$profile->id])}}" method="POST">
                           @csrf

@@ -133,16 +133,17 @@ class ApiDataController extends Controller
 
     public function store_new_member(Request $request)
     {
+        // return response()->json(['data' => $request->all()]);
 
-        $validation = \Validator::make($request->all(),[
-           "name" => "required|min:5|max:100",
-           "email" => "required|email|unique:users",
-           "phone" => "required|digits_between:10,15",
-           "province" => "required",
-           "city" => "required",
-           "password" => "required",
-           "password_confirmation" => "required|same:password"
-       ])->validate();
+       //  $validation = \Validator::make($request->all(),[
+       //     "name" => "required|min:5|max:100",
+       //     "email" => "required|email|unique:users",
+       //     "phone" => "required|digits_between:10,15",
+       //     "province" => "required",
+       //     "city" => "required",
+       //     "password" => "required",
+       //     "password_confirmation" => "required|same:password"
+       // ])->validate();
 
         
         $username_path = $request->get('username_path');
@@ -152,6 +153,7 @@ class ApiDataController extends Controller
         $new_user->email = $request->get('email');
         $new_user->password = \Hash::make($request->get('password'));
         $new_user->username = trim(preg_replace('/\s+/', '', $new_user->name));
+        $new_user->achievements = null;
 
         // echo $new_user->username;
         
@@ -167,8 +169,10 @@ class ApiDataController extends Controller
         
         $url = 'https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->get('province');
         $prov = file_get_contents($url);
-        $data = json_decode($prov, 1);
-        $provinsi = $data['nama'];
+        $data_prov = json_decode($prov, 1);
+        // echo $data_prov['nama'];
+        // die;
+        $provinsi = $data_prov['nama'];
         $new_userid = $new_user->id;
         $new_username = $new_user->username;
 
@@ -190,12 +194,14 @@ class ApiDataController extends Controller
         $new_join->user_id = $new_member->user_id;
         $new_join->save();
         
-        if($new_join->count() > 0){
-            // return redirect()->route('member.username', [$username_path])->with('status', 'Username anda : '.$new_user->username.' berhasil dibuat selanjutnya system kami akan memproses setelah pihak sponsor mengaktivasi akun member anda.');
-            return response()->json(['message' => $new_user->username.' berhasil join member baru, selanjutnya klik tombol aktivasi akun.']);
-        }else{
-            return response()->json(['message' => 'Proses join gagal, ada kesalahan teknis di server kami.']);
-        }
+         return response()->json(['message' => $new_user->username.' berhasil join member baru, selanjutnya klik tombol aktivasi akun.']);
+
+        // if($new_join->count() > 0){
+        //     // return redirect()->route('member.username', [$username_path])->with('status', 'Username anda : '.$new_user->username.' berhasil dibuat selanjutnya system kami akan memproses setelah pihak sponsor mengaktivasi akun member anda.');
+        //     return response()->json(['message' => $new_user->username.' berhasil join member baru, selanjutnya klik tombol aktivasi akun.']);
+        // }else{
+        //     return response()->json(['message' => 'Proses join gagal, ada kesalahan teknis di server kami.']);
+        // }
     }
 
     public function search_member(Request $request)
@@ -486,21 +492,24 @@ class ApiDataController extends Controller
     public function profile_member_update(Request $request, $id)
     {
 
-       $validator = Validator::make($request->all(), [
-           "name" => "required|min:5|max:100",
-           // "avatar" => "required|image|mimes:jpeg,png,jpg,gif,svg",
-           "phone" => "required|digits_between:10,13",
-           "email" => "required|email",
-           "username" => "required",
-           "province" => "required",
-           "city" => "required"
-       ]);
-       if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
+       // $validator = Validator::make($request->all(), [
+       //     "name" => "required|min:5|max:100",
+       //     // "avatar" => "required|image|mimes:jpeg,png,jpg,gif,svg",
+       //     "phone" => "required|digits_between:10,13",
+       //     "email" => "required|email",
+       //     "username" => "required",
+       //     "province" => "required",
+       //     "city" => "required"
+       // ]);
+       // if ($validator->fails()) {
+       //      return response()->json($validator->errors(), 400);
+       //  }
 
         // Updated User By field user_id on table profile
         $update_user = User::findOrFail($id);
+
+        // return response()->json(['data' => $update_user]);
+
         $update_user->name = $request->get('name');
 
         // if($request->file('avatar')){
@@ -510,7 +519,6 @@ class ApiDataController extends Controller
         //     $file = $request->file('avatar')->store($update_user->username.'/profile', 'public');
         //     $update_user->avatar = $file;
         // }
-        
         $update_user->email = $request->get('email');
         $update_user->username = $request->get('username');
         $update_user->address = $request->get('address');
@@ -525,7 +533,7 @@ class ApiDataController extends Controller
             }else{
                 $url = 'https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->get('province');
                 $prov = file_get_contents($url);
-                $data = json_decode($prov, 1);
+                $data_prov = json_decode($prov, 1);
                 $provinsi = $data['nama'];
             }
         }
@@ -556,22 +564,28 @@ class ApiDataController extends Controller
 
         $profile->save();
 
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Updated',
+            'data'    => $profile
+        ], 200);
+        
         // return response()->json(['message' => 'Data berhasil diupdate ']);
 
-        if($profile->count() > 0){
-            return response()->json([
-                'success' => true,
-                'message' => 'Data Updated',
-                'data'    => $profile
-            ], 200);
-            // return response()->json(['message' => 'Data berhasil diupdate']);
-        }else{
-           return response()->json([
-                'success' => false,
-                'message' => 'Data not found Error',
-            ], 404);
-            // return response()->json(['message' => 'Data gagal diupdate ']);
-        }
+        // if($profile->count() > 0){
+        //     return response()->json([
+        //         'success' => true,
+        //         'message' => 'Data Updated',
+        //         'data'    => $profile
+        //     ], 200);
+        //     // return response()->json(['message' => 'Data berhasil diupdate']);
+        // }else{
+        //    return response()->json([
+        //         'success' => false,
+        //         'message' => 'Data not found Error',
+        //     ], 404);
+        //     // return response()->json(['message' => 'Data gagal diupdate ']);
+        // }
 
     }
 

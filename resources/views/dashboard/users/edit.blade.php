@@ -63,6 +63,18 @@
                        id="STAFF"
                        value="STAFF">
                        <label for="STAFF">Staff</label>
+                       <br>
+                        <input
+                       type="checkbox"
+                       {{in_array("WEBDEVELOPER", json_decode($user->roles)) ? "checked" : ""}}
+                       name="roles[]"
+                       class="{{$errors->first('roles') ? "is-invalid" : ""
+                       }}"
+                       id="WEBDEV"
+                       value="WEBDEVELOPER">
+                       <label for="WEBDEV">Web Developer</label>
+                       <br>
+
                        <input
                        type="checkbox"
                        {{in_array("CUSTOMER", json_decode($user->roles)) ? "checked" :

@@ -156,10 +156,10 @@ class ProfileController extends Controller
         }
         $update_user->email = $request->get('email');
         $update_user->username = $request->get('username');
-        $update_user->roles = json_encode($request->get('roles'));
+        // $update_user->roles = json_encode($request->get('roles'));
         $update_user->address = $request->get('address');
         $update_user->phone = $request->get('phone');
-        $update_user->achievements = $request->get('achievements');
+        // $update_user->achievements = $request->get('achievements');
         $update_user->save();
 
         $dataProfile = User::join('profile', 'users.id', '=', 'profile.user_id')->findOrFail($id);

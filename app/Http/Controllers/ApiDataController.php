@@ -392,6 +392,24 @@ class ApiDataController extends Controller
         return json_decode($members);
     }
 
+    public function top_income(Request $request)
+    {
+        $ids = [5,3,4,9,8,10,11,19,7,16];
+        $orders = array_map(function($item) {
+            return "users.id = {$item} desc";
+        }, $ids);
+        $rawOrder = implode(', ', $orders);
+
+        // var_dump($id_order); die;
+
+        $members = User::join('profile', 'profile.user_id', '=', 'users.id')
+                    ->where('roles', '=', json_encode(['MEMBER']))
+                    ->whereIn('users.id', $ids)
+                    ->orderByRaw($rawOrder)
+                    ->get(['profile.*', 'users.*']);
+        return json_decode($members);
+    }
+
     public function member_list(Request $request)
     {
         $members = User::join('profile', 'profile.user_id', '=', 'users.id')

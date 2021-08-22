@@ -4,10 +4,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <script src="{{asset('dashboard/vendor/jquery/jquery.min.js')}}"></script>
-  <script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  {{-- <script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script> --}}
+  {{-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
   <!-- Custom fonts for this template-->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
 
 <script src="https://cdn.tiny.cloud/1/36xbwrnfekuspwhfv02z1kuwy3sz4nbehpqkb3x7bh8tek86/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

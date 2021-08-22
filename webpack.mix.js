@@ -1,6 +1,5 @@
 const mix = require('laravel-mix');
 
-// import 'bootstrap'
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,18 +11,12 @@ const mix = require('laravel-mix');
  |
  */
 
-
- // externals: {
-
- // 	vue: Vue
-
- // },
-
 mix.js('resources/js/app.js', 'public/js')
     .vue()
-    .js('node_modules/popper.js/dist/popper.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/web.scss', 'public/css')
     .sass('resources/sass/auth.scss', 'public/css')
     .sass('resources/sass/errors.scss', 'public/css')
     .sourceMaps();
+

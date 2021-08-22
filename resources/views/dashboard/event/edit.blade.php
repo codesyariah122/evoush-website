@@ -56,14 +56,22 @@
                     <label for="cover">File Event</label>
                      <br>
                      Current file : <br>
-                     @if($event->file)
-                     <img src="{{asset('storage/'.$event->file)}}" width="120px" />
-                     <br>
+                     <td width="600">
+                      @if($event->file)
+                      <ul>
+                        @foreach(json_decode($event->file, true) as $file)
+                        <li>
+                            <img src="{{asset('storage/event-files/' . $file)}}" width="96px" style="margin-bottom: 15px;"/> <br>
+                        </li>
+                        @endforeach
+                    </ul>
                      @else
-                     No cover event
+                     No event file
                      @endif
+                </td>
+
                     <br>
-                    <input id="file" name="file" type="file" class="form-control">
+                    <input id="file" name="files[]" type="file" class="form-control" multiple="multiple">
                     <small class="text-muted">Kosongkan jika tidak ingin mengubah
                      file</small>
                     <hr class="my-4">

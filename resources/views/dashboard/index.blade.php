@@ -15,7 +15,7 @@
                         </div>
                     @endif
                     @if(in_array("ADMIN", json_decode(Auth::user()->roles)))
-                         <b>{{ __('You are logged in ! as a')}} ADMINISTRATOR </b> 
+                         <b>{{ __('You are logged in ! as a')}} ADMINISTRATOR </b>
 
                     @elseif(in_array("MEMBER", json_decode(Auth::user()->roles)))
                         <b>{{ __('You are logged in !')}} as a MEMBER SPONSOR </b>
@@ -27,10 +27,12 @@
                             Your Sponsor : <a href="{{route('member.username', [$sponsor->username])}}"><b>{{$sponsor->username}}</b></a>
                         </blockquote>
                     @elseif(in_array("AUTHOR", json_decode(Auth::user()->roles)))
-                        <b>{{ __('You are logged in ! as a')}} AUTHOR  | {{Auth::user()->username}}</b> 
+                        <b>{{ __('You are logged in ! as a')}} AUTHOR  | {{Auth::user()->username}}</b>
+                    @elseif(in_array("STAFF", json_decode(Auth::user()->roles)))
+                        <b>{{ __('You are logged in ! as a')}} STAFF  | {{Auth::user()->username}}</b>
                     @endif
                     {{-- {{Auth::user()->roles}} --}}
-                    
+
                     {{-- {{in_array("ADMIN", json_decode(Auth::user()->roles)) ? "ADMIN" : ""}} --}}
 
                     {{-- @if(!in_array("ADMIN", json_decode(Auth::user()->roles)))
@@ -43,7 +45,7 @@
                         count(array_intersect(["ADMIN"], json_decode(Auth::user()->roles)))
                     }}
  --}}
-                    
+
                 </div>
             </div>
         </div>

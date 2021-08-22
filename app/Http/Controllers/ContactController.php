@@ -28,7 +28,10 @@ class ContactController extends Controller
     public function index(Request $request)
     {
         // $contacts = Contact::with('category_message')->get();
-        $contacts = Contact::join('category_message', 'contact_message.category_id', '=', 'category_message.id')->get(['contact_message.*', 'category_message.category_name']);
+        $contacts = Contact::join('category_message', 'contact_message.category_id', '=', 'category_message.id')
+        ->orderBy('contact_message.id', 'ASC')
+        // ->paginate(10);
+        ->get(['contact_message.*', 'category_message.category_name']);
         $context = [
             'title' => 'Message List',
             'brand' => 'evoush',
@@ -67,7 +70,8 @@ class ContactController extends Controller
            "name" => "required|min:5|max:100",
            "email" => "required|email|unique:users",
            "phone" => "required|digits_between:10,12",
-           "message" => "required"
+           "message" => "required",
+           "username" => "unique:users"
        ])->validate();
 
         $new_contact = new Contact;

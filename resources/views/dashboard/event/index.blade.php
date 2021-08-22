@@ -2,7 +2,7 @@
 @section('title') {{$title}} @endsection
 
 @section('content')
-	
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -40,7 +40,7 @@
                 </ul> --}}
                 <div class="card-body">
                    <div class="row">
-                       <div class="col-md-12">
+                       <div class="col-md-12 table-responsive">
                            <table class="table table-bordered table-stripped">
                              <thead>
                                  <tr>
@@ -63,7 +63,17 @@
                                          <img src="{{asset('storage/'.$event->cover)}}" width="100px" class="img-responsive">
                                          @endif
                                      </td>
-                                     <td>{{$event->file}}</td>
+                                     <td width="600">
+                                      @if($event->file)
+                                      <ul>
+                                        @foreach(json_decode($event->file, true) as $file)
+                                          <li>
+                                            <img src="{{asset('storage/event-files/' . $file)}}" width="96px" style="margin-bottom: 15px;"/> <br>
+                                          </li>
+                                        @endforeach
+                                      </ul>
+                                      @endif
+                                     </td>
                                      <td>{{$event->content}}</td>
                                      <td>{{$event->link}}</td>
                                      <td>

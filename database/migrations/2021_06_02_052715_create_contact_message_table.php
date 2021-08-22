@@ -16,13 +16,13 @@ class CreateContactMessageTable extends Migration
         Schema::create('contact_message', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('phone');
             $table->unsignedBigInteger('category_id');
-            $table->longText('message');
-            $table->string('country');
-            $table->string('city');
-            $table->string('ip_address');
+            $table->longText('message')->nullable();
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+            $table->string('ip_address')->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('category_id')->constrained()->references('id')->on('category_message')->onDelete('cascade')->onUpdate('cascade');

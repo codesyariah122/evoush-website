@@ -18,7 +18,7 @@
         {{-- @include('layouts.components.logo') --}}
         <h1 class="header-text" style="font-family: 'Walkway';">Administrator Login</h1>
         <blockquote class="blockquote-footer">
-            <span class="text-danger">evoush</span> website management content 
+            <span class="text-danger">evoush</span> website management content
         </blockquote>
     </div>
 
@@ -53,7 +53,7 @@
 
                             @error('username')
                             <span class="invalid-feedback" role="alert">
-                                <strong>Oops ! terjadi kesalahan dalam proses login.<br/>{{$message }} Hubungi pihak Sponsor
+                                <strong>Oops ! terjadi kesalahan dalam proses login.<br/>{{$message }} Hubungi pihak Administrator
                                 </strong>
                             </span>
                             @enderror
@@ -70,7 +70,7 @@
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ 'Password yang anda inputkan salah'.$message }}</strong>
                             </span>
-                            @enderror 
+                            @enderror
                             <div id="show-password" class="show" v-on:click="showPassword">
                                 <div v-if="showing === false">
                                     <span v-html="show"></span> Show
@@ -181,7 +181,7 @@
                     margin-bottom: 15rem!important;
                 }
                 /*end button*/
-                @media (min-width: 992px) { 
+                @media (min-width: 992px) {
                     .back-btn{
                         margin-bottom: 0;
                     }

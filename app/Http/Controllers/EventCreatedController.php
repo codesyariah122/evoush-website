@@ -66,7 +66,7 @@ class EventCreatedController extends Controller
         $validation = \Validator::make($request->all(),[
             "title" => "required|min:5|max:50",
             "quotes" => "required|min:20|max: 100",
-            "content" => "required"           
+            "content" => "required"
        ])->validate();
 
         $new_event = new Event;
@@ -79,11 +79,28 @@ class EventCreatedController extends Controller
             $new_event->cover = '';
         }
 
-        if($request->file('file')){
-            $file = $request->file('file')->store('events.file', 'public');
-            $new_event->file = $file;
-        }else{
-            $new_event->file = '';
+        // if($request->file('file')){
+        //     $file = $request->file('file')->store('events.file', 'public');
+        //     $new_event->file = $file;
+        // }else{
+        //     $new_event->file = '';
+        // }
+        if($request->hasFile('files')) {
+          foreach($request->file('files') as $file)
+          {
+            $name = $file->getClientOriginalName();
+            if($new_event->file && file_exists(storage_path('app/public/' .
+                    $new_event->file))){
+                     \Storage::delete('public/'. $new_event->file);
+            }
+
+            $file->move(public_path('storage').'/event-files/', $name);
+            // $file->store('product-sliders', 'public', $name);
+            $fileData[] = $name;
+          }
+
+          $new_event->file = json_encode($fileData);
+
         }
 
         $new_event->content = $request->get('content');
@@ -137,9 +154,9 @@ class EventCreatedController extends Controller
         $validation = \Validator::make($request->all(),[
             "title" => "required|min:5|max:50",
             "quotes" => "required|min:20|max: 100",
-            "content" => "required"           
+            "content" => "required"
        ])->validate();
-        
+
         $event = Event::findOrFail($id);
         $event->title = $request->get('title');
         $event->quotes = $request->get('quotes');

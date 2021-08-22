@@ -21,6 +21,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryArticleController;
 use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\TestSpaController;
+use App\Http\Controllers\SendMailController;
 
 // Testing Api Data
 Route::get('/api/test', [ApiDataController::class, 'index'])->name('testing.data');
@@ -49,6 +50,8 @@ Route::match(["GET", "POST"], "/register", function(){
  return redirect("/login");
 })->name("register");
 
+// test email
+Route::get('/dashboard/evoush/kirim-email', [SendMailController::class, 'send']);
 
 // dashboard/evoush Management Route
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

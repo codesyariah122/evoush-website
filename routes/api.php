@@ -7,6 +7,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\MetaDataController;
+use App\Http\Controllers\RajaOngkirController;
+use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\EmailNotificationNewMember;
 // use App\Http\Controllers\CategoryMessageController;
 
 
@@ -17,16 +20,23 @@ Route::middleware(['cors'])->group(function(){
 	Route::resource('/test/data', ApiDataController::class);
 });
 
+// sending email
+Route::post('/evoush/kirim-email', [SendMailController::class, 'send']);
 
 
 // new member join
 Route::post('/member/new-join', [ApiDataController::class, 'store_new_member']);
-
+Route::post('/member/activation', [EmailNotificationNewMember::class, 'send']);
 // profile update
 // Route::resource('/profile', ProfileController::class);
 Route::post('/member/update/avatar/{id}', [ApiDataController::class, 'update_avatar']);
 Route::post('/member/update/cover/{id}', [ApiDataController::class, 'update_cover']);
 Route::put('/member/update/{id}', [ApiDataController::class, 'profile_member_update']);
+
+
+// Aktivation member
+Route::put('/member/activated/{id}', [ApiDataController::class, 'new_member_activation']);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +64,7 @@ Route::get('/evoush/event', [ApiDataController::class, 'data_event']);
 Route::get('/evoush/member-list', [ApiDataController::class, 'member_list']);
 Route::get('/evoush/founder-list', [ApiDataController::class, 'founder_list']);
 Route::get('/evoush/top-income', [ApiDataController::class, 'top_income']);
-
+Route::get('/evoush/contact-message', [ApiDataController::class, 'contact_message']);
 // Route data untuk profile page public
 Route::get('/evoush/profile-data/{username}', [ApiDataController::class, 'profile_data_public']);
 // Route data untuk profile page login
@@ -86,3 +96,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:api');
 
+Route::get('/evoush/provinces', [App\Http\Controllers\RajaOngkirController::class, 'getProvinces']);
+Route::get('/evoush/cities/{id}', [App\Http\Controllers\RajaOngkirController::class, 'getCities']);
+Route::post('/evoush/checkOngkir', [App\Http\Controllers\RajaOngkirController::class, 'checkOngkir']);

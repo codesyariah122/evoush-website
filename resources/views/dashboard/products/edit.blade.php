@@ -2,7 +2,7 @@
 @section('title') {{$title}} @endsection
 
 @section('content')
-	
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -59,15 +59,15 @@
                                         // var_dump($sliders); die;
                                     @endphp --}}
 
-                                    @foreach(json_decode($product->slider, true) as $slider)
-                                        <img src="{{asset('storage/product-sliders/' . $slider)}}" width="96px"/>
-                                    @endforeach
+                                        @foreach(json_decode($product->slider, true) as $slider)
+                                            <img src="{{asset('storage/product-sliders/' . $slider)}}" width="96px"/>
+                                        @endforeach
                                     @endif
                                     <br><br>
                                     <input
                                     type="file"
                                     class="form-control"
-                                    name="slider[]" 
+                                    name="slider[]"
                                     multiple="multiple"
                                     >
                                     <small class="text-muted">Kosongkan jika tidak ingin mengubah

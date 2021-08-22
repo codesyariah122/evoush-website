@@ -83,7 +83,7 @@ class LoginController extends Controller
         //     break;
         // }
 
-        if(in_array("ADMIN", json_decode(Auth::user()->roles))){
+        if(in_array("ADMIN", json_decode(Auth::user()->roles)) && in_array("STAFF", json_decode(Auth::user()->roles))){
             return '/dashboard/evoush';
         }else if(in_array("MEMBER", json_decode(Auth::user()->roles))){
             return '/member/'.Auth::user()->username;
@@ -138,11 +138,11 @@ class LoginController extends Controller
     //     }
 
     //     $this->guard()->logout();
- 
+
     //     $request->session()->flush();
- 
+
     //     $request->session()->regenerate();
- 
+
     //     return redirect($redirect)
     //         ->with('success', 'Anda telah logout !');
     // }

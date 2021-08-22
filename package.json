@@ -10,14 +10,15 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@popperjs/core": "^2.9.2",
+        "@popperjs/core": "^2.9.3",
         "axios": "^0.21",
-        "jquery": "^3.6.0",
+        "bootstrap": "^4.6.0",
+        "jquery": "^3.6",
         "laravel-mix": "^6.0.25",
         "lodash": "^4.17.19",
         "popper.js": "^1.16.1",
         "postcss": "^8.3.1",
-        "resolve-url-loader": "^4.0.0",
+        "resolve-url-loader": "^3.1.2",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
         "vue": "^2.6.12",
@@ -26,7 +27,6 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
-        "bootstrap": "^4.6.0",
         "bootstrap-vue": "^2.21.2",
         "laravel-vue-pagination": "^2.3.1",
         "startbootstrap-sb-admin-2": "^4.1.4",

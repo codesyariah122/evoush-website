@@ -17,6 +17,8 @@
 
         @if(in_array("ADMIN", json_decode(Auth::user()->roles)))
             @include('layouts.dashboard.Partial.sidebar')
+        @elseif(in_array("STAFF", json_decode(Auth::user()->roles)))
+            @include('layouts.dashboard.Partial.staff.sidebarstaff')
         {{-- @elseif(in_array("MEMBER", json_decode(Auth::user()->roles)))
             @include('layouts.dashboard.Partial.member.sidebarmember')
         @elseif(in_array("FOLLOWER", json_decode(Auth::user()->roles)))
@@ -24,7 +26,7 @@
         @elseif(in_array("AUTHOR", json_decode(Auth::user()->roles)))
             @include('layouts.dashboard.Partial.author.sidebarauthor') --}}
         @endif
-           
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -49,7 +51,7 @@
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    
+
 
     <!-- Logout Modal-->
     @include('layouts.dashboard.Partial.logoutmodal')

@@ -13,7 +13,7 @@
     {{-- <script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
      {{-- Fav icon --}}
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/logo/fav_evoush.png">
     <!-- Fonts -->
@@ -25,7 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('dashboard/css/sb-admin-2.min.css')}}">
 </head>
 <body class="bg-gradient-primary">
-    
+
     {{-- <div class="bg-image">
         <main :style="style" class="py-4">
             @yield('content')
@@ -59,7 +59,7 @@
     .bg-image{
         background-image : url(https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/login/1.jpg);
         background-attachment: fixed;
-        height: 100vh;        
+        height: 100vh;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -77,7 +77,7 @@
     height: 80%!important;
 }
 
-  @media (min-width: 992px) { 
+  @media (min-width: 992px) {
     .card{
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.70)!important;
         border-radius: 2%;
@@ -85,7 +85,7 @@
         height: 60%!important;
     }
 }
-    
+
 </style>
 
 <!-- Bootstrap core JavaScript-->

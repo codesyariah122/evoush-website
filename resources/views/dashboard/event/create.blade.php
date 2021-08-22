@@ -58,9 +58,11 @@
                         <br>
                         <input
                         id="file"
-                        name="file"
+                        name="files[]"
                         type="file"
-                        class="form-control">
+                        class="form-control"
+                        multiple="multiple"
+                        >
 
                         <hr class="my-3">
                         <br>

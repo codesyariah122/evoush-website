@@ -88,7 +88,7 @@
 											{{$contact->category_name}}
 										</td>
 										<td>{{$contact->message}}</td>
-										<td>{{$contact->country}}</td>
+										<td>{{$contact->province}}</td>
 										<td>{{$contact->city}}</td>
 										<td>{{$contact->ip_address}}</td>
 										<td>

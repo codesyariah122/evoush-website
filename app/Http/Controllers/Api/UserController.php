@@ -57,11 +57,17 @@ class UserController extends Controller
         }
 
         $user = User::where('username', $request->username)->first();
-        $user_id = $user->id;
 
-        //  return response()->json([
-        //     'sponsor' => $sponsor
+        // return response()->json([
+        //     'data' => $user
         // ]);
+        if($user === null){
+            return response()->json([
+                'message' => 'Username yang anda gunakan belum terdaftar silahkan, lakukan join ke sponsor pilihan anda yang ada di halaman leader'
+            ]);
+        }
+
+        $user_id = $user->id;
 
         if($user->status === "INACTIVE"){
            $member = Member::where('user_id', $user_id)->first();
@@ -82,6 +88,7 @@ class UserController extends Controller
                 'message' => 'Login Failed! / Username atau password yang anda masukan tidak sesuai',
             ]);
         }
+
         return response()->json([
             'success' => true,
             'message' => 'Login Success!',

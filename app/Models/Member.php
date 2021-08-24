@@ -10,7 +10,7 @@ class Member extends Model
 {
     // use HasFactory;
     use softDeletes;
-    
+
     public $table = "member";
 
 
@@ -22,7 +22,7 @@ class Member extends Model
     public function users()
     {
     	// return $this->hasMany('App\Models\User');
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsToMany('App\Models\User');
     }
 
     public function profile()

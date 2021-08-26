@@ -38,6 +38,9 @@ Route::put('/member/update/{id}', [ApiDataController::class, 'profile_member_upd
 Route::put('/member/activated/{id}', [ApiDataController::class, 'new_member_activation']);
 
 
+// Kirim sms
+Route::get('/kirim-sms', [ApiDataController::class, 'sendMessage']);
+
 /*
 |--------------------------------------------------------------------------
 | API Routes

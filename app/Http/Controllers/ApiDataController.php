@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\CategoryMessage;
 use App\Models\Contact;
 use App\Models\Event;
+use Twilio\Rest\Client;
 
 use Validator;
 use Auth;
@@ -642,6 +643,36 @@ class ApiDataController extends Controller
             ]);
         }catch(\Exception $e){
             echo "Member gagal di aktivasi $e.";
+        }
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $recipients = $request->get('recipients');
+        $message = $request->get('message');
+        // return response()->json([
+        //     'data' => [
+        //         'number' => $recipients,
+        //         'message' => $message
+        //     ]
+        // ]);
+
+        try{
+            $account_sid = getenv("TWILIO_SID");
+            $auth_token = getenv("TWILIO_AUTH_TOKEN");
+            $twilio_number = getenv("TWILIO_NUMBER");
+
+            $client = new Client($account_sid, $auth_token);
+            $client->message->create($recipients, ['from' => $twilio_number, 'body' => $message]);
+            return response()->json([
+                'success' => true,
+                'message' => 'SMS has a sending'
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], 400);
         }
     }
 

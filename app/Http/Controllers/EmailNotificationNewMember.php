@@ -10,12 +10,23 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\Member;
 use App\Models\Joining;
+use Validator;
 
 class EmailNotificationNewMember extends Controller
 {
     //
     public function send(Request $request)
     {
+        $validation = \Validator::make($request->all(),[
+           "name" => "required|min:5|max:100",
+           "email" => "required|email|unique:users",
+           "phone" => "required|digits_between:10,15",
+           "province" => "required",
+           "city" => "required",
+           "password" => "required",
+           "password_confirmation" => "required|same:password"
+       ])->validate();
+
        	$username_path = $request->get('username_path');
 
         $new_user = new User;

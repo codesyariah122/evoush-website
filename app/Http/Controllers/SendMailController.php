@@ -16,7 +16,7 @@ class SendMailController extends Controller
     {
         $validation = Validator::make($request->all(),[
          "name" => "required|min:5|max:100",
-         "phone" => "required|digits_between:10,12",
+         "phone" => "required|digits_between:10,15",
          "email" => "required|email"
         ]);
 

@@ -29,7 +29,7 @@
                </div>
              </div>
            </form>
-          
+
             <div class="card">
                 <div class="card-header">{{ __('List User') }}</div>
                 <div class="card-body">
@@ -74,8 +74,10 @@
                                 @if(in_array("MEMBER", json_decode($user->roles)))
                                   @if(in_array("STAR SAPHIRE", json_decode($user->achievements)))
                                     {{"Star Saphire"}}
-                                  @else
+                                  @elseif(in_array("SAPHIRE", json_decode($user->achievements)))
                                     {{"Saphire"}}
+                                  @else
+                                    {{"No Achievements"}}
                                   @endif
                                 @endif
                                </td>

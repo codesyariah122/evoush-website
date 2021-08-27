@@ -676,4 +676,34 @@ class ApiDataController extends Controller
         }
     }
 
+    public function getYoutubeChannel($channel_id)
+    {
+        $part = 'snippet,contentDetails,statistics';
+        $api_key = 'AIzaSyBVnOyEii1WdvQQjJzIDTgoBCqr_t8y4fc';
+        $api = 'https://www.googleapis.com/youtube/v3/channels?part='.$part.'&id='.$channel_id.'&key='.$api_key;
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $api);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        $data = json_decode($result, 1);
+
+        // var_dump($data); die;
+
+        try{
+            return response()->json([
+                'success' => true,
+                'message' => 'Success fetch youtube data',
+                'data' => $data
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
+
+    }
+
 }

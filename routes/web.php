@@ -28,6 +28,7 @@ Route::get('/api/test', [ApiDataController::class, 'index'])->name('testing.data
 // testing spa web application
 Route::get('/api/spa', [TestSpaController::class, 'index']);
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,7 +62,7 @@ Route::get('/dashboard/evoush/kirim-email', [SendMailController::class, 'send'])
 // 	Route::middleware(['admin'])->group(function () {
 //         Route::get('/dashboard/evoush', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.evoush');
 //     });
- 
+
 //     Route::middleware(['user'])->group(function () {
 //         Route::get('user', [MemberController::class, 'index']);
 //     });

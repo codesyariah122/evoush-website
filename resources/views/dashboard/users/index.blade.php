@@ -41,7 +41,7 @@
                                <th><b>Email</b></th>
                                <th><b>Avatar</b></th>
                                <th><b>Status</b></th>
-                               <th><b>Pencapian</b></th>
+                               {{-- <th><b>Pencapian</b></th> --}}
                                <th><b>Action</b></th>
                            </tr>
                        </thead>
@@ -70,7 +70,7 @@
                                  @endif
                                </td>
 
-                               <td>
+                               {{-- <td>
                                 @if(in_array("MEMBER", json_decode($user->roles)))
                                   @if(in_array("STAR SAPHIRE", json_decode($user->achievements)))
                                     {{"Star Saphire"}}
@@ -80,7 +80,7 @@
                                     {{"No Achievements"}}
                                   @endif
                                 @endif
-                               </td>
+                               </td> --}}
 
                                <td>
                                  <a class="btn btn-info text-white btn-sm" href="{{route('users.edit',

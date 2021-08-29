@@ -426,7 +426,7 @@ class ApiDataController extends Controller
     {
         $members = User::join('profile', 'profile.user_id', '=', 'users.id')
                     ->where('roles', '=', json_encode(['MEMBER']))
-                    ->whereIn('users.id', [3, 5, 4, 10, 7, 8, 9, 11, 12, 13, 14, 15, 16, 18, 19])
+                    ->whereIn('users.id', [3, 5, 4, 7, 8, 9, 11, 12, 13, 14, 15, 16, 18, 19])
                     ->orderBy('achievements', 'DESC')
                     // ->get();
                     ->paginate(6);
@@ -681,27 +681,30 @@ class ApiDataController extends Controller
         }
     }
 
-    public function getYoutubeChannel($channel_id)
-    {
-        $part = 'snippet,contentDetails,statistics';
-        $api_key = 'AIzaSyBVnOyEii1WdvQQjJzIDTgoBCqr_t8y4fc';
-        $api = 'https://www.googleapis.com/youtube/v3/channels?part='.$part.'&id='.$channel_id.'&key='.$api_key;
-
+    public function curl_data($data_){
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $api);
+        curl_setopt($curl, CURLOPT_URL, $data_);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($curl);
         curl_close($curl);
 
-        $data = json_decode($result, 1);
+       return json_decode($result, 1);
 
-        // var_dump($data); die;
+    }
+
+    public function getYoutubeChannel($channel_id)
+    {
+        $part = 'snippet,contentDetails,statistics,brandingSettings';
+        $api_key = 'AIzaSyBVnOyEii1WdvQQjJzIDTgoBCqr_t8y4fc';
+        $profile_yt = 'https://www.googleapis.com/youtube/v3/channels?part='.$part.'&id='.$channel_id.'&key='.$api_key;
+
+        $channel_yt = $this->curl_data($profile_yt);
 
         try{
             return response()->json([
                 'success' => true,
                 'message' => 'Success fetch youtube data',
-                'data' => $data
+                'data' => $channel_yt
             ]);
         }catch(Exception $e){
             return response()->json([
@@ -709,6 +712,28 @@ class ApiDataController extends Controller
             ], 400);
         }
 
+    }
+
+    public function getLatestYoutubeVideo($channel_id, $maxResult, $order)
+    {
+        $part = 'snippet';
+        $api_key = 'AIzaSyBVnOyEii1WdvQQjJzIDTgoBCqr_t8y4fc';
+        $latest_vid = 'https://www.googleapis.com/youtube/v3/search?key='.$api_key.'&channelId='.$channel_id.'&maxResult='.$maxResult.'&order='.$order.'&part='.$part;
+
+        $latestVideo_yt = $this->curl_data($latest_vid);
+
+
+        try{
+            return response()->json([
+                'success' => true,
+                'message' => 'Success fetch youtube data',
+                'data' => $latestVideo_yt
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
     }
 
 }

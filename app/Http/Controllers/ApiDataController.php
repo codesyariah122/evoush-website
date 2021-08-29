@@ -736,4 +736,26 @@ class ApiDataController extends Controller
         }
     }
 
+    public function getPlaylistVideo($channel_id, $maxResult, $playlist_id )
+    {
+        $part = 'snippet';
+        $api_key = 'AIzaSyBVnOyEii1WdvQQjJzIDTgoBCqr_t8y4fc';
+        $playlist_vid = 'https://www.googleapis.com/youtube/v3/playlistItems?key='.$api_key.'&channelId='.$channel_id.'&maxResult='.$maxResult.'&part='.$part.'&playlistId='.$playlist_id;
+
+        $playlistVideo_yt = $this->curl_data($playlist_vid);
+
+
+        try{
+            return response()->json([
+                'success' => true,
+                'message' => 'Success fetch youtube data',
+                'data' => $playlistVideo_yt
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
+    }
+
 }

@@ -738,7 +738,7 @@ class ApiDataController extends Controller
 
     public function getPlaylistVideo($channel_id, $maxResult, $playlist_id )
     {
-        $part = 'snippet';
+        $part = 'snippet,contentDetails';
         $api_key = 'AIzaSyBVnOyEii1WdvQQjJzIDTgoBCqr_t8y4fc';
         $playlist_vid = 'https://www.googleapis.com/youtube/v3/playlistItems?key='.$api_key.'&channelId='.$channel_id.'&maxResult='.$maxResult.'&part='.$part.'&playlistId='.$playlist_id;
 

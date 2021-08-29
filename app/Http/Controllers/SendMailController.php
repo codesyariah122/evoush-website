@@ -16,8 +16,11 @@ class SendMailController extends Controller
     {
         $validation = Validator::make($request->all(),[
          "name" => "required|min:5|max:100",
-         // "phone" => "required|digits_between:10,15",
-         "email" => "required|email"
+         "phone" => "required|max:20",
+         "email" => "required|email",
+         "province" => "required",
+         "city" => "required",
+         "message" => "required"
         ]);
 
         if ($validation->fails()) {
@@ -60,7 +63,7 @@ class SendMailController extends Controller
 
 
             $details = [
-                'title' => 'Contact From Website evoush::official',
+                'title' => 'Email From Website evoush::official',
                 'url' => 'https://evoush.com',
                 'name' => $name,
                 'email' => $email,
@@ -73,7 +76,7 @@ class SendMailController extends Controller
 
             try {
 
-                Mail::to('evoushofficiall@gmail.com')->send(new ContactEmail($details));
+                Mail::to('admin_evoush@evoush.com')->send(new ContactEmail($details));
                 return response()->json([
                     'message' => 'Email has been sent.',
                     'data' => $new_contact

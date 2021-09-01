@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Traits\ImageUpload;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use Validator;
 use Auth;
 
 class ProductController extends Controller
@@ -72,16 +73,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+      // var_dump($request->all()); die;
       $new_product = new \App\Models\Product;
-        
-        \Validator::make($request->all(), [
+
+        Validator::make($request->all(), [
            "title" => "required|min:5|max:200",
            "description" => "required|min:20|max:1000",
            "mini_description" => "required|min:20|max:100",
            "price" => "required|digits_between:0,10",
            "stock" => "required|digits_between:0,10",
            "cover" => "required"
-       ])->validate(); 
+       ]);
 
         $new_product->title = $request->get('title');
         $new_product->description = $request->get('description');
@@ -99,7 +101,25 @@ class ProductController extends Controller
         $new_product->created_by = \Auth::user()->id;
         $new_product->save();
         $new_product->categories()->attach($request->get('categories'));
+
+
+       if($request->hasFile('slider')) {
+
+          foreach($request->file('slider') as $file)
+          {
+            // $name = time().rand(1,100).'.'.$file->extension();
+            $unique_name = md5($file. time());
+            $file->move(public_path('storage').'/product-sliders/', $unique_name);
+            $files[] = $unique_name;
+          }
+
+          $new_product->slider = json_encode($files);
+
+          // var_dump($new_product->slider); die;
+        }
+
         if($request->get('save_action') == 'PUBLISH'){
+          $new_product->save();
            return redirect()
            ->route('products.create')
            ->with('status', 'New Product With id : '.$new_product->id.' successfully saved and published');
@@ -151,17 +171,17 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = \App\Models\Product::findOrFail($id);
-       //  \Validator::make($request->all(), [
-       //     "title" => "required|min:5|max:200",
-       //     "slug" => [
-       //         "required",
-       //         Rule::unique("products")->ignore($product->slug, "slug")
-       //     ],
-       //     "description" => "required|min:20|max:1000",
-       //     "mini_description" => "required|min:20|max:100",
-       //     "price" => "required|digits_between:0,10",
-       //     "stock" => "required|digits_between:0,10",
-       // ])->validate(); 
+        \Validator::make($request->all(), [
+           "title" => "required|min:5|max:200",
+           "slug" => [
+               "required",
+               Rule::unique("products")->ignore($product->slug, "slug")
+           ],
+           "description" => "required|min:20|max:1000",
+           "mini_description" => "required|min:20|max:100",
+           "price" => "required|digits_between:0,10",
+           "stock" => "required|digits_between:0,10",
+       ]);
 
 
         $product->title = $request->get('title');
@@ -183,15 +203,16 @@ class ProductController extends Controller
         if($request->hasFile('slider')) {
           foreach($request->file('slider') as $file)
           {
-            $name = $file->getClientOriginalName();
+            $unique_name = md5($file. time());
+            // $name = $file->getClientOriginalName();
             if($product->slider && file_exists(storage_path('app/public/' .
                     $product->slider))){
                      \Storage::delete('public/'. $product->slider);
             }
 
-            $file->move(public_path('storage').'/product-sliders/', $name); 
+            $file->move(public_path('storage').'/product-sliders/', $unique_name);
             // $file->store('product-sliders', 'public', $name);
-            $imgData[] = $name;  
+            $imgData[] = $unique_name;
           }
 
           $product->slider = json_encode($imgData);

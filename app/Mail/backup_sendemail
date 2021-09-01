@@ -1,0 +1,40 @@
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=cba640038d9d92
+MAIL_PASSWORD=8d060e914d0b67
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=9722dd9957-6c27f1@inbox.mailtrap.io
+
+<?php
+
+namespace App\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+
+class EventEmail extends Mailable
+{
+     use Queueable, SerializesModels;
+   
+    public $details;
+   
+    public function __construct($details)
+    {
+        $this->details = $details;
+    }
+   
+    public function build()
+    {
+        $context = [
+            'title' => 'Email List',
+            'brand' => 'evoush'
+        ];
+        // return $this->subject('Event Anniversary Evoush 2021')
+        //             ->view('dashboard.emails.eventEmail', $context);
+        return $this->markdown('Email.eventEmail')
+              ->with('mailData', $this->details);
+    }
+}

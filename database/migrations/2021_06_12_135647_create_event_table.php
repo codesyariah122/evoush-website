@@ -18,7 +18,7 @@ class CreateEventTable extends Migration
             $table->string('title');
             $table->string('quotes');
             $table->string('cover');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->longText('content');
             $table->timestamps();
         });

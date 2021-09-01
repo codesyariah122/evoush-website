@@ -2,7 +2,7 @@
 @section('title') {{$title}} @endsection
 
 @section('content')
-	
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -43,13 +43,13 @@
                                 <label for="sliders">Sliders</label>
                                 <input type="file"
                                     class="form-control {{$errors->first('slider') ? "is-invald" : ""}}"
-                                    name="slider[]" 
-                                    multiple="multiple">
+                                    name="slider[]"
+                                    multiple="multiple" id="sliders">
                                 <div class="invalid-feedback">
-                                    {{$errors->first('cover')}}
+                                    {{$errors->first('slider')}}
                                 </div>
                                 <br>
-                                
+
                                 <label for="full-featured-non-premium">Detail Description</label><br>
                                 <textarea name="description" id="full-featured-non-premium" class="form-control {{$errors->first('description') ? "is-invald" : ""}}" placeholder="Give a description about this product" value="{{old('description')}}"></textarea>
                                 <div class="invalid-feedback">
@@ -88,7 +88,7 @@
                                     {{$errors->first('price')}}
                                 </div>
                                 <br>
-                                <button 
+                                <button
                                 class="btn btn-primary"
                                 name="save_action"
                                 value="PUBLISH">Publish</button>

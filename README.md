@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/4d2ea5ca618f3dd8c1bd3be7e9f172d3664ba67e/images/logo/evoush_logo_header.svg"/>
 Evoush backend ini dibangun di atas bahasa pemrogramman PHP7 dan kali ini untuk build system keseluruhan di gunakan framework Laravel8 sebagai backend system untuk managerial data bagi kebutuhan front end website.  
-backend : <a href="https://app.evoush.com">Evoush Backend</a>  
+backend : <a href="https://evoush.heroku.app">Evoush Backend</a>  
 
 ### Evoush all the technology used
 * Front End

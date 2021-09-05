@@ -758,4 +758,51 @@ class ApiDataController extends Controller
         }
     }
 
+    public function getVideo($video_id)
+    {
+          $part = 'snippet,contentDetails,player';
+          $api_key = 'AIzaSyBVnOyEii1WdvQQjJzIDTgoBCqr_t8y4fc';
+          $video_yt = 'https://www.googleapis.com/youtube/v3/videos?key='.$api_key.'&part='.$part.'&id='.$video_id;
+          // $playlist_vid = 'https://www.googleapis.com/youtube/v3/playlistItems?key='.$api_key.'&channelId='.$channel_id.'&maxResult='.$maxResult.'&part='.$part.'&playlistId='.$playlist_id;
+
+          $PlayVideo_yt = $this->curl_data($video_yt);
+
+
+          try{
+            return response()->json([
+                'success' => true,
+                'message' => 'Success fetch youtube data',
+                'data' => $PlayVideo_yt
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
+    }
+
+    public function searchYoutubeVideo($keyword)
+    {
+        $q = trim(preg_replace('/\s+/', '', $keyword));
+        $part = 'snippet';
+        $result = 50;
+          $api_key = 'AIzaSyBVnOyEii1WdvQQjJzIDTgoBCqr_t8y4fc';
+          $video_yt = 'https://www.googleapis.com/youtube/v3/search?key='.$api_key.'&part='.$part.'&q='.$keyword.'&maxResults='.$result;
+
+          $SearchVideo_yt = $this->curl_data($video_yt);
+
+
+          try{
+            return response()->json([
+                'success' => true,
+                'message' => 'Success fetch youtube data',
+                'data' => $SearchVideo_yt
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
+    }
+
 }

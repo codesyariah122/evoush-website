@@ -26,7 +26,7 @@ class UserController extends Controller
        });
 
     }
-
+    
     public function index(Request $request)
     {
         //
@@ -60,7 +60,7 @@ class UserController extends Controller
             // 'users' => User::where('name', Auth::user()->name)->paginate(10)
             'users' => $users
         ];
-
+    
         return view('dashboard.users.index', $context);
     }
 
@@ -107,7 +107,6 @@ class UserController extends Controller
         $new_user->phone = $request->get('phone');
         $new_user->email = $request->get('email');
         $new_user->password = \Hash::make($request->get('password'));
-        $new_user->status = "ACTIVE";
         $new_user->achievements = json_encode($request->get('achievements'));
 
         if($request->file('avatar')){
@@ -115,7 +114,7 @@ class UserController extends Controller
           $new_user->avatar = $file;
         }else{
             $new_user->avatar = null;
-        }
+        } 
 
         $new_user->save();
 
@@ -140,7 +139,7 @@ class UserController extends Controller
         $new_profile = new Profile;
         $new_profile->user_id = $new_userid;
         $new_profile->quotes = $request->get('quotes');
-
+        
         if($request->file('cover')){
             $file = $request->file('cover')->store($new_user->username.'/covers', 'public');
             $new_profile->cover = $file;
@@ -157,9 +156,9 @@ class UserController extends Controller
         $new_profile->youtube = $request->get('youtube');
         $new_profile->province = $provinsi;
         $new_profile->city = $request->get('city');
-
+        
         $new_profile->save();
-
+        
         return redirect()->route('users.create')->with('status', 'Username : '.$new_user->username.' successfully created');
 
     }
@@ -217,11 +216,11 @@ class UserController extends Controller
            "phone" => "required|digits_between:10,15",
            // "address" => "required|min:20|max:200",
        ])->validate();
-
+        
         $user = User::findOrFail($id);
         $user->name = $request->get('name');
         // $user->email = $request->get('email');
-        $user->username = strtolower($request->get('username'));
+        $user->username = strtolower($request->get('username')); 
         $user->roles = json_encode($request->get('roles'));
         $user->address = $request->get('address');
         $user->phone = $request->get('phone');

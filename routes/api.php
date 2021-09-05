@@ -46,6 +46,8 @@ Route::get('/kirim-sms', [ApiDataController::class, 'sendMessage']);
 Route::get('/evoush/youtube/{channel_id}', [ApiDataController::class, 'getYoutubeChannel']);
 Route::get('/evoush/youtube/latest-video/{channel_id}/{maxResult}/{order}', [ApiDataController::class, 'getLatestYoutubeVideo']);
 Route::get('/evoush/youtube/playlist-video/{channel_id}/{maxResult}/{playlist_id}', [ApiDataController::class, 'getPlaylistVideo']);
+Route::get('/evoush/youtube/video/{video_id}', [ApiDataController::class, 'getVideo']);
+Route::get('/evoush/youtube/cari/video/{keyword}', [ApiDataController::class, 'searchYoutubeVideo']);
 /*
 |--------------------------------------------------------------------------
 | API Routes

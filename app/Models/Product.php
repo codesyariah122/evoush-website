@@ -10,21 +10,6 @@ class Product extends Model
 {
     // use HasFactory;
 	use SoftDeletes;
-	public $table = "products";
-
-	protected $fillable = [
-		'title',
-		'slug',
-		'description',
-		'mini_description',
-		'cover',
-		'price',
-		'views',
-		'stock',
-		'status',
-		'slider'
-	];
-
 
     public function categories(){
     	return $this->belongsToMany('App\Models\Category');

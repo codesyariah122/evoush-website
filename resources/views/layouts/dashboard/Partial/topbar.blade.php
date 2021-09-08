@@ -1,4 +1,4 @@
-<!-- Topbar -->
+
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
@@ -172,7 +172,8 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->username }}</span>
                                 @if(Auth::user()->avatar)
-                                    <img src="{{asset('storage/'.Auth::user()->avatar)}}" width="30px"/> 
+                                    {{-- <img src="{{asset('storage/'.Auth::user()->avatar)}}" width="30px"/>  --}}
+                                    <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/main/migration_db/{{ Auth::user()->avatar }}" class="img-fluid" width="30">
                                 @else
                                     <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/profile/default.jpg" class="img-responsive rounded-circle" width="50" height="50">
                                 @endif
@@ -208,4 +209,3 @@
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->

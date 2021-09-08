@@ -60,7 +60,8 @@
                                      <td>{{$event->quotes}}</td>
                                      <td>
                                          @if($event->cover)
-                                         <img src="{{asset('storage/'.$event->cover)}}" width="100px" class="img-responsive">
+                                         {{-- <img src="{{asset('storage/'.$event->cover)}}" width="100px" class="img-responsive"> --}}
+                                         <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/main/migration_db/{{ $event->cover }}">
                                          @endif
                                      </td>
                                      <td width="600">

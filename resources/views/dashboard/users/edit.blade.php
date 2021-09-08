@@ -9,13 +9,13 @@
             <div class="card">
                 <div class="card-header">{{ $title }}</div>
                 <div class="card-body">
-                	<div class="col-md-8">
-                		@if(session('status'))
-                		<div class="alert alert-success">
-                			{{session('status')}}
-                		</div>
-                		@endif
-                		<form enctype="multipart/form-data" class="bg-white shadow-sm p-3"
+                  <div class="col-md-8">
+                    @if(session('status'))
+                    <div class="alert alert-success">
+                      {{session('status')}}
+                    </div>
+                    @endif
+                    <form enctype="multipart/form-data" class="bg-white shadow-sm p-3"
                         action="{{route('users.update', [$user->id])}}" method="POST">
                         @csrf
                         <input type="hidden" value="PUT" name="_method">
@@ -100,7 +100,7 @@
                        <div class="invalid-feedback">
                          {{$errors->first('roles')}}
                         </div>
-                       
+
                        <input
                        type="checkbox"
                        {{in_array("FOLLOWER", json_decode($user->roles)) ? "checked" :
@@ -115,7 +115,7 @@
                        <div class="invalid-feedback">
                          {{$errors->first('roles')}}
                         </div>
-                       
+
                        <input
                        type="checkbox"
                        {{in_array("AUTHOR", json_decode($user->roles)) ? "checked" :
@@ -156,9 +156,14 @@
                      No avatar
                      @endif
                      <br>
-                     <input id="avatar" name="avatar" type="file" class="form-control">
-                     <small class="text-muted">Kosongkan jika tidak ingin mengubah
+                     {{-- @if(in_array("MEMBER", json_decode($user->roles)))
+                      <input type="text" name="avatar" id="avatar" class="form-control">
+                      <small class="text-muted text-danger">Masukan link avatar</small>
+                     @else --}}
+                      <input id="avatar" name="avatar" type="file" class="form-control">
+                      <small class="text-muted">Kosongkan jika tidak ingin mengubah
                      avatar</small>
+                     {{-- @endif --}}
                      <hr class="my-4">
 
                      <label for="email">Email</label>
@@ -206,7 +211,7 @@
                      <input class="btn btn-primary" type="submit" value="Simpan"/>
                     </form>
 
-                	</div>
+                  </div>
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 @section('title') {{$title}} @endsection
 
 @section('content')
-	
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -30,7 +30,7 @@
            </div>
            <hr class="my-3">
 
-        	<a href="{{route('products.create')}}" class="btn btn-success mt-2 mb-3">Add Product</a>
+          <a href="{{route('products.create')}}" class="btn btn-success mt-2 mb-3">Add Product</a>
 
             @if(session('status'))
                 <div class="alert alert-success">
@@ -78,10 +78,16 @@
                                  @foreach($products as $product)
                                  <tr>
                                      <td>
-                                         @if($product->cover)
+                                         {{-- @if($product->cover)
                                          <img src="{{asset('storage/'.$product->cover)}}" width="100px" class="img-responsive">
                                          @else
                                          No Product Cover
+                                         @endif --}}
+
+                                         @if($product->cover)
+                                         <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/main/migration_db/{{ $product->cover }}" width="100" class="img-fluid">
+                                         @else
+                                          <small class="text-muted">No Cover</small>
                                          @endif
                                      </td>
                                      <td>{{$product->title}}</td>

@@ -12,7 +12,7 @@
            </div>
            @endif
 
-        	<a href="{{route('products.index')}}" class="btn btn-success mt-2 mb-3">Product List</a>
+            <a href="{{route('products.index')}}" class="btn btn-success mt-2 mb-3">Product List</a>
 
             <div class="card">
                 <div class="card-header">{{ __($title) }}</div>
@@ -37,14 +37,16 @@
                                     <label for="cover">Cover</label>
                                     <small class="text-muted">Current cover</small><br>
                                     @if($product->cover)
-                                    <img src="{{asset('storage/' . $product->cover)}}" width="96px"/>
+                                    <img src="{{asset('storage/' . $product->cover)}}" width="96" class="img-fluid/>
                                     @endif
                                     <br><br>
-                                    <input
+                                    {{-- <input
                                     type="file"
                                     class="form-control"
                                     name="cover"
-                                    >
+                                    > --}}
+                                    <input type="text" name="cover" id="cover" class="form-control" placeholder="Masukan link cover product">
+                                    <br>
                                     <small class="text-muted">Kosongkan jika tidak ingin mengubah
                                     cover</small>
                                     <br><br>
@@ -60,7 +62,8 @@
                                     @endphp --}}
 
                                         @foreach(json_decode($product->slider, true) as $slider)
-                                            <img src="{{asset('storage/product-sliders/' . $slider)}}" width="96px"/>
+                                            {{-- <img src="{{asset('storage/product-sliders/' . $slider)}}" width="96px"/> --}}
+                                            <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/main/migration_db/product-sliders/{{ $slider }}" width="96" class="img-fluid">
                                         @endforeach
                                     @endif
                                     <br><br>

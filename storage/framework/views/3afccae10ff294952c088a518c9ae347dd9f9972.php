@@ -27,5 +27,5 @@
     	}
 	});
 
-	
+
 </script><?php /**PATH C:\Users\Evoush\puji_titip\evoush-backend\resources\views/layouts/dashboard/Partial/script.blade.php ENDPATH**/ ?>

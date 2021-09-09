@@ -22,6 +22,7 @@ use App\Http\Controllers\CategoryArticleController;
 use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\TestSpaController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\DashboardController;
 
 // Testing Api Data
 Route::get('/api/test', [ApiDataController::class, 'index'])->name('testing.data');
@@ -68,7 +69,7 @@ Route::get('/dashboard/evoush/kirim-email', [SendMailController::class, 'send'])
 //     });
 // });
 
-Route::get('/dashboard/evoush', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.evoush');
+Route::get('/dashboard/evoush', [DashboardController::class, 'index'])->name('dashboard.evoush');
 // User Data Route
 Route::resource('/dashboard/evoush/users', UserController::class);
 // Route Profile dashboard/evoush

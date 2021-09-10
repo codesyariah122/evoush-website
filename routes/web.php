@@ -22,7 +22,7 @@ use App\Http\Controllers\CategoryArticleController;
 use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\TestSpaController;
 use App\Http\Controllers\SendMailController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MenuManagementController;
 
 // Testing Api Data
 Route::get('/api/test', [ApiDataController::class, 'index'])->name('testing.data');
@@ -131,5 +131,8 @@ Route::resource('/dashboard/evoush/categorymessage', CategoryMessageController::
 // Route Event Created
 Route::resource('/dashboard/evoush/event', EventCreatedController::class);
 
+
+// Route menu management
+Route::resource('/dashboard/evoush/menus', MenuManagementController::class);
 
 

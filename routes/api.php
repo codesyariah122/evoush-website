@@ -109,3 +109,6 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:api'
 Route::get('/evoush/provinces', [App\Http\Controllers\RajaOngkirController::class, 'getProvinces']);
 Route::get('/evoush/cities/{id}', [App\Http\Controllers\RajaOngkirController::class, 'getCities']);
 Route::post('/evoush/checkOngkir', [App\Http\Controllers\RajaOngkirController::class, 'checkOngkir']);
+
+// Check Resi
+Route::get('/evoush/check-resi/{courier}/{awb}', [ApiDataController::class, 'check_resi']);

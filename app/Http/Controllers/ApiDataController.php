@@ -805,4 +805,27 @@ class ApiDataController extends Controller
         }
     }
 
+
+    public function check_resi(Request $request)
+    {
+        $apiKey = '30eb148d32f54f281851220fc4be39250f0153e9ec509acb80f32ca50dde94ca';
+        $awb = $request->awb;
+        $courier = $request->courier;
+
+        $url = 'https://api.binderbyte.com/v1/track?api_key='.$apiKey.'&courier='.$courier.'&awb='.$awb;
+        $check_resi = $this->curl_data($url);
+
+        try{
+            return response()->json([
+                'success' => true,
+                'message' => 'Success fetch check resi',
+                'data' => $check_resi
+            ]);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
+    }
+
 }

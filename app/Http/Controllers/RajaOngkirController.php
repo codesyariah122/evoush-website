@@ -71,11 +71,16 @@ class RajaOngkirController extends Controller
         ]);
 
         $ongkir = $response['rajaongkir']['results'];
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Result Cost Ongkir',
-            'data'    => $ongkir
-        ]);
+        try{
+            return response()->json([
+                'success' => true,
+                'message' => 'Result Cost Ongkir',
+                'data'    => $ongkir
+            ]);
+        }catch(Exception $e){
+             return response()->json([
+                'message' => $e->getMessage()
+            ], 400);
+        }
     }
 }

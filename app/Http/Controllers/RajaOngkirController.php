@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Http;
 
 class RajaOngkirController extends Controller
 {
-    // 
-    protected $API_KEY = ' 3273d390785361753111827bec129a8c'; 
-    
+    //
+    public $API_KEY = '731cc7cd75e02f5e3fa3d5dc655a2c03';
+
     /**
      * getProvinces
      *
@@ -17,7 +17,7 @@ class RajaOngkirController extends Controller
      */
     public function getProvinces()
     {
-        
+
         $response = Http::withHeaders([
             'key' => $this->API_KEY
         ])->get('https://api.rajaongkir.com/starter/province');
@@ -27,10 +27,10 @@ class RajaOngkirController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Get All Provinces',
-            'data'    => $provinces    
+            'data'    => $provinces
         ]);
     }
-    
+
     /**
      * getCities
      *
@@ -39,7 +39,7 @@ class RajaOngkirController extends Controller
      */
     public function getCities($id)
     {
-        
+
         $response = Http::withHeaders([
             'key' => $this->API_KEY
         ])->get('https://api.rajaongkir.com/starter/city?&province='.$id.'');
@@ -49,10 +49,10 @@ class RajaOngkirController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Get City By ID Provinces : '.$id,
-            'data'    => $cities    
+            'data'    => $cities
         ]);
     }
-        
+
     /**
      * checkOngkir
      *
@@ -75,7 +75,7 @@ class RajaOngkirController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Result Cost Ongkir',
-            'data'    => $ongkir    
+            'data'    => $ongkir
         ]);
     }
 }

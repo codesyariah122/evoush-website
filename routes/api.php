@@ -10,6 +10,7 @@ use App\Http\Controllers\MetaDataController;
 use App\Http\Controllers\RajaOngkirController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\EmailNotificationNewMember;
+use App\Http\Controllers\KonsultasiDokter;
 // use App\Http\Controllers\CategoryMessageController;
 
 
@@ -48,6 +49,10 @@ Route::get('/evoush/youtube/latest-video/{channel_id}/{maxResult}/{order}', [Api
 Route::get('/evoush/youtube/playlist-video/{channel_id}/{maxResult}/{playlist_id}', [ApiDataController::class, 'getPlaylistVideo']);
 Route::get('/evoush/youtube/video/{video_id}', [ApiDataController::class, 'getVideo']);
 Route::get('/evoush/youtube/cari/video/{keyword}', [ApiDataController::class, 'searchYoutubeVideo']);
+
+
+// sending consults to database evoush
+Route::post('/evoush/consults', [ApiDataController::class, 'sending_consults']);
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -112,3 +117,4 @@ Route::post('/evoush/checkOngkir', [App\Http\Controllers\RajaOngkirController::c
 
 // Check Resi
 Route::get('/evoush/check-resi/{courier}/{awb}', [ApiDataController::class, 'check_resi']);
+

@@ -121,6 +121,20 @@
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
+
+                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConsult"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-stethoscope"></i>
+                    <span>Consults</span>
+                </a>
+                <div id="collapseConsult" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Consultation Dokter</h6>
+                        <a href="{{route('consults.index')}}" class="collapse-item">Consult Lists</a>
+                        <div class="collapse-divider"></div>
+                        <a href="{{route('delivers.index')}}" class="collapse-item">Deliver To Dokter</a>
+                    </div>
+                </div>
             </li>
 
 

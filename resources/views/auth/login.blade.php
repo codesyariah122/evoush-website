@@ -7,7 +7,7 @@
 </script>
 @endif
 @extends('layouts.auth.app')
-@section('title') Evoush::Profile | Login::Page @endsection
+@section('title') Evoush::Administrator | Login::Page @endsection
 
 
 @section('content')

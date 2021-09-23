@@ -6,7 +6,7 @@
 </script>
 <?php endif; ?>
 
-<?php $__env->startSection('title'); ?> Evoush::Profile | Login::Page <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Evoush::Administrator | Login::Page <?php $__env->stopSection(); ?>
 
 
 <?php $__env->startSection('content'); ?>

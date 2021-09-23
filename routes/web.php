@@ -23,6 +23,8 @@ use App\Http\Controllers\ApiDataController;
 use App\Http\Controllers\TestSpaController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\MenuManagementController;
+use App\Http\Controllers\KonsultasiDokter;
+use App\Http\Controllers\DeliveryConsultController;
 
 // Testing Api Data
 Route::get('/api/test', [ApiDataController::class, 'index'])->name('testing.data');
@@ -134,5 +136,10 @@ Route::resource('/dashboard/evoush/event', EventCreatedController::class);
 
 // Route menu management
 Route::resource('/dashboard/evoush/menus', MenuManagementController::class);
+
+// Route konsultasi dokter
+Route::resource('/dashboard/evoush/consults', KonsultasiDokter::class);
+Route::resource('/dashboard/evoush/delivers', DeliveryConsultController::class);
+Route::post('/consult/update', [ApiDataController::class, 'deliver_to_docter']);
 
 

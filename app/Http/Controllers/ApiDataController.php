@@ -12,6 +12,8 @@ use App\Models\Product;
 use App\Models\CategoryMessage;
 use App\Models\Contact;
 use App\Models\Event;
+use App\Models\Konsultasi;
+use App\Models\DeliverKonsultasi;
 use Twilio\Rest\Client;
 
 use Validator;
@@ -826,6 +828,63 @@ class ApiDataController extends Controller
                 'message' => $e->getMessage()
             ], 400);
         }
+    }
+
+    public function sending_consults(Request $request)
+    {
+        $validation = Validator::make($request->all(),[
+         "fullname" => "required|min:5|max:100",
+         "phone" => "required|max:20",
+         "message" => "required",
+         "age" => "required",
+         "gender" => "required"
+        ]);
+        if($validation->fails()){
+            return response()->json($validation->errors(), 400);
+        }else{
+            $fullname = $request->get('fullname');
+            $phone = $request->get('phone');
+            $message = $request->get('message');
+            $city = $request->get('city');
+            $age = $request->get('age');
+            $gender = $request->get('gender');
+            $status = $request->get('status');
+
+            $consults_send = new Konsultasi;
+            $consults_send->fullname = $fullname;
+            $consults_send->phone = $phone;
+            $consults_send->message = $message;
+            $consults_send->city = $city;
+            $consults_send->age = $age;
+            $consults_send->gender = $gender;
+            $consults_send->status = $status;
+            $consults_send->save();
+
+            return response()->json([
+                'message' => 'Pertanyaan anda berhasil dikirim',
+                'data' => $consults_send
+            ]);
+        }
+    }
+
+    public function deliver_to_docter(Request $request)
+    {
+        $consult_id = $request->consult_id;
+        $message = $request->message;
+        $deliverDocter = new DeliverKonsultasi;
+        $deliverDocter->consult_id = $consult_id;
+        $deliverDocter->message = $message;
+        $deliverDocter->save();
+
+        $consult_update = Konsultasi::findOrFail($consult_id);
+        $consult_update->status = $request->get('status');
+        $consult_update->save();
+
+
+        return response()->json([
+            'message' => 'Data has been sending to docter',
+            'data' => $deliverDocter
+        ]);
     }
 
 }

@@ -19,6 +19,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   <!-- Custom styles for this template-->
   <link href="{{asset('css/app.css')}}" rel="stylesheet">
+  <script src="{{ mix('js/app.js') }}" defer></script>
   <link rel="shortcut icon" href="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/logo/fav_evoush.png">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   <script src="https://cdn.tiny.cloud/1/36xbwrnfekuspwhfv02z1kuwy3sz4nbehpqkb3x7bh8tek86/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

@@ -93,6 +93,7 @@ class KonsultasiDokter extends Controller
             return response()->json($validation->errors(), 400);
         }else{
             $fullname = $request->get('fullname');
+            $username = $request->get('username');
             $phone = $request->get('phone');
             $message = $request->get('message');
             $city = $request->get('city');
@@ -102,6 +103,7 @@ class KonsultasiDokter extends Controller
 
             $consults_send = new Konsultasi;
             $consults_send->fullname = $fullname;
+            $consults_send->username = $username;
             $consults_send->phone = $phone;
             $consults_send->message = $message;
             $consults_send->city = $city;
@@ -127,7 +129,7 @@ class KonsultasiDokter extends Controller
     {
         //
         $consult = Konsultasi::findOrFail($id);
-        $send_to_dokter = "Hallo%20Dokter,%20Nama%20Saya%20".$consult->fullname."%20.%20Usia%20saya%20".$consult->age."%20Tahun.%20Jenis%20kelamin%20".$consult->gender."%20Domisili%20".$consult->city."%20Pertanyaan%20saya%20:%20".$consult->message."%20. Mohon%20Jawaban%20dari%20Dokter%20seperti%20apa?";
+        $send_to_dokter = "Hallo%20Dokter,%20Nama%20Saya%20".$consult->fullname."%20.Username Member Evoush : %20".$consult->username."%20Usia%20saya%20".$consult->age."%20Tahun.%20Jenis%20kelamin%20".$consult->gender."%20Domisili%20".$consult->city."%20Pertanyaan%20saya%20:%20".$consult->message."%20. Mohon%20Jawaban%20dari%20Dokter%20seperti%20apa?";
          $context = [
             'title' => 'Detail Konsultasi',
             'brand' => 'evoush',

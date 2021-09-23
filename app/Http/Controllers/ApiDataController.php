@@ -834,6 +834,7 @@ class ApiDataController extends Controller
     {
         $validation = Validator::make($request->all(),[
          "fullname" => "required|min:5|max:100",
+         "username" => "required",
          "phone" => "required|max:20",
          "message" => "required",
          "age" => "required",
@@ -843,6 +844,7 @@ class ApiDataController extends Controller
             return response()->json($validation->errors(), 400);
         }else{
             $fullname = $request->get('fullname');
+            $username = $request->get('username');
             $phone = $request->get('phone');
             $message = $request->get('message');
             $city = $request->get('city');
@@ -852,6 +854,7 @@ class ApiDataController extends Controller
 
             $consults_send = new Konsultasi;
             $consults_send->fullname = $fullname;
+            $consults_send->username = $username;
             $consults_send->phone = $phone;
             $consults_send->message = $message;
             $consults_send->city = $city;

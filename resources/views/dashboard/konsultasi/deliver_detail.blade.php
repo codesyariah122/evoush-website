@@ -24,6 +24,9 @@
                                 Nama : <strong>{{ $detail->fullname }}</strong>
                             </li>
                             <li class="list-group-item">
+                                Username: <strong>{{ $consult->username }}</strong>
+                            </li>
+                            <li class="list-group-item">
                                 Phone : <strong>{{ $detail->phone }}</strong>
                             </li>
                             <li class="list-group-item">

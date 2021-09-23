@@ -31,6 +31,9 @@
                 		<li class="list-group-item">
                 			Nama : <strong>{{ $consult->fullname }}</strong>
                 		</li>
+                        <li class="list-group-item">
+                            Username: <strong>{{ $consult->username }}</strong>
+                        </li>
                 		<li class="list-group-item">
                 			Phone : <strong>{{ $consult->phone }}</strong>
                 		</li>

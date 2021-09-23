@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Sep 2021 pada 17.07
+-- Waktu pembuatan: 23 Sep 2021 pada 14.49
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 7.3.29
 
@@ -744,13 +744,6 @@ CREATE TABLE `deliver_konsultasis` (
   `jawaban` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data untuk tabel `deliver_konsultasis`
---
-
-INSERT INTO `deliver_konsultasis` (`id`, `consult_id`, `message`, `created_at`, `updated_at`, `jawaban`) VALUES
-(1, 1, '<p>sadsadsadsadsaddfagdasfadsgfdsdaf</p>', '2021-09-22 07:51:44', '2021-09-22 07:51:44', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -832,15 +825,9 @@ CREATE TABLE `konsultasis` (
   `city` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `age` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gender` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_unicode_ci NOT NULL
+  `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `konsultasis`
---
-
-INSERT INTO `konsultasis` (`id`, `fullname`, `phone`, `message`, `created_at`, `updated_at`, `city`, `age`, `gender`, `status`) VALUES
-(1, 'testing lagi', '0882-2266-8778', '<p>sadsadsadsadsaddfagdasfadsgfdsdaf</p>', '2021-09-22 01:06:12', '2021-09-22 07:51:44', 'Surabaya', '21', 'wanita', 'ACTIVE');
 
 -- --------------------------------------------------------
 
@@ -966,7 +953,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (72, '2021_09_22_041356_create_konsultasis_table', 31),
 (73, '2021_09_22_052734_create_deliver_konsultasis_table', 32),
 (76, '2021_09_22_064804_penambahan_field_konsultasis', 33),
-(78, '2021_09_22_144404_penambahan_field_table_deliver_konsultasis', 34);
+(78, '2021_09_22_144404_penambahan_field_table_deliver_konsultasis', 34),
+(79, '2021_09_23_124126_add_new_field_table_konsultasis', 35);
 
 -- --------------------------------------------------------
 
@@ -1584,7 +1572,7 @@ ALTER TABLE `joining`
 -- AUTO_INCREMENT untuk tabel `konsultasis`
 --
 ALTER TABLE `konsultasis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `member`
@@ -1602,7 +1590,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT untuk tabel `oauth_clients`

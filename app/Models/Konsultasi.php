@@ -11,6 +11,7 @@ class Konsultasi extends Model
 
     protected $fillable = [
         'fullname',
+        'username',
         'phone',
         'message',
         'city',

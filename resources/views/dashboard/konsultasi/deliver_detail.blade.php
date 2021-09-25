@@ -21,6 +21,12 @@
                     <ul class="list-group list-group-flush">
                         @foreach($deliver_details as $detail)
                             <li class="list-group-item">
+                                <strong>Status</strong> <br>
+                                <span class="{{ $detail->status === "ACTIVE" ? 'badge badge-success' : 'badge badge-danger'}}">
+                                    {{ $detail->status }}
+                                </span>
+                            </li>
+                            <li class="list-group-item">
                                 Nama : <strong>{{ $detail->fullname }}</strong>
                             </li>
                             <li class="list-group-item">

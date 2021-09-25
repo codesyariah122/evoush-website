@@ -11,6 +11,6 @@ class DeliverKonsultasi extends Model
 
     protected $fillable = [
     	'consult_id',
-    	'message'
+    	// 'message'
     ];
 }

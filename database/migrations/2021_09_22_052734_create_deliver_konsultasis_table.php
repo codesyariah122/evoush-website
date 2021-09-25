@@ -16,7 +16,7 @@ class CreateDeliverKonsultasisTable extends Migration
         Schema::create('deliver_konsultasis', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('consult_id');
-            $table->string('message');
+            $table->string('message')->nullable();
             $table->timestamps();
             $table->foreign('consult_id')->constrained()->references('id')->on('konsultasis')->onDelete('cascade')->onUpdate('cascade');
         });

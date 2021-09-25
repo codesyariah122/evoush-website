@@ -836,7 +836,7 @@ class ApiDataController extends Controller
          "fullname" => "required|min:5|max:100",
          "username" => "required",
          "phone" => "required|max:20",
-         "message" => "required",
+         // "message" => "required",
          "age" => "required",
          "gender" => "required"
         ]);
@@ -846,7 +846,7 @@ class ApiDataController extends Controller
             $fullname = $request->get('fullname');
             $username = $request->get('username');
             $phone = $request->get('phone');
-            $message = $request->get('message');
+            // $message = $request->get('message');
             $city = $request->get('city');
             $age = $request->get('age');
             $gender = $request->get('gender');
@@ -856,7 +856,7 @@ class ApiDataController extends Controller
             $consults_send->fullname = $fullname;
             $consults_send->username = $username;
             $consults_send->phone = $phone;
-            $consults_send->message = $message;
+            // $consults_send->message = $message;
             $consults_send->city = $city;
             $consults_send->age = $age;
             $consults_send->gender = $gender;
@@ -895,10 +895,10 @@ class ApiDataController extends Controller
     public function deliver_to_docter(Request $request)
     {
         $consult_id = $request->consult_id;
-        $message = $request->message;
+        // $message = $request->message;
         $deliverDocter = new DeliverKonsultasi;
         $deliverDocter->consult_id = $consult_id;
-        $deliverDocter->message = $message;
+        // $deliverDocter->message = $message;
         $deliverDocter->save();
 
         $consult_update = Konsultasi::findOrFail($consult_id);

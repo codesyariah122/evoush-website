@@ -74,13 +74,13 @@ new Vue({
 		SendingToDokter(){
 			this.loading = true
 			const consult_id = document.querySelector('input[name="consult_id"]').value
-			const message = document.querySelector('input[name="message"]').value
+			// const message = document.querySelector('input[name="message"]').value
 			const status = document.querySelector('input[name="status"]').value
 			console.log(consult_id)
 
 			axios.post('/consult/update', {
 				consult_id: consult_id,
-				message: message,
+				// message: message,
 				status: status
 			})
 			.then(res => {

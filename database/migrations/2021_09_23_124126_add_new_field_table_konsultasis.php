@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKonsultasisTable extends Migration
+class AddNewFieldTableKonsultasis extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateKonsultasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('konsultasis', function (Blueprint $table) {
-            $table->id();
-            $table->string('fullname');
-            $table->string('phone');
-            $table->string('message')->nullable();
-            $table->timestamps();
+        //
+        Schema::table('konsultasis', function(Blueprint $table){
+            $table->string('username');
         });
     }
 
@@ -29,6 +26,9 @@ class CreateKonsultasisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('konsultasis');
+        //
+        Schema::table('konsultasis', function(Blueprint $table){
+            $table->dropColumn('username');
+        });
     }
 }

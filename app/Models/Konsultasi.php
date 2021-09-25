@@ -13,7 +13,7 @@ class Konsultasi extends Model
         'fullname',
         'username',
         'phone',
-        'message',
+        // 'message',
         'city',
         'age',
         'gender',

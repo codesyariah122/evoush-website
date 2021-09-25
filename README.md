@@ -50,3 +50,15 @@ RewriteRule (.*) public/$1 [L]
 
 Using AddOn Postgresql heroku s3 server  
 Deploy setup Environment rules in heroku
+
+
+#### FOR Dedicated or Shared Hosting  
+edit line in the file ```/Providers/AppServiceProvider.php```  
+
+```
+$this->app->bind('path.public', function() {
+
+            return realpath(base_path().'/../app.evoush.com');
+
+        });
+```

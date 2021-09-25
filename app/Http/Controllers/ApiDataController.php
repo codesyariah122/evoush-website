@@ -864,7 +864,7 @@ class ApiDataController extends Controller
             $consults_send->save();
 
             return response()->json([
-                'message' => 'Pertanyaan anda berhasil dikirim',
+                'message' => 'Permintaan konsultasi anda berhasil dikirim',
                 'data' => $consults_send
             ]);
         }

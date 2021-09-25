@@ -53,6 +53,10 @@ Route::get('/evoush/youtube/cari/video/{keyword}', [ApiDataController::class, 's
 
 // sending consults to database evoush
 Route::post('/evoush/consults', [ApiDataController::class, 'sending_consults']);
+
+// get data consult
+Route::get('/evoush/data/consult/{username}', [ApiDataController::class, 'get_data_consult']);
+
 /*
 |--------------------------------------------------------------------------
 | API Routes

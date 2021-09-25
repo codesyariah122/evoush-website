@@ -870,6 +870,28 @@ class ApiDataController extends Controller
         }
     }
 
+    public function get_data_consult(Request $request)
+    {
+        $username = $request->username;
+
+        $consult = Konsultasi::where('username', '=', $username)->get();
+
+        // echo count($consult);
+
+        if(count($consult) > 0){
+            return response()->json([
+                'message' => 'Success fetch data consultation',
+                'data' => $consult
+            ]);
+        }else{
+            return response()->json([
+                'message' => 'Data not found',
+                'data' => $consult
+            ]);
+        }
+
+    }
+
     public function deliver_to_docter(Request $request)
     {
         $consult_id = $request->consult_id;

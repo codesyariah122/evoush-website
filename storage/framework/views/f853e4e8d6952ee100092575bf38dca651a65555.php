@@ -9,13 +9,13 @@
 <meta name="keywords" content="<?php echo $__env->yieldContent('meta_key'); ?>">
 <meta name="author" content="<?php echo $__env->yieldContent('meta_author'); ?>">
 <meta property="og:url" content="<?php echo $__env->yieldContent('og_url'); ?>">
-<meta property="og:type" content="website" />
+<meta property="og:type" content="<?php echo $__env->yieldContent('og_type'); ?>" />
 <meta property="og:site_name" content="<?php echo $__env->yieldContent('og_site_name'); ?>" />
 <meta property="og:title" content="<?php echo $__env->yieldContent('og_title'); ?>">
 <meta property="og:description" content="<?php echo $__env->yieldContent('og_desc'); ?>">
 <meta property="og:image" content="<?php echo $__env->yieldContent('og_image'); ?>">
-<meta property="og:image:width" content="600" />
-<meta property="og:image:height" content="598" />
+<meta property="og:image:width" content="<?php echo $__env->yieldContent('og_image_width'); ?>" />
+<meta property="og:image:height" content="<?php echo $__env->yieldContent('og_image_height'); ?>" />
 
 
 <title><?php echo $__env->yieldContent('title'); ?></title>

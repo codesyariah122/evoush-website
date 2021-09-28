@@ -9,13 +9,13 @@
 <meta name="keywords" content="@yield('meta_key')">
 <meta name="author" content="@yield('meta_author')">
 <meta property="og:url" content="@yield('og_url')">
-<meta property="og:type" content="website" />
+<meta property="og:type" content="@yield('og_type')" />
 <meta property="og:site_name" content="@yield('og_site_name')" />
 <meta property="og:title" content="@yield('og_title')">
 <meta property="og:description" content="@yield('og_desc')">
 <meta property="og:image" content="@yield('og_image')">
-<meta property="og:image:width" content="600" />
-<meta property="og:image:height" content="598" />
+<meta property="og:image:width" content="@yield('og_image_width')" />
+<meta property="og:image:height" content="@yield('og_image_height')" />
 
 {{-- <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
 <meta property="og:type"          content="website" />

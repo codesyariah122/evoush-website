@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
-    
+
     <?php echo $__env->make('layouts.homepage.partials.meta', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-   	
+
     <?php echo $__env->make('layouts.homepage.partials.head', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-   
+
 </head>
 <body>
-	
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
 var js, fjs = d.getElementsByTagName(s)[0];
@@ -30,7 +30,7 @@ fjs.parentNode.insertBefore(js, fjs);
 
 
 <script src="<?php echo e(mix('js/app.js')); ?>"></script>
-<script src="<?php echo e(asset('js/app.js')); ?>"></script>
+
 <?php echo $__env->make('layouts.homepage.partials.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 </body>

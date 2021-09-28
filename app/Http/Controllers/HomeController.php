@@ -26,7 +26,24 @@ class HomeController extends Controller
 
     public function index()
     {
-        return json_encode(['message' => 'Evoush::Official | Website']);
+        // return json_encode(['message' => 'Evoush::Official | Website']);
+        $context = [
+            'title' => 'Evoush::Official',
+            'canonical' => 'https://app.evoush.com',
+            'meta_desc' => 'Your Eternal Future',
+            'meta_key' => 'Product Kosmetik Dan Nutrisi Evoush',
+            'meta_author' => 'Evoush::Official',
+            'og_url' => 'https://app.evoush.com',
+            'og_type' => 'website',
+            'og_site_name' => 'Evoush::Official',
+            'og_title' => 'Evoush::Official | Website::Official',
+            'og_desc' => 'Your Eternal Future',
+            'og_image' => 'https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/banner/stories/1.jpg',
+            'og_image_width' => '600',
+            'og_image_height' => '590'
+        ];
+
+        return view('homes.index', $context);
     }
 
 }

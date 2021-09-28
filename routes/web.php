@@ -43,9 +43,11 @@ Route::get('/api/spa', [TestSpaController::class, 'index']);
 |
 */
 // Web Page Route HOMEPAGE EVOUSH
-Route::get('/', function(){
-    return view('auth.login');
-});
+// Route::get('/', function(){
+//     return view('auth.login');
+// });
+Route::get('/', [HomeController::class, 'index'])->name('home.pages');
+
 
 // Auth::routes();
 Auth::routes(['register' => false, 'login' => true, 'reset' => false]);

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    
+
     @include('layouts.homepage.partials.meta')
-   	
+
     @include('layouts.homepage.partials.head')
-   
+
 </head>
 <body>
-	
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
 var js, fjs = d.getElementsByTagName(s)[0];
@@ -35,7 +35,7 @@ fjs.parentNode.insertBefore(js, fjs);
 
 
 <script src="{{mix('js/app.js')}}"></script>
-<script src="{{asset('js/app.js')}}"></script>
+{{-- <script src="{{asset('js/app.js')}}"></script> --}}
 @include('layouts.homepage.partials.script')
 
 </body>

@@ -3,7 +3,7 @@
 {{-- Fav icon --}}
 <link rel="shortcut icon" href="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/logo/fav_evoush.png">
 {{-- stylesheet --}}
-<link rel="stylesheet" type="text/css" href="{{ asset('css/web.css') }}">
+{{-- <link rel="stylesheet" type="text/css" href="{{ asset('css/web.css') }}"> --}}
 {{-- <link rel="stylesheet" type="text/css" href="https://unpkg.com/papercss/dist/paper.min.css">
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/papercss/dist/paper.css"> --}}
 
@@ -45,7 +45,7 @@
  font-weight: normal;
  font-style: normal;
 }
-*,
+/**,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -69,5 +69,5 @@ body{
   body{
     width: 100%!important;
   }
-}
+}*/
 </style>

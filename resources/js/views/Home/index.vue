@@ -1,7 +1,7 @@
 <template>
 	<div>
 
-		<Header :title="title" :desc="desc"/>
+		<!-- <Header :title="title" :desc="desc"/> -->
 
 		<PanelHome :products="products"/>
 
@@ -46,5 +46,7 @@
 		}
 	}
 </script>
+
+
 
 

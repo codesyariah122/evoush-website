@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "@popperjs/core": "^2.9.3",
-        "axios": "^0.21",
+        "axios": "^0.21.4",
         "bootstrap": "^4.6.0",
         "jquery": "^3.6",
         "laravel-mix": "^6.0.25",
@@ -30,7 +30,7 @@
         "bootstrap-vue": "^2.21.2",
         "laravel-vue-pagination": "^2.3.1",
         "startbootstrap-sb-admin-2": "^4.1.4",
-        "vue-axios": "^3.2.4",
+        "vue-axios": "^3.3.7",
         "vue-meta": "^2.4.0",
         "vue-router": "^3.5.2",
         "vue-sweetalert2": "^5.0.2"

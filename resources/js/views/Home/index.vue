@@ -3,7 +3,11 @@
 
 		<Header :title="title" :desc="desc"/>
 
-		<PanelHome/>
+		<PanelHome :products="products"/>
+
+		<!-- <pre>
+			{{ products }}
+		</pre> -->
 
 	</div>
 </template>
@@ -21,7 +25,23 @@
 		data(){
 			return {
 				title: 'Evoush Official',
-				desc: 'Your Eternal Future'
+				desc: 'Your Eternal Future',
+				products: []
+			}
+		},
+
+
+		mounted(){
+			this.getProduct()
+		},
+
+		methods: {
+			getProduct(){
+				this.axios
+				.get('/api/product/all')
+				.then(res => {
+					this.products = res.data
+				})
 			}
 		}
 	}

@@ -71,6 +71,7 @@
                                      <th><b>Categories</b></th>
                                      <th><b>Stock</b></th>
                                      <th><b>Price</b></th>
+                                     <th><b>Landing</b></th>
                                      <th><b>Action</b></th>
                                  </tr>
                              </thead>
@@ -107,6 +108,17 @@
                                      </td>
                                      <td>{{$product->stock}}</td>
                                      <td>Rp. {{number_format($product->price, 2)}}</td>
+                                     <td>
+                                        @if($product->landing_page)
+                                        <a href="{{ $product->landing_page }}" class="btn btn-link">
+                                          {{ $product->title }}
+                                        </a>
+                                        @else
+                                        <span class="badge badge-danger">
+                                          Dont have landing page
+                                        </span>
+                                        @endif
+                                      </td>
                                      <td>
                                        <a
                                        href="{{route('products.edit', [$product->id])}}"

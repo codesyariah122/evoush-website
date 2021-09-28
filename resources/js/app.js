@@ -33,9 +33,13 @@ require('./bootstrap');
 
 // components module and assets
 import Vue from 'vue'
+import VueAxios from 'vue-axios'
+import axios from 'axios'
 
 import Home from './views/Home/index'
 
+
+Vue.use(VueAxios, axios)
 
 // Homepage setup
 new Vue({

@@ -117,6 +117,7 @@ class ProductController extends Controller
 
           // var_dump($new_product->slider); die;
         }
+        $new_product->landing_page = $request->get('landing_page');
 
         if($request->get('save_action') == 'PUBLISH'){
           $new_product->save();
@@ -218,6 +219,9 @@ class ProductController extends Controller
           $product->slider = json_encode($imgData);
 
         }
+
+        $product->landing_page = $request->get('landing_page');
+
         $product->updated_by = \Auth::user()->id;
         $product->status = $request->get('status');
         $product->save();

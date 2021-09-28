@@ -142,6 +142,14 @@
                                             value="DRAFT">DRAFT</option>
                                     </select>
                                 </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="landing_page">Landing Page</label>
+                                    <input type="text" name="landing_page" value="{{old('landing_page') ? old('landing_page') : $product->landing_page}}" class="form-control {{$errors->first('landing_page') ? "is-invalid" : ""}} " placeholder="https://landing-page.com" id="title">
+                                </div>
+                                <div class="invalid-feedback">
+                                  {{$errors->first('tilanding_page')}}
+                              </div>
 
                                 <button class="btn btn-primary" value="PUBLISH">Update</button>
                             </form>

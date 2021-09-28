@@ -137,7 +137,7 @@ class KonsultasiDokter extends Controller
             // 'users' => User::where('name', Auth::user()->name)->paginate(10)
             'consult' => $consult,
             'sending' => $send_to_dokter,
-            'dokter_phone' => '6288222668778'
+            'dokter_phone' => '6281211676969'
         ];
 
         return view('dashboard.konsultasi.detail', $context);

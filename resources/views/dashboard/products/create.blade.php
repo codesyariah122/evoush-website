@@ -2,7 +2,7 @@
 @section('title') {{$title}} @endsection
 
 @section('content')
-	
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -43,13 +43,13 @@
                                 <label for="sliders">Sliders</label>
                                 <input type="file"
                                     class="form-control {{$errors->first('slider') ? "is-invald" : ""}}"
-                                    name="slider[]" 
+                                    name="slider[]"
                                     multiple="multiple">
                                 <div class="invalid-feedback">
                                     {{$errors->first('cover')}}
                                 </div>
                                 <br>
-                                
+
                                 <label for="full-featured-non-premium">Detail Description</label><br>
                                 <textarea name="description" id="full-featured-non-premium" class="form-control {{$errors->first('description') ? "is-invald" : ""}}" placeholder="Give a description about this product" value="{{old('description')}}"></textarea>
                                 <div class="invalid-feedback">
@@ -88,7 +88,15 @@
                                     {{$errors->first('price')}}
                                 </div>
                                 <br>
-                                <button 
+                                 <label for="landing_page">Landing Page</label> <br>
+                                <input type="text" class="form-control {{$errors->first('landing_page') ? "is-invald" : ""}}" name="landing_page" id="landing_page"
+                                placeholder="Book price" value="{{old('landing_page')}}">
+                                <div class="invalid-feedback">
+                                    {{$errors->first('landing_page')}}
+                                </div>
+                                <br>
+
+                                <button
                                 class="btn btn-primary"
                                 name="save_action"
                                 value="PUBLISH">Publish</button>

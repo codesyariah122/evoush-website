@@ -33,6 +33,7 @@
         "vue-axios": "^3.3.7",
         "vue-meta": "^2.4.0",
         "vue-router": "^3.5.2",
+        "vue-snip": "^1.2.0",
         "vue-sweetalert2": "^5.0.2"
     }
 }

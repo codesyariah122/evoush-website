@@ -30,7 +30,7 @@ fjs.parentNode.insertBefore(js, fjs);
 
 
 <script src="<?php echo e(mix('js/app.js')); ?>"></script>
-
+<script src="<?php echo e(asset('js/app.js')); ?>"></script>
 <?php echo $__env->make('layouts.homepage.partials.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 </body>

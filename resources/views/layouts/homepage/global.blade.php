@@ -35,7 +35,7 @@ fjs.parentNode.insertBefore(js, fjs);
 
 
 <script src="{{mix('js/app.js')}}"></script>
-{{-- <script src="{{asset('js/app.js')}}"></script> --}}
+<script src="{{asset('js/app.js')}}"></script>
 @include('layouts.homepage.partials.script')
 
 </body>

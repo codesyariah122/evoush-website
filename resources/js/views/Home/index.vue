@@ -1,14 +1,14 @@
 <template>
 	<div>
 
-		<!-- <Header :title="title" :desc="desc"/> -->
+		<Header :title="title" :desc="desc"/>
 
 		<PanelHome :products="products"/>
 
 		<!-- <pre>
 			{{ products }}
 		</pre> -->
-
+		<Footer/>
 	</div>
 </template>
 
@@ -16,16 +16,18 @@
 <script>
 	import Header from '../../components/Molecules/jumbotron'
 	import PanelHome from '../../components/Home/PanelHome'
+	import Footer from '../../components/Layout/Footer'
 
 	export default{
 		components: {
 			Header,
-			PanelHome
+			PanelHome,
+			Footer
 		},
 		data(){
 			return {
-				title: 'Evoush Official',
-				desc: 'Your Eternal Future',
+				title: 'Evoush Administrator',
+				desc: 'https://raw.githubusercontent.com/evoush-products/bahan_evoush/main/assets/img/LOGO231.png',
 				products: []
 			}
 		},

@@ -35,11 +35,13 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
+import VueSnip from 'vue-snip'
 
 import Home from './views/Home/index'
 
 
 Vue.use(VueAxios, axios)
+Vue.use(VueSnip)
 
 // Homepage setup
 new Vue({

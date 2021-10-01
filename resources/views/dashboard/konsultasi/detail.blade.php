@@ -55,8 +55,6 @@
                 	</ul>
                 	@if($consult->status === "INACTIVE")
 
-
-
                 		<input type="hidden" name="consult_id" value="{{ $consult->id }}">
                 		<input type="hidden" name="status" value="ACTIVE">
                 		<input type="hidden" name="message" value="{{ $consult->message }}">

@@ -167,7 +167,7 @@
                      <hr class="my-4">
 
                      <label for="email">Email</label>
-                     <input value="{{$user->email}}" disabled class="form-control
+                     <input value="{{$user->email}}" class="form-control
                      {{$errors->first('email') ? "is-invalid" : ""}} "
                      placeholder="user@mail.com" type="text" name="email" id="email"/>
                      <div class="invalid-feedback">
@@ -176,36 +176,58 @@
                      <br>
 
                      @if(in_array("MEMBER", json_decode($user->roles)))
+                     <br>
+                     @if($user->achievements)
                      <label for="">Pencapian</label>
-                     <br>
-                     <input
-                     type="checkbox"
-                     {{in_array("STAR SAPHIRE", json_decode($user->achievements)) ? "checked" : ""}}
-                     name="achievements[]"
-                     class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
-                     id="STAR-SAPHIRE"
-                     value="STAR SAPHIRE">
-                     <label for="STAR-SAPHIRE">Star Saphire</label>
+                         <input
+                         type="checkbox"
+                         {{in_array("STAR SAPHIRE", json_decode($user->achievements)) ? "checked" : ""}}
+                         name="achievements[]"
+                         class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
+                         id="STAR-SAPHIRE"
+                         value="STAR SAPHIRE">
+                         <label for="STAR-SAPHIRE">Star Saphire</label>
 
-                     <br>
-                     <input
-                     type="checkbox"
-                     name="achievements[]"
-                     {{in_array("FOUNDER", json_decode($user->achievements)) ? "checked" : ""}}
-                     class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
-                     id="FOUNDER"
-                     value="FOUNDER">
-                     <label for="FOUNDER">Founder</label>
-                     <br>
-                     <input
-                     type="checkbox"
-                     name="achievements[]"
-                     {{in_array("SAPHIRE", json_decode($user->achievements)) ? "checked" : ""}}
-                     class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
-                     id="SAPHIRE"
-                     value="SAPHIRE">
-                     <label for="SAPHIRE">Saphire</label>
-                     <br>
+                         <br>
+                         <input
+                         type="checkbox"
+                         name="achievements[]"
+                         {{in_array("FOUNDER", json_decode($user->achievements)) ? "checked" : ""}}
+                         class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
+                         id="FOUNDER"
+                         value="FOUNDER">
+                         <label for="FOUNDER">Founder</label>
+                         <br>
+                         <input
+                         type="checkbox"
+                         name="achievements[]"
+                         {{in_array("SAPHIRE", json_decode($user->achievements)) ? "checked" : ""}}
+                         class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
+                         id="SAPHIRE"
+                         value="SAPHIRE">
+                         <label for="SAPHIRE">Saphire</label>
+                         <br>
+                      @else
+                          <label for="">Pencapian</label>
+                          <br>
+                          <input
+                          type="checkbox"
+                          name="achievements[]"
+                          class="{{$errors->first('achievements') ? "is-invalid" : ""
+                        }}"
+                        id="STAR-SAPHIRE"
+                        value="STAR SAPHIRE">
+                        <label for="STAR-SAPHIRE">Star Saphire</label>
+
+                        <input
+                        type="checkbox"
+                        name="achievements[]"
+                        class="{{$errors->first('achievements') ? "is-invalid" : ""}}"
+                        id="SAPHIRE"
+                        value="SAPHIRE">
+                        <label for="SAPHIRE">Saphire</label>
+                        <br>
+                      @endif
                      @endif
 
                      <input class="btn btn-primary" type="submit" value="Simpan"/>

@@ -533,7 +533,7 @@ class ApiDataController extends Controller
        $validator = Validator::make($request->all(), [
            "name" => "required|min:5|max:100",
            // "avatar" => "required|image|mimes:jpeg,png,jpg,gif,svg",
-           "phone" => "required|digits_between:10,13",
+           "phone" => "required|digits_between:10,15",
            "email" => "required|email",
            "username" => "required",
            "province" => "required",

@@ -225,7 +225,24 @@ class ApiDataController extends Controller
         $profiles = User::join('profile', 'users.id', '=', 'profile.user_id')
         ->where("username", "LIKE", "%$keyword%")
         ->get(['profile.*', 'users.*']);
-        return json_decode($profiles);
+        try{
+            if(count($profiles) > 0){
+                return response()->json([
+                    'message' => 'Data username '.$keyword.' ditemukan',
+                    'data' => $profiles
+                ]);
+            }else{
+                return response()->json([
+                    'message' => 'Data username '.$keyword.' tidak ditemukan/belum terdaftar (Cek administrator web)',
+                    'data' => null
+                ]);
+            }
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Error fetch data',
+                'data' => $e->getMessage()
+            ]);
+        }
     }
 
     public function data_member(Request $request)

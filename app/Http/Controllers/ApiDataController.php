@@ -224,6 +224,8 @@ class ApiDataController extends Controller
 
         $profiles = User::join('profile', 'users.id', '=', 'profile.user_id')
         ->where("username", "LIKE", "%$keyword%")
+        ->where("roles", "=", json_encode(['MEMBER']))
+        ->orWhere("roles", "=", json_encode(['FOLLOWER']))
         ->get(['profile.*', 'users.*']);
         try{
             if(count($profiles) > 0){

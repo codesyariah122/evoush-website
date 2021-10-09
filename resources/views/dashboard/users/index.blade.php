@@ -55,12 +55,12 @@
                                 @if($user->avatar)
 
                                      @if(in_array("MEMBER", json_decode($user->roles)) || in_array("ADMIN", json_decode($user->roles)) || in_array("STAFF", json_decode($user->roles)) || in_array("WEBDEVELOPER", json_decode($user->roles)) && in_array("AUTHOR", json_decode($user->roles)))
-                                       <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/main/migration_db/{{ $user->avatar }}" width="70px">
+                                       <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/master/migration_db/{{ $user->avatar }}" width="70px">
                                       @else
                                         <img src="{{asset('storage/'.$user->avatar)}}" width="70px">
                                       @endif
                                 @else
-                                  <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/profile/default.jpg" width="80">
+                                  <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/master/images/profile/default.jpg" width="80">
                                 @endif
                                </td>
                                <td>

@@ -4,14 +4,14 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/logo/fav_evoush.png">
+                    <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/master/images/logo/fav_evoush.png">
                 </div>
                 <div class="sidebar-brand-text mx-3"> {{-- {{strtolower($brand)}} --}}</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-            
+
             @if(Auth::check() && Auth::user()->username)
 
             <!-- Nav Item - Dashboard -->

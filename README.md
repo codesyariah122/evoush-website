@@ -21,7 +21,7 @@ backend : <a href="https://app.evoush.com">Evoush Backend</a>
 
 
 **Sample Rest Post Method**  
-<img src="https://raw.githubusercontent.com/codesyariah122/evoush-website/new_evoush_branch/sample_post_method_api.jpg">
+<img src="https://raw.githubusercontent.com/codesyariah122/evoush-website/master/sample_post_method_api.jpg">
 
 
 

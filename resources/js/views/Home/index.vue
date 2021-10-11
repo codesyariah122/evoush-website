@@ -27,7 +27,7 @@
 		data(){
 			return {
 				title: 'Evoush Administrator',
-				desc: 'https://raw.githubusercontent.com/evoush-products/bahan_evoush/main/assets/img/LOGO231.png',
+				desc: 'https://raw.githubusercontent.com/evoush-products/bahan_evoush/master/assets/img/LOGO231.png',
 				products: []
 			}
 		},

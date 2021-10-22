@@ -54,11 +54,12 @@
                                <td>
                                 @if($user->avatar)
 
-                                     @if(in_array("MEMBER", json_decode($user->roles)) || in_array("ADMIN", json_decode($user->roles)) || in_array("STAFF", json_decode($user->roles)) || in_array("WEBDEVELOPER", json_decode($user->roles)) && in_array("AUTHOR", json_decode($user->roles)))
+                                     {{-- @if(in_array("MEMBER", json_decode($user->roles)) || in_array("ADMIN", json_decode($user->roles)) || in_array("STAFF", json_decode($user->roles)) || in_array("WEBDEVELOPER", json_decode($user->roles)) && in_array("AUTHOR", json_decode($user->roles)) || $user->achievements !== NULL )
                                        <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/master/migration_db/{{ $user->avatar }}" width="70px">
-                                      @else
+                                      @else --}}
+
                                         <img src="{{asset('storage/'.$user->avatar)}}" width="70px">
-                                      @endif
+                                      {{-- @endif --}}
                                 @else
                                   <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/master/images/profile/default.jpg" width="80">
                                 @endif

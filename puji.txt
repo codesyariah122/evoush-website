@@ -1,0 +1,6 @@
+new member username
+username : ninda
+password : ninda321
+
+username : meyla
+password : meyla321

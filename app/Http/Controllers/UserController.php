@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Profile;
+use App\Mail\LoginWebReplikaEmail;
 use Auth;
 
 class UserController extends Controller
@@ -21,9 +24,9 @@ class UserController extends Controller
         $this->middleware('auth');
         $this->middleware(function($request, $next){
 
-           if(Gate::allows('manage-users')) return $next($request);
-           abort(403, 'Anda tidak memiliki cukup hak akses');
-       });
+         if(Gate::allows('manage-users')) return $next($request);
+         abort(403, 'Anda tidak memiliki cukup hak akses');
+     });
 
     }
 
@@ -43,11 +46,11 @@ class UserController extends Controller
         if($filterKeyword){
             if($status){
                 $users = User::where('email', 'LIKE', "%$filterKeyword%")
-                    ->where('status', $status)
-                    ->paginate(10);
+                ->where('status', $status)
+                ->paginate(10);
             } else {
                 $users = User::where('email', 'LIKE', "%$filterKeyword%")
-                    ->paginate(10);
+                ->paginate(10);
             }
         }
 
@@ -72,13 +75,13 @@ class UserController extends Controller
     public function create()
     {
         //
-         $context = [
-            'title' => 'Create User',
-            'brand' => 'evoush',
-            'users' => User::paginate(10)
-        ];
-        return view('dashboard.users.create', $context);
-    }
+       $context = [
+        'title' => 'Create User',
+        'brand' => 'evoush',
+        'users' => User::paginate(10)
+    ];
+    return view('dashboard.users.create', $context);
+}
 
     /**
      * Store a newly created resource in storage.
@@ -89,15 +92,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validation = \Validator::make($request->all(),[
-           "name" => "required|min:5|max:100",
-           "username" => "required|min:5|max:20|unique:users",
-           "roles" => "required",
+         "name" => "required|min:5|max:100",
+         "username" => "required|min:5|max:20|unique:users",
+         "roles" => "required",
            // "phone" => "required|digits_between:10,14",
            // "avatar" => "required",
-           "email" => "required|email|unique:users",
-           "password" => "required",
-           "password_confirmation" => "required|same:password"
-       ])->validate();
+         "email" => "required|email|unique:users",
+         "password" => "required",
+         "password_confirmation" => "required|same:password"
+     ])->validate();
 
         $new_user = new User;
         $new_user->name = $request->get('name');
@@ -112,56 +115,56 @@ class UserController extends Controller
         if($request->file('avatar')){
           $file = $request->file('avatar')->store($new_user->username.'/profile', 'public');
           $new_user->avatar = $file;
-        }else{
-            $new_user->avatar = null;
-        }
+      }else{
+        $new_user->avatar = null;
+    }
 
-        $new_user->save();
+    $new_user->save();
 
-        $url = 'https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->get('province');
+    $url = 'https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->get('province');
         // $prov = file_get_contents($url);
         // $data = json_decode($prov, 1);
         // $provinsi = $data['nama'];
 
         // ubah curl
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, $url);
-        $result = curl_exec($curl);
-        $data = json_decode($result, 1);
-        $provinsi = $data['nama'];
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, $url);
+    $result = curl_exec($curl);
+    $data = json_decode($result, 1);
+    $provinsi = $data['nama'];
         // echo $provinsi;
         // echo "<pre>";
         // var_dump($data); die;
         // echo "</pre>";
 
-        $new_userid = $new_user->id;
-        $new_profile = new Profile;
-        $new_profile->user_id = $new_userid;
-        $new_profile->quotes = $request->get('quotes');
+    $new_userid = $new_user->id;
+    $new_profile = new Profile;
+    $new_profile->user_id = $new_userid;
+    $new_profile->quotes = $request->get('quotes');
 
-        if($request->file('cover')){
-            $file = $request->file('cover')->store($new_user->username.'/covers', 'public');
-            $new_profile->cover = $file;
-        }
-
-        if($request->file('parallax')){
-            $file = $request->file('parallax')->store($new_user->username.'/parallax', 'public');
-            $new_profile->cover = $file;
-        }
-
-        $new_profile->about = $request->get('about');
-        $new_profile->instagram = $request->get('instagram');
-        $new_profile->facebook = $request->get('facebook');
-        $new_profile->youtube = $request->get('youtube');
-        $new_profile->province = $provinsi;
-        $new_profile->city = $request->get('city');
-
-        $new_profile->save();
-
-        return redirect()->route('users.create')->with('status', 'Username : '.$new_user->username.' successfully created');
-
+    if($request->file('cover')){
+        $file = $request->file('cover')->store($new_user->username.'/covers', 'public');
+        $new_profile->cover = $file;
     }
+
+    if($request->file('parallax')){
+        $file = $request->file('parallax')->store($new_user->username.'/parallax', 'public');
+        $new_profile->cover = $file;
+    }
+
+    $new_profile->about = $request->get('about');
+    $new_profile->instagram = $request->get('instagram');
+    $new_profile->facebook = $request->get('facebook');
+    $new_profile->youtube = $request->get('youtube');
+    $new_profile->province = $provinsi;
+    $new_profile->city = $request->get('city');
+
+    $new_profile->save();
+
+    return redirect()->route('users.create')->with('status', 'Username : '.$new_user->username.' successfully created');
+
+}
 
     /**
      * Display the specified resource.
@@ -211,11 +214,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         \Validator::make($request->all(), [
-           "name" => "required|min:5|max:100",
-           "roles" => "required",
-           "phone" => "required|digits_between:10,15",
+         "name" => "required|min:5|max:100",
+         "roles" => "required",
+         "phone" => "required|digits_between:10,15",
            // "address" => "required|min:20|max:200",
-       ])->validate();
+     ])->validate();
 
         $user = User::findOrFail($id);
         $user->name = $request->get('name');
@@ -254,4 +257,60 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('status', 'User successfully delete');
     }
+
+    public function send_information($id)
+    {
+        $user = User::Join('profile', 'users.id', '=', 'profile.user_id')
+                ->findOrFail($id);
+        $context = [
+            'title' => 'Send Email To Member',
+            'brand' => 'evoush',
+            // 'user' => User::where('name', Auth::user()->name)->paginate(10),
+            // 'users' => User::where('name', Auth::user()->name)->paginate(10)
+            'user' => $user
+        ];
+        return view('dashboard.users.send_email', $context);
+    }
+
+    public function sending_email(Request $request)
+    {
+        $validation = \Validator::make($request->all(),[
+           "name" => "required|min:5|max:100",
+           "email" => "required|email",
+           "check_password" => "required",
+           "username" => "required|min:5|max:20"
+        ])->validate();
+
+
+        if (!Hash::check($request->check_password, $request->password_db)) {
+
+            return redirect()->route('send.email', [$request->id])->with('status', 'Error sending email password not match');
+        }
+
+        $details = [
+            'title' => 'Email From Website evoush::official',
+            'url' => 'https://evoush.com',
+            'logo' => 'https://raw.githubusercontent.com/evoush-products/bahan_evoush/master/assets/img/LOGO231.png',
+            'name' => $request->name,
+            'username' => $request->username,
+            'password' => $request->check_password,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'province' => $request->province,
+            'city' => $request->city
+        ];
+
+        try {
+
+            Mail::to($details['email'])->send(new LoginWebReplikaEmail($details));
+            // return response()->json([
+            //     'message' => 'Email has been sent.',
+            //     'data' => $details
+            // ], Response::HTTP_OK);
+            return redirect()->route('users.index')->with('status', 'Informasi Login Baru Saja Terkirim ke username :'.$details['email']);
+
+        } catch(\Exception $e){
+            echo "Email gagal dikirim karena $e.";
+        }
+   }
 }

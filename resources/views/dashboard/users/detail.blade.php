@@ -8,6 +8,8 @@
 		    <div class="col-12 col-xs-12 col-sm-12">
 		        <a href="{{route('users.index')}}" class="btn btn-sm btn-success mt-2 mb-3">Users List</a>
 
+		        <a href="{{ route('send.email', [$user->id]) }}" class="btn btn-sm btn-info mt-2 mb-3">Sending Information</a>
+
 		        <div class="card">
 		            <div class="card-header">{{ __('Detail User') }} | {{$user->name}}</div>
 		                <div class="card-body">

@@ -58,7 +58,6 @@ Route::match(["GET", "POST"], "/register", function(){
 
 // test email
 Route::get('/dashboard/evoush/kirim-email', [SendMailController::class, 'send']);
-
 // dashboard/evoush Management Route
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -76,6 +75,8 @@ Route::get('/dashboard/evoush/kirim-email', [SendMailController::class, 'send'])
 Route::get('/dashboard/evoush', [DashboardController::class, 'index'])->name('dashboard.evoush');
 // User Data Route
 Route::resource('/dashboard/evoush/users', UserController::class);
+Route::get('/dashboard/evoush/users/send/email/{id}', [UserController::class, 'send_information'])->name('send.email');
+Route::post('/dashboard/evoush/sending/email', [UserController::class, 'sending_email'])->name('sending.email.member');
 // Route Profile dashboard/evoush
 // Route::get('/dashboard/evoush/profile/{username}', ProfileController::class, 'show_profile')->name('profile.username');
 Route::resource('/dashboard/evoush/profile', ProfileController::class);
@@ -145,3 +146,33 @@ Route::resource('/dashboard/evoush/delivers', DeliveryConsultController::class);
 Route::post('/consult/update', [ApiDataController::class, 'deliver_to_docter']);
 
 
+// Config Clear in Shared Hosting
+Route::get('/config-clear', function() {
+    Artisan::call('config:clear');
+    // Do whatever you want either a print a message or exit
+    echo "Config has clear";
+});
+
+Route::get('/config-cache', function() {
+    Artisan::call('config:cache');
+    // Do whatever you want either a print a message or exit
+    echo "Config cache has clear";
+});
+
+Route::get('/cache-clear', function() {
+    Artisan::call('cache:clear');
+    // Do whatever you want either print a message or exit
+    echo "Cache has been clear";
+});
+
+Route::get('/view-clear', function() {
+    Artisan::call('view:clear');
+    // Do whatever you want either print a message or exit
+    echo "View cache has been clear";
+});
+
+Route::get('/route-cache', function() {
+    Artisan::call('route:clear');
+    // Do whatever you want either print a message or exit
+    echo "Route cache has been clear";
+});

@@ -853,7 +853,7 @@ class ApiDataController extends Controller
     {
         $validation = Validator::make($request->all(),[
          "fullname" => "required|min:5|max:100",
-         "username" => "required",
+         "username" => "required|unique:users,username",
          "phone" => "required|max:20",
          // "message" => "required",
          "age" => "required",

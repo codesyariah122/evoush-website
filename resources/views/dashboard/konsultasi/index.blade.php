@@ -71,7 +71,7 @@
                                 @if($consult->status === "INACTIVE")
                                 <a
                                 href="{{route('consults.show', [$consult->id])}}"
-                                class="btn btn-primary btn-block">Sending</a>
+                                class="btn btn-danger btn-block">Sending</a>
                                 @else
                                  {{-- <form
                                        onsubmit="return confirm('Delete consultation permanently?')"

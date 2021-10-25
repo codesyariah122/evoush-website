@@ -23,9 +23,9 @@
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo e(Auth::user()->username); ?></span>
                                 <?php if(Auth::user()->avatar): ?>
                                     
-                                    <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/main/migration_db/<?php echo e(Auth::user()->avatar); ?>" class="img-fluid" width="30">
+                                    <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/master/migration_db/<?php echo e(Auth::user()->avatar); ?>" class="img-fluid" width="30">
                                 <?php else: ?>
-                                    <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/profile/default.jpg" class="img-responsive rounded-circle" width="50" height="50">
+                                    <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/master/images/profile/default.jpg" class="img-responsive rounded-circle" width="50" height="50">
                                 <?php endif; ?>
                             </a>
                             <!-- Dropdown - User Information -->

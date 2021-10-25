@@ -55,13 +55,12 @@
                                <td>
                                 <?php if($user->avatar): ?>
 
-                                     <?php if(in_array("MEMBER", json_decode($user->roles)) || in_array("ADMIN", json_decode($user->roles)) || in_array("STAFF", json_decode($user->roles)) || in_array("WEBDEVELOPER", json_decode($user->roles)) && in_array("AUTHOR", json_decode($user->roles))): ?>
-                                       <img src="https://raw.githubusercontent.com/evoush-products/bahan_evoush/main/migration_db/<?php echo e($user->avatar); ?>" width="70px">
-                                      <?php else: ?>
+                                     
+
                                         <img src="<?php echo e(asset('storage/'.$user->avatar)); ?>" width="70px">
-                                      <?php endif; ?>
+                                      
                                 <?php else: ?>
-                                  <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/main/images/profile/default.jpg" width="80">
+                                  <img src="https://raw.githubusercontent.com/codesyariah122/bahan-evoush/master/images/profile/default.jpg" width="80">
                                 <?php endif; ?>
                                </td>
                                <td>

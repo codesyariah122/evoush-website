@@ -13,6 +13,11 @@ class Member extends Model
 
     public $table = "member";
 
+    protected $fillable = [
+       'sponsor_id',
+       'sponsor_username'
+    ];
+
 
     public function joining()
     {

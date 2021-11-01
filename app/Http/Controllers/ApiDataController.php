@@ -269,23 +269,29 @@ class ApiDataController extends Controller
         $keyword = $request->username;
         $profiles = User::join('profile', 'users.id', '=', 'profile.user_id')
         ->where('username', "LIKE", "%$keyword%")->get(['profile.*', 'users.*']);
-
-        if(count($profiles) > 0){
-            $sponsor_id = $profiles[0]->id;
-            $member = Member::join('profile', 'member.user_id', '=', 'profile.user_id')
-            ->join('users', 'member.user_id', '=', 'users.id')
-            ->where('sponsor_id', '=', $sponsor_id)
-            ->where('status', '=', 'ACTIVE')
-            ->get(['profile.*', 'users.*']);
-            if(count($member) > 0){
-                return json_decode($member);
+        try{
+            if(count($profiles) > 0){
+                $sponsor_id = $profiles[0]->id;
+                $member = Member::join('profile', 'member.user_id', '=', 'profile.user_id')
+                ->join('users', 'member.user_id', '=', 'users.id')
+                ->where('sponsor_id', '=', $sponsor_id)
+                ->where('status', '=', 'ACTIVE')
+                ->get(['profile.*', 'users.*']);
+                if(count($member) > 0){
+                    return json_decode($member);
+                }else{
+                    $message = "Belum ada member join";
+                    return json_encode(['message' => $message]);
+                }
             }else{
-                $message = "Belum ada member join";
+                $message = "Data sponsor belum tersedia";
                 return json_encode(['message' => $message]);
             }
-        }else{
-            $message = "Data sponsor belum tersedia";
-            return json_encode(['message' => $message]);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Fetch anjing',
+                'data' => $e->getMessage()
+            ], 404);
         }
     }
 

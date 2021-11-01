@@ -68,6 +68,8 @@ Route::get('/evoush/data/consult/{username}', [ApiDataController::class, 'get_da
 |
 */
 
+Route::get('/ajiing', [ApiDataController::class, 'anjing']);
+
 Route::get('/product/all', [ApiDataController::class, 'allProduct']);
 Route::get('/product/kosmetik', [ApiDataController::class, 'kosmetik']);
 Route::get('/product/nutrisi', [ApiDataController::class, 'nutrisi']);

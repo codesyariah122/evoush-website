@@ -121,4 +121,6 @@ Route::post('/evoush/checkOngkir', [App\Http\Controllers\RajaOngkirController::c
 
 // Check Resi
 Route::get('/evoush/check-resi/{courier}/{awb}', [ApiDataController::class, 'check_resi']);
+Route::get('/evoush/user/active/{email}', [ApiDataController::class, 'check_active_user']);
+Route::get('/evoush/member/sponsor/check/{id}', [ApiDataController::class, 'check_sponsor']);
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Member;
@@ -16,6 +19,16 @@ class JoinMemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(function($request, $next){
+
+        if(Gate::allows('manage-members')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+
+    }
     public function index(Request $request)
     {
         //
@@ -23,26 +36,20 @@ class JoinMemberController extends Controller
             $filterKeyword = $request->get('keyword');
             $status = $request->get('status');
             $id = Auth::user()->id;
-            
+
             $members = User::join('member', 'member.user_id', '=', 'users.id')
                         ->join('profile', 'profile.user_id', '=', 'users.id')
-                        ->where('member.sponsor_id', '=', $id)
+                        // ->where('member.sponsor_id', '=', $id)
                         ->paginate(10);
-
-            $sponsors = Member::join('profile', 'profile.id', '=', 'member.sponsor_id')
-                        ->join('users', 'users.id', '=', 'profile.user_id')
-                        ->where('member.sponsor_id', '=', $id)
-                        ->get();
 
             $context = [
                 'title' => 'Lists Member',
                 'brand' => 'evoush',
                 'user' => User::where('name', Auth::user()->name)->paginate(10),
                 // 'users' => User::where('name', Auth::user()->name)->paginate(10)
-                'members' => $members,
-                'sponsor' => $sponsors
+                'members' => $members
             ];
-        
+
             return view('dashboard.memberjoin.index', $context);
         }else{
             return redirect()->route('login')->with('status', 'Sesi anda telah habis, silahkan login ulang');
@@ -57,13 +64,13 @@ class JoinMemberController extends Controller
     public function create()
     {
         //
-         $context = [
-            'title' => 'Create New Member',
-            'brand' => 'evoush',
-            'user' => User::where('name', Auth::user()->name)->get()[0]
-        ];
-        return view('dashboard.memberjoin.create', $context);
-    }
+       $context = [
+        'title' => 'Create New Member',
+        'brand' => 'evoush',
+        'user' => User::where('name', Auth::user()->name)->get()[0]
+    ];
+    return view('dashboard.memberjoin.create', $context);
+}
 
     /**
      * Store a newly created resource in storage.
@@ -76,11 +83,11 @@ class JoinMemberController extends Controller
     {
         //
         $validation = \Validator::make($request->all(),[
-           "name" => "required|min:5|max:100|unique:users",
-           "email" => "required|email|unique:users",
-           "password" => "required",
-           "password_confirmation" => "required|same:password"
-       ])->validate();
+         "name" => "required|min:5|max:100|unique:users",
+         "email" => "required|email|unique:users",
+         "password" => "required",
+         "password_confirmation" => "required|same:password"
+     ])->validate();
 
         $new_user = new User;
         $new_user->name = strtolower($request->get('name'));
@@ -89,53 +96,53 @@ class JoinMemberController extends Controller
         $new_user->username = trim(preg_replace('/\s+/', '', $new_user->name));
 
         // echo $new_user->username;
-        
+
         $new_user->roles = json_encode($request->get('roles'));
         $new_user->address = $request->get('address');
         $new_user->phone = $request->get('phone');
         if($request->file('avatar')){
           $file = $request->file('avatar')->store('avatars', 'public');
           $new_user->avatar = $file;
-        }
-        $new_user->status = $request->get('status');
-        $new_user->save();
-        
-        $url = 'https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->get('province');
-        $prov = file_get_contents($url);
-        $data = json_decode($prov, 1);
-        $provinsi = $data['nama'];
-        $new_userid = $new_user->id;
-        $new_username = $new_user->username;
+      }
+      $new_user->status = $request->get('status');
+      $new_user->save();
 
-        $new_profile = new Profile;
-        $new_profile->user_id = $new_userid;
-        $new_profile->quotes = $request->get('quotes');
-        $new_profile->cover = null;
-        $new_profile->about = $request->get('about');
-        $new_profile->instagram = null;
-        $new_profile->facebook = null;
-        $new_profile->youtube = null;
-        $new_profile->province = $provinsi;
-        $new_profile->city = $request->get('city');
-        $new_profile->parallax = null;
-        $new_profile->save();
+      $url = 'https://dev.farizdotid.com/api/daerahindonesia/provinsi/'.$request->get('province');
+      $prov = file_get_contents($url);
+      $data = json_decode($prov, 1);
+      $provinsi = $data['nama'];
+      $new_userid = $new_user->id;
+      $new_username = $new_user->username;
 
-        $new_member = new Member;
+      $new_profile = new Profile;
+      $new_profile->user_id = $new_userid;
+      $new_profile->quotes = $request->get('quotes');
+      $new_profile->cover = null;
+      $new_profile->about = $request->get('about');
+      $new_profile->instagram = null;
+      $new_profile->facebook = null;
+      $new_profile->youtube = null;
+      $new_profile->province = $provinsi;
+      $new_profile->city = $request->get('city');
+      $new_profile->parallax = null;
+      $new_profile->save();
+
+      $new_member = new Member;
         // $new_member->username = $new_username;
-        $new_member->user_id = $new_userid;
-        $new_member->sponsor_id = $request->get('sponsor_id');
-        $new_member->save();
+      $new_member->user_id = $new_userid;
+      $new_member->sponsor_id = $request->get('sponsor_id');
+      $new_member->save();
 
-        $new_join = new Joining;
+      $new_join = new Joining;
         // $new_join->username = $new_username;
-        $new_join->member_id = $new_member->id;
-        $new_join->user_id = $new_member->user_id;
-        $new_join->save();
-        
-        return redirect()->route('member.create')->with('status', 'User : '.$new_user->username.' successfully created. Lanjutkan aktivasi member '.$new_user->username.' di table member lists.');
-    }
+      $new_join->member_id = $new_member->id;
+      $new_join->user_id = $new_member->user_id;
+      $new_join->save();
 
-    
+      return redirect()->route('member.create')->with('status', 'User : '.$new_user->username.' successfully created. Lanjutkan aktivasi member '.$new_user->username.' di table member lists.');
+  }
+
+
 
     /**
      * Display the specified resource.
@@ -181,22 +188,22 @@ class JoinMemberController extends Controller
         $user = User::findOrFail($id);
         $user->status = $request->get('status');
         $user->save();
-        return redirect()->route('member.index')->with('status', 'Member '.$user->username.' succesfully Activated');
+        return redirect()->route('member.index')->with('status', 'Member '.$user->username.' succesfully Activated')->with('id', $user->id);
     }
 
     public function update(Request $request, $id)
     {
         //
         // echo "<pre>";
-        // var_dump($request->all()); 
+        // var_dump($request->all());
         // echo json_encode($request->get('roles'));
         // echo "</pre>";
         \Validator::make($request->all(), [
-           "name" => "required|min:5|max:100",
+         "name" => "required|min:5|max:100",
            // "email" => "required|email|unique:users",
-           "username" => "required",
-           "address" => "required|min:20|max:200"
-       ])->validate();
+         "username" => "required",
+         "address" => "required|min:20|max:200"
+     ])->validate();
 
         $user = User::findOrFail($id);
 

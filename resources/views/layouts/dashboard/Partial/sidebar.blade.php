@@ -56,13 +56,26 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-users-cog"></i>
+                    <i class="fas fa-fw fa-users-cog"></i>
                     <span>Users</span>
                 </a>
                 <div id="collapseUser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">User Management</h6>
                         <a class="collapse-item" href="{{route('users.index')}}">Users</a>
+                        <div class="collapse-divider"></div>
+                    </div>
+                </div>
+
+                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMember"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-user-circle"></i>
+                    <span>Members</span>
+                </a>
+                <div id="collapseMember" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Member Management</h6>
+                        <a class="collapse-item" href="{{route('member.index')}}">Members</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         // Passport::loadKeysFrom(__DIR__.'/../secrets/oauth');
 
         Gate::define('manage-users', function($user){
-         return count(array_intersect(["ADMIN"], json_decode($user->roles)));
+         return count(array_intersect(["ADMIN", "STAFF"], json_decode($user->roles)));
      });
 
         Gate::define('manage-categories', function($user){
@@ -44,6 +44,20 @@ class AuthServiceProvider extends ServiceProvider
      });
 
         Gate::define('manage-orders', function($user){
+         return count(array_intersect(["ADMIN", "STAFF"],
+            json_decode($user->roles)));
+     });
+
+        Gate::define('manage-consults', function($user){
+         return count(array_intersect(["ADMIN", "STAFF"],
+            json_decode($user->roles)));
+     });
+
+        Gate::define('manage-contacts', function($user){
+         return count(array_intersect(["ADMIN", "STAFF"],
+            json_decode($user->roles)));
+     });
+        Gate::define('manage-members', function($user){
          return count(array_intersect(["ADMIN", "STAFF"],
             json_decode($user->roles)));
      });

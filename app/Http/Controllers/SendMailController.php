@@ -75,7 +75,6 @@ class SendMailController extends Controller
             ];
 
             try {
-
                 Mail::to('evoushofficiall@gmail.com')->send(new ContactEmail($details));
                 return response()->json([
                     'message' => 'Email has been sent.',

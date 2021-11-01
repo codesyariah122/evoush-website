@@ -37,14 +37,14 @@
       }
       @font-face {
          font-family: 'Walkway';
-         src:  url("{{asset('fonts/walkway/Walkway.ttf.woff')}}") format("woff"); 
+         src:  url("{{asset('fonts/walkway/Walkway.ttf.woff')}}") format("woff");
          font-weight: normal;
          font-style: normal;
      }
      .bg-image{
-        background-image : url({{asset('images/banner/new_banner8.jpg')}});
+        background-image : url({{asset('https://cdnb.artstation.com/p/assets/images/images/035/572/715/large/fa-jk-darkforest2.jpg?1615316102')}});
         background-attachment: fixed;
-        height: 100vh;        
+        height: 100vh;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -67,7 +67,7 @@
       body{
         width: 100%!important;
     }
-    
+
 </style>
 </body>
 </html>

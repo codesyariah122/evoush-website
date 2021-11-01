@@ -30,7 +30,7 @@
                </div>
              </div>
            </form>
-          
+
             <div class="card">
 
               {{-- <pre>
@@ -40,7 +40,7 @@
               </pre> --}}
 
               {{-- <pre>
-                  
+
                   <ul>
                     <li>delete profile by user_id : {{$members[0]->user_id}}</li>
                     <li>delete joining by member_id : {{$members[0]->member_id}}</li>
@@ -48,7 +48,7 @@
 
               </pre> --}}
 
-                <div class="card-header">{{ __('List Member') }} <b>{{Auth::user()->username}}</b></div>
+                <div class="card-header">{{ __('List Member Join') }}</div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table table-bordered">
@@ -59,6 +59,7 @@
                                <th><b>Name</b></th>
                                <th><b>Username</b></th>
                                <th><b>Email</b></th>
+                               <th><b>Sponsor</b></th>
                                <th><b>Avatar</b></th>
                            </tr>
                        </thead>
@@ -124,6 +125,13 @@
                              <td>{{$member->username}}</td>
                              <td>{{$member->email}}</td>
                              <td>
+                              <strong>
+                                <a href="/dashboard/evoush/users/{{ $member->sponsor_id }}">
+                                  {{ $member->sponsor_username}}
+                                </a>
+                              </strong>
+                             </td>
+                             <td>
                               @if($member->avatar)
                                 <img src="{{asset('storage/'.$member->avatar)}}" class="img-responsive" width="100">
                               @else
@@ -145,16 +153,7 @@
                        </tfoot>
                    </table>
                   </div>
-                  {{--  <pre>
 
-                    {{
-                      count($sponsors)
-                    }}
-
-                     {{
-                      var_dump($sponsors)
-                     }}
-                   </pre> --}}
                 </div>
             </div>
         </div>

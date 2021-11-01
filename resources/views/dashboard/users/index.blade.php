@@ -6,7 +6,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-xs-12 col-sm-12">
-            <a href="{{route('users.create')}}" class="btn btn-sm btn-primary mt-2 mb-3">Create New User</a>
+            {{-- Adding user only administrator --}}
+            @if(in_array("ADMIN", json_decode(Auth::user()->roles)))
+              <a href="{{route('users.create')}}" class="btn btn-sm btn-primary mt-2 mb-3">Create New User</a>
+            @endif
 
             @if(session('status'))
                 <div class="alert alert-success">
@@ -41,6 +44,7 @@
                                <th><b>Email</b></th>
                                <th><b>Avatar</b></th>
                                <th><b>Status</b></th>
+                               <th><b>Roles</b></th>
                                {{-- <th><b>Pencapian</b></th> --}}
                                <th><b>Action</b></th>
                            </tr>
@@ -87,27 +91,52 @@
                                   @endif
                                 @endif
                                </td> --}}
-
                                <td>
-                                 <a class="btn btn-info text-white btn-sm" href="{{route('users.edit',
-                                 [$user->id])}}">Edit</a>
+                                {{-- Management Roles --}}
+                                @if(in_array("ADMIN", json_decode($user->roles)))
+                                  <span class="badge badge-primary">ADMINISTRATOR</span>
+                                @elseif(in_array("STAFF", json_decode($user->roles)))
+                                  <span class="badge badge-primary">STAFF</span>
+                                @elseif(in_array("AUTHOR", json_decode($user->roles)))
+                                  <span class="badge badge-warning">AUTHOR</span>
 
-                                 <form
-                                     onsubmit="return confirm('Delete this user permanently?')"
-                                     class="d-inline"
-                                     action="{{route('users.destroy', [$user->id])}}"
-                                     method="POST">
-                                     @csrf
-                                     <input
-                                     type="hidden"
-                                     name="_method"
-                                     value="DELETE">
-                                     <input
-                                     type="submit"
-                                     value="Delete"
-                                     class="btn btn-danger btn-sm">
-                                </form>
+                                {{-- Membership Roles --}}
+                                @elseif(in_array("MEMBER", json_decode($user->roles)))
+                                  <span class="badge badge-success">MEMBER</span>
+                                @else
+                                  <span class="badge badge-danger">FOLLOWER</span>
+                                @endif
+                               </td>
+{{--
+                               @if(in_array("STAFF", json_decode(Auth::user()->roles)) == in_array("STAFF", json_decode($user->roles)))
+                                <h1>Yeah</h1>
+                                @endif --}}
+                               <td>
+                                @if(Auth::check())
+                                  @if(in_array("ADMIN", json_decode(Auth::user()->roles)) || in_array("STAFF", json_decode(Auth::user()->roles)) == in_array("STAFF", json_decode($user->roles)))
+                                      <a class="btn btn-info text-white btn-sm" href="{{route('users.edit',
+                                     [$user->id])}}">Edit</a>
+                                  @endif
 
+                                  {{-- Only Admin --}}
+                                  @if(in_array("ADMIN", json_decode(Auth::user()->roles)))
+                                     <form
+                                         onsubmit="return confirm('Delete this user permanently?')"
+                                         class="d-inline"
+                                         action="{{route('users.destroy', [$user->id])}}"
+                                         method="POST">
+                                         @csrf
+                                         <input
+                                         type="hidden"
+                                         name="_method"
+                                         value="DELETE">
+                                         <input
+                                         type="submit"
+                                         value="Delete"
+                                         class="btn btn-danger btn-sm">
+                                    </form>
+                                  @endif
+                                @endif
                                 <a
                                 href="{{route('users.show', [$user->id])}}"
                                 class="btn btn-primary btn-sm">Detail</a>

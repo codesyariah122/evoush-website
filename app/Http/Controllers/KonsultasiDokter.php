@@ -16,7 +16,7 @@ class KonsultasiDokter extends Controller
         $this->middleware('auth');
         $this->middleware(function($request, $next){
 
-        if(Gate::allows('manage-users')) return $next($request);
+        if(Gate::allows('manage-consults')) return $next($request);
             abort(403, 'Anda tidak memiliki cukup hak akses');
         });
 

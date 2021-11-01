@@ -23,12 +23,12 @@ class CategoryMessageController extends Controller
         $this->middleware('auth');
         $this->middleware(function($request, $next){
 
-        if(Gate::allows('manage-categories')) return $next($request);
+        if(Gate::allows('manage-contacts')) return $next($request);
             abort(403, 'Anda tidak memiliki cukup hak akses');
         });
 
     }
-    
+
     public function index()
     {
         $data = CategoryMessage::paginate(10);
@@ -76,7 +76,7 @@ class CategoryMessageController extends Controller
        $new_category->caption = $request->get('caption');
 
        $new_category->save();
-        
+
         return redirect()->route('categorymessage.create')->with('status',
         'Category successfully created');
     }

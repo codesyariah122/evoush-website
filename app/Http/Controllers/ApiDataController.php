@@ -208,7 +208,9 @@ class ApiDataController extends Controller
 
 
 
-        return response()->json(['message' => '<b class="text-primary">'.$new_user->username.'</b> berhasil join member baru, dari sponsor <b class="text-info">'.$username_path.'</b> selanjutnya klik tombol aktivasi akun dibawah ini.', 'data' => $new_user]);
+        return response()->json([
+            'message' => '<b class="text-primary">'.$new_user->username.'</b> berhasil join member baru, dari sponsor <b class="text-info">'.$username_path.'</b> selanjutnya klik tombol aktivasi akun dibawah ini.',
+            'data' => $new_user]);
 
         // if($new_join->count() > 0){
         //     // return redirect()->route('member.username', [$username_path])->with('status', 'Username anda : '.$new_user->username.' berhasil dibuat selanjutnya system kami akan memproses setelah pihak sponsor mengaktivasi akun member anda.');
@@ -929,6 +931,43 @@ class ApiDataController extends Controller
             'message' => 'Data has been sending to docter',
             'data' => $deliverDocter
         ]);
+    }
+
+    public function check_active_user($email)
+    {
+        $user = User::where('email', $email)->first();
+
+        try{
+            return response()->json([
+                'message' => 'Check user active',
+                'data' => $user
+            ], 200);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Error fetch data',
+                'data' => $e->getMessage()
+            ], 404);
+        }
+    }
+
+    public function check_sponsor($id)
+    {
+        $check_sponsor =  User::join('member', 'member.user_id', 'users.id')
+                    ->findOrFail($id);
+
+        $sponsor = User::findOrFail($check_sponsor->sponsor_id);
+
+        try{
+            return response()->json([
+                'message' => 'Check Member Sponsor',
+                'data' => $sponsor
+            ], 200);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Error fetch data member sponsor',
+                'data' => $e->getMessage()
+            ], 404);
+        }
     }
 
 }

@@ -20,7 +20,7 @@ class ContactController extends Controller
         $this->middleware('auth');
         $this->middleware(function($request, $next){
 
-            if(Gate::allows('manage-products')) return $next($request);
+            if(Gate::allows('manage-contacts')) return $next($request);
            abort(403, 'Anda tidak memiliki cukup hak akses');
        });
     }

@@ -71,6 +71,7 @@ class EmailNotificationNewMember extends Controller
           // $new_member->username = $new_username;
         $new_member->user_id = $new_userid;
         $new_member->sponsor_id = $request->get('sponsor_id');
+        $new_member->sponsor_username = $username_path;
         $new_member->save();
 
         $new_join = new Joining;
@@ -87,6 +88,7 @@ class EmailNotificationNewMember extends Controller
         $details = [
           'title' => 'You Have New Member Join',
           'url' => 'https://evoush.com',
+          'id' => $new_user->id,
           'username' => $new_user->username,
           'sponsor' => $sponsor
         ];

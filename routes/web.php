@@ -74,14 +74,15 @@ Route::get('/dashboard/evoush/kirim-email', [SendMailController::class, 'send'])
 
 Route::get('/dashboard/evoush', [DashboardController::class, 'index'])->name('dashboard.evoush');
 // User Data Route
-Route::resource('/dashboard/evoush/users', UserController::class);
+Route::resource('/dashboard/evoush/users', UserController::class)->name('*', 'dashboard.evoush.users');
+
 Route::get('/dashboard/evoush/users/send/email/{id}', [UserController::class, 'send_information'])->name('send.email');
 Route::post('/dashboard/evoush/sending/email', [UserController::class, 'sending_email'])->name('sending.email.member');
 // Route Profile dashboard/evoush
 // Route::get('/dashboard/evoush/profile/{username}', ProfileController::class, 'show_profile')->name('profile.username');
 Route::resource('/dashboard/evoush/profile', ProfileController::class);
 // Route Member Join
-Route::put('/dashboard/evoush/member/activated/{id}', [JoinMemberController::class, 'activated'])->name('member.active');
+Route::put('/dashboard/evoush/member/activated/{id}', [JoinMemberController::class, 'activated'])->name('member.activated');
 Route::delete('/dashboard/evoush/member/deleted/{user_id}', [JoinMemberController::class, 'deletedAll'])->name('member.deleted');
 Route::resource('/dashboard/evoush/member', JoinMemberController::class);
 // Route::get('/dashboard/evoush/member/activate', [JoinMemberController::class, 'activate'])->name('member.activate');

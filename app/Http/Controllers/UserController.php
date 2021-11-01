@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Member;
 use App\Mail\LoginWebReplikaEmail;
 use Auth;
 
@@ -175,12 +176,28 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::join('profile', 'profile.user_id', '=', 'users.id')
+                ->findOrFail($id);
+
+        $followers = Member::join('users', 'users.id', '=', 'member.user_id')
+                    ->where('member.sponsor_id', '=', $id)
+                    ->get(['users.*', 'member.*']);
+
+        $sponsor = User::join('member', 'member.user_id', '=', 'users.id')
+                    ->where('users.id', '=', $id)
+                    ->get(['users.*', 'member.*']);
+
+        // echo "<pre>";
+        // var_dump($sponsor); die;
+        // echo "</pre>";
         $context = [
             'title' => 'User Detail',
             'brand' => 'evoush',
             // 'user' => User::where('name', Auth::user()->name)->paginate(10),
             // 'users' => User::where('name', Auth::user()->name)->paginate(10)
-            'user' => User::findOrFail($id)
+            'user' => $user,
+            'followers' => $followers,
+            'sponsor' => $sponsor
         ];
         return view('dashboard.users.detail', $context);
     }
@@ -313,4 +330,21 @@ class UserController extends Controller
             echo "Email gagal dikirim karena $e.";
         }
    }
+
+
+   public function new_member_activation(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = $request->get('status');
+        $user->save();
+
+        try{
+            return response()->json([
+                'message' => $user->username.' berhasil di aktivasi',
+                'data' => $user
+            ]);
+        }catch(\Exception $e){
+            echo "Member gagal di aktivasi $e.";
+        }
+    }
 }

@@ -95,6 +95,8 @@ class LoginController extends Controller
             return '/member/'.Auth::user()->username;
         }else if(in_array("AUTHOR", json_decode(Auth::user()->roles))){
             return '/dashboard/evoush';
+        }else if(in_array("STAFF",  json_decode(Auth::user()->roles))){
+            return '/dashboard/evoush';
         }
         // else {
         //     return '/member/'.Auth::user()->username;

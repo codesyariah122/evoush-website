@@ -62,12 +62,12 @@
                     </div>
                 </div>
 
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMember"
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMessage"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-newspaper"></i>
                     <span>Message</span>
                 </a>
-                <div id="collapseMember" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseMessage" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                          <h6 class="collapse-header">Evoush Contact Message:</h6>
